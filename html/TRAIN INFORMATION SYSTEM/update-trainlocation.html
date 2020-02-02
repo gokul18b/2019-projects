@@ -1,0 +1,56 @@
+<html>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.11.1.min.js" ></script>
+<link href="./nav.css" rel="stylesheet" id="bootstrap-css"></link>
+<!------ Include the above in your HEAD tag ---------->
+
+<nav class="navbar navbar-findcond navbar-fixed-top">
+    <div class="container">
+		<div class="navbar-header">			
+			<a class="navbar-brand" href="#">Train Information system</a>
+		</div>
+		<div class="collapse navbar-collapse" id="navbar">
+			<ul class="nav navbar-nav navbar-right">				
+				<li class="active"><a href="#">Passenger Registration <span class="sr-only">(current)</span></a></li>
+				<li class="active"><a href="#">Pass Registration<span class="sr-only">(current)</span></a></li>
+				<li class="active"><a href="#">Train Entry<span class="sr-only">(current)</span></a></li>
+				<li class="active"><a href="#">Update Train Location<span class="sr-only">(current)</span></a></li>
+				<li class="active"><a href="#">Logout<span class="sr-only">(current)</span></a></li>				
+			</ul>			
+		</div>
+	</div>
+</nav>
+
+<body>
+<br>
+<br>
+	<h1>Train Registration</h1>
+
+	<div class="col-md-4">
+	 <div class="form-group">
+		<label>Train Number</label>
+		<input  class="form-control" >
+	  </div>
+	  <div class="form-group">
+		<label>Train Name</label>
+		<input  class="form-control" >
+	  </div>
+	 
+	 <div class="form-group">
+		<label for="sel1">Current Location:</label>
+		  <select class="form-control" id="sel1">
+			<option>Tirupur</option>
+			<option>Coimbatore</option>
+			<option>Erode</option>
+			<option>Chennai</option>
+		  </select>
+	  </div>
+	  
+	 
+	  <div class="form-group">
+		<button type="button" class="btn btn-dark">Register</button>
+	  </div>
+  </div>
+</body>
+</html>
