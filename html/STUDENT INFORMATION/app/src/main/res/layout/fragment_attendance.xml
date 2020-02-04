@@ -1,0 +1,84 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground"
+    tools:context="com.kgfsl.ecampusstudent.Fragment.AttendanceFragment">
+
+    <LinearLayout
+
+        android:layout_marginBottom="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/horzon_recyclerview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        </android.support.v7.widget.RecyclerView>
+        <android.support.v7.widget.RecyclerView
+
+            android:id="@+id/vertical_recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </android.support.v7.widget.RecyclerView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginRight="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_gravity="bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:gravity="center_horizontal"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+            <View
+                android:layout_width="20dp"
+                android:layout_height="20dp" android:background="@color/colorCircleGreen"></View>
+            <TextView
+                android:layout_marginLeft="2dp"
+                android:gravity="center_vertical"
+                android:textColor="@color/colorTextPrimary"
+                android:text="Present"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+        <LinearLayout
+            android:gravity="center_horizontal"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+            <View
+                android:layout_width="20dp"
+                android:layout_height="20dp" android:background="@color/colorCircleRed"></View>
+            <TextView
+                android:layout_marginLeft="2dp"
+                android:gravity="center_vertical"
+                android:textColor="@color/colorTextPrimary"
+                android:text="Absent"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+        <LinearLayout
+            android:gravity="center_horizontal"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+            <View
+                android:layout_width="20dp"
+                android:layout_height="20dp" android:background="@color/colorCircleOd"></View>
+            <TextView
+                android:layout_marginLeft="2dp"
+                android:gravity="center_vertical"
+                android:textColor="@color/colorTextPrimary"
+                android:text="OD"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+</FrameLayout>

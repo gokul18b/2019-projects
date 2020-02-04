@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground"
+    tools:context="com.kgfsl.ecampusstudent.Activity.OtpActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="Sit back and Relax! while we verify your Mobile number" android:textAppearance="?android:textAppearanceMedium"
+                android:textColor="@color/colorTextPrimary" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:gravity="center_horizontal"
+                android:text="Mobile Number : +91 XXXXXX7833"
+                android:textColor="@color/colorSecondaryPrimaryText" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:gravity="center_horizontal"
+                android:text="(Enter the otp below in case we fail to detect the SMS automatically)"
+                android:textColor="@color/colorSecondaryPrimaryText" />
+
+            <LinearLayout
+                android:id="@+id/pin_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <EditText
+
+                    android:id="@+id/pin_first_edittext"
+                    style="@style/otp_edittext_style"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/edit_default"
+                    android:textColor="@color/colorTextPrimary" />
+
+                <EditText
+                    android:id="@+id/pin_second_edittext"
+                    style="@style/otp_edittext_style"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/edit_default"
+
+                    android:textColor="@color/colorTextPrimary" />
+
+                <EditText
+                    android:id="@+id/pin_third_edittext"
+                    style="@style/otp_edittext_style"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/edit_default"
+
+                    android:textColor="@color/colorTextPrimary" />
+
+                <EditText
+                    android:id="@+id/pin_forth_edittext"
+                    style="@style/otp_edittext_style"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/edit_default"
+
+                    android:textColor="@color/colorTextPrimary" />
+
+                <EditText
+                    android:id="@+id/pin_fifth_edittext"
+                    style="@style/otp_edittext_style"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/edit_default"
+                    android:textColor="@color/colorTextPrimary" />
+            </LinearLayout>
+
+            <EditText
+
+                android:id="@+id/pin_hidden_edittext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:background="@null"
+                android:cursorVisible="false"
+                android:gravity="center_horizontal"
+                android:maxLength="5"
+                android:textColor="@color/colorBackground" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:background="@color/colorPrimary"
+                android:text="Verify"
+                android:textColor="@color/colorTextPrimary" />
+            <TextView
+                android:layout_marginTop="5dp"
+                android:gravity="center_horizontal"
+                android:textColor="@color/colorTextPrimary"
+                android:text="( or )"
+                android:layout_width="match_parent"
+
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_marginTop="10dp"
+                android:gravity="center_horizontal"
+                android:textColor="@color/colorAccent"
+                android:text="Didn't get? Resend otp"
+                android:layout_width="match_parent"
+
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

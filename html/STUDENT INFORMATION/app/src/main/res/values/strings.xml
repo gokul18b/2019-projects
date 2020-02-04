@@ -1,0 +1,47 @@
+<resources>
+    <string name="app_name">eCampusStudent</string>
+    <string name="title_activity_main">MainActivity</string>
+
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <string name="title_home">Home</string>
+    <string name="title_profile">Profile</string>
+    <string name="title_attendance">Attendance</string>
+    <string name="title_announcement">Announcement</string>
+    <string name="title_fees">Fees</string>
+    <string name="title_logout">Logout</string>
+    <string name="title_evalvation">Evaluation</string>
+    <string name="subject">Given Nov-17(Monday) : Collect information about the technologies used during world war 1. Write a 4 page detailed summary about those technologies. Submission Date: 02-Nov-17</string>
+    <string name="title_assignment">Assignment</string>
+    <string name="title_todaysclass">Today\'s Class</string>
+    <string name="title_galery">Gallery</string>
+    <string name="title_timetable">Time Table</string>
+    <string name="about_text">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.</string>
+    <string name="title_about">About</string>
+    <string name="announcement_text">Genius Productions has brought to you the first event "ONLINE QUIZ COMPETITION". Quiz questions will be derived from areas such as General Knowledge</string>
+    <string name="title_feedback">Feedback</string>
+    <string name="opt_tc">By signing up, you agree to the <font fgcolor="#ff9a1d1d"><u>Terms and Condition</u></font> &amp; <u><font fgcolor="#ff9a1d1d">Privacy Policy</font></u></string>
+
+
+    <string-array name="Convert_Type">
+        <item>Academic</item>
+        <item>Facility</item>
+        <item>Hostel</item>
+        <item>Library</item>
+        <item>Transport</item>
+        <item>Others</item>
+        <item>Suggestion</item>
+        <item>Enquiry</item>
+
+    </string-array>
+</resources>

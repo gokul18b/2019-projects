@@ -1,0 +1,320 @@
+ <?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "college";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+
+
+//$data='{"hour":"3","cid":2,"data":[{"sid":1,"status":"A"},{"sid":2,"status":"A"},{"sid":3,"status":"P"},{"sid":4,"status":"P"},{"sid":5,"status":"P"}]}';
+$data = $_POST['data'];
+
+$json_a = json_decode($data,true);
+$date="26-12-2017";
+$hour=$json_a['hour'];
+
+$cid = $json_a['cid'];
+
+$final_status=false;
+
+for($i=0;$i<count($json_a['data']);$i++){
+	$date="26-12-2017";
+	$rows =$json_a['data'][$i];
+	
+
+	$sql="SELECT * FROM `attendance` WHERE cid=".$cid." and date ='".$date."' and sid=".$rows['sid']." and cid=".$cid;
+	
+
+	if ($result=mysqli_query($conn,$sql))
+	  {
+	 
+			$rowcount=mysqli_num_rows($result);
+
+			mysqli_free_result($result);
+			if($rowcount==0){
+				$sql = "INSERT INTO `college`.`attendance` (`id`, `sid`, `cid`, `date`, `I`, `II`, `III`, `IV`, `V`, `VI`) VALUES (NULL,".$rows['sid'].", ".$cid.", '".$date."', '0', '0', '0', '0', '0', '0')";
+				if ($conn->query($sql) === TRUE) {
+					if($hour=="1"){
+						$checkquery="SELECT * from attendance where sid=".$rows['sid']." and cid=".$cid." and date='".$date."' and I!='0'";
+						
+						if ($res=mysqli_query($conn,$checkquery))
+						  {
+							$rc=mysqli_num_rows($res);
+							mysqli_free_result($res);
+							if($rc==0){
+								$sql1 = "UPDATE  `college`.`attendance` SET  `I` =  '".$rows['status']."' WHERE  `attendance`.`sid` =".$rows['sid']." and `attendance`.`cid` =".$cid." and `attendance`.`date` ='".$date."' ";
+								if ($conn->query($sql1) === TRUE) {
+									$final_status=true;
+								
+								}
+								
+							}else{
+
+									$final_status=false;
+							}
+						 }
+					}
+
+							if($hour=="2"){
+					 $checkquery="SELECT * from attendance where sid=".$rows['sid']." and cid=".$cid." and date='".$date."' and II!='0'";
+
+					
+					
+					if ($res=mysqli_query($conn,$checkquery))
+					  {
+						$rc=mysqli_num_rows($res);
+						mysqli_free_result($res);
+						 
+						if($rc==0){
+
+								$sql2 = "UPDATE  `college`.`attendance` SET  `II` =  '".$rows['status']."' WHERE  `attendance`.`sid` =".$rows['sid']." and `attendance`.`cid` =".$cid." and `attendance`.`date` ='".$date."' ";
+
+								if ($conn->query($sql2) === TRUE) {
+									$final_status=true;
+
+								}
+								
+							}else{
+								
+									$final_status=false;
+							}
+					 }
+			}
+										if($hour=="3"){
+
+						$checkquery="SELECT * from attendance where sid=".$rows['sid']." and cid=".$cid." and date='".$date."' and III!='0'";
+					
+					if ($res=mysqli_query($conn,$checkquery))
+					  {
+						$rc=mysqli_num_rows($res);
+						mysqli_free_result($res);
+						if($rc==0){
+
+								$sql3 = "UPDATE  `college`.`attendance` SET  `III`  =  '".$rows['status']."' WHERE  `attendance`.`sid` =".$rows['sid']." and `attendance`.`cid` =".$cid." and `attendance`.`date` ='".$date."' ";
+								if ($conn->query($sql3) === TRUE) {
+									$final_status=true;
+								}
+								
+							}else{
+									$final_status=false;
+							}
+					 }
+										}
+
+
+				if($hour=="4"){
+
+					$checkquery="SELECT * from attendance where sid=".$rows['sid']." and cid=".$cid." and date='".$date."' and IV!='0'";
+					
+					if ($res=mysqli_query($conn,$checkquery))
+					  {
+						$rc=mysqli_num_rows($res);
+						mysqli_free_result($res);
+						if($rc==0){
+							 
+								$sql4 = "UPDATE  `college`.`attendance` SET  `IV`  =  '".$rows['status']."' WHERE  `attendance`.`sid` =".$rows['sid']." and `attendance`.`cid` =".$cid." and `attendance`.`date` ='".$date."' ";
+								if ($conn->query($sql4) === TRUE) {
+									$final_status=true;
+								}
+								
+							}else{
+									$final_status=false;
+							}
+					 }
+				}
+				if($hour=="5"){
+
+
+						$checkquery="SELECT * from attendance where sid=".$rows['sid']." and cid=".$cid." and date='".$date."' and V!='0'";
+					
+					if ($res=mysqli_query($conn,$checkquery))
+					  {
+						$rc=mysqli_num_rows($res);
+						mysqli_free_result($res);
+						if($rc==0){
+							 
+								$sql5 = "UPDATE  `college`.`attendance` SET  `V`  =  '".$rows['status']."' WHERE  `attendance`.`sid` =".$rows['sid']." and `attendance`.`cid` =".$cid." and `attendance`.`date` ='".$date."' ";
+								if ($conn->query($sql5) === TRUE) {
+									$final_status=true;
+								}
+								
+							}else{
+									$final_status=false;
+							}
+					 }
+				}
+							if($hour=="6"){
+
+						$checkquery="SELECT * from attendance where sid=".$rows['sid']." and cid=".$cid." and date='".$date."' and V!I='0'";
+					
+					if ($res=mysqli_query($conn,$checkquery))
+					  {
+						$rc=mysqli_num_rows($res);
+						mysqli_free_result($res);
+						if($rc==0){
+							
+								$sql6 = "UPDATE  `college`.`attendance` SET  `VI`  =  '".$rows['status']."' WHERE  `attendance`.`sid` =".$rows['sid']." and `attendance`.`cid` =".$cid." and `attendance`.`date` ='".$date."' ";
+								if ($conn->query($sql6) === TRUE) {
+									$final_status=true;
+								}
+								
+							}else{
+									$final_status=false;
+							}
+					 }
+							
+			}
+					
+				}
+			}
+			else{
+					if($hour=="1"){
+						$checkquery="SELECT * from attendance where sid=".$rows['sid']." and cid=".$cid." and date='".$date."' and I!='0'";
+						
+						if ($res=mysqli_query($conn,$checkquery))
+						  {
+							$rc=mysqli_num_rows($res);
+							mysqli_free_result($res);
+							if($rc==0){
+								$sql1 = "UPDATE  `college`.`attendance` SET  `I` =  '".$rows['status']."' WHERE  `attendance`.`sid` =".$rows['sid']." and `attendance`.`cid` =".$cid." and `attendance`.`date` ='".$date."' ";
+								if ($conn->query($sql1) === TRUE) {
+									$final_status=true;
+								
+								}
+								
+							}else{
+
+									$final_status=false;
+							}
+						 }
+					}
+
+							if($hour=="2"){
+					 $checkquery="SELECT * from attendance where sid=".$rows['sid']." and cid=".$cid." and date='".$date."' and II!='0'";
+
+					
+					
+					if ($res=mysqli_query($conn,$checkquery))
+					  {
+						$rc=mysqli_num_rows($res);
+						mysqli_free_result($res);
+						 
+						if($rc==0){
+
+								$sql2 = "UPDATE  `college`.`attendance` SET  `II` =  '".$rows['status']."' WHERE  `attendance`.`sid` =".$rows['sid']." and `attendance`.`cid` =".$cid." and `attendance`.`date` ='".$date."' ";
+
+								if ($conn->query($sql2) === TRUE) {
+									$final_status=true;
+
+								}
+								
+							}else{
+								
+									$final_status=false;
+							}
+					 }
+			}
+										if($hour=="3"){
+
+						$checkquery="SELECT * from attendance where sid=".$rows['sid']." and cid=".$cid." and date='".$date."' and III!='0'";
+					
+					if ($res=mysqli_query($conn,$checkquery))
+					  {
+						$rc=mysqli_num_rows($res);
+						mysqli_free_result($res);
+						if($rc==0){
+
+								$sql3 = "UPDATE  `college`.`attendance` SET  `III`  =  '".$rows['status']."' WHERE  `attendance`.`sid` =".$rows['sid']." and `attendance`.`cid` =".$cid." and `attendance`.`date` ='".$date."' ";
+								if ($conn->query($sql3) === TRUE) {
+									$final_status=true;
+								}
+								
+							}else{
+									$final_status=false;
+							}
+					 }
+										}
+
+
+				if($hour=="4"){
+
+					$checkquery="SELECT * from attendance where sid=".$rows['sid']." and cid=".$cid." and date='".$date."' and IV!='0'";
+					
+					if ($res=mysqli_query($conn,$checkquery))
+					  {
+						$rc=mysqli_num_rows($res);
+						mysqli_free_result($res);
+						if($rc==0){
+							 
+								$sql4 = "UPDATE  `college`.`attendance` SET  `IV`  =  '".$rows['status']."' WHERE  `attendance`.`sid` =".$rows['sid']." and `attendance`.`cid` =".$cid." and `attendance`.`date` ='".$date."' ";
+								if ($conn->query($sql4) === TRUE) {
+									$final_status=true;
+								}
+								
+							}else{
+									$final_status=false;
+							}
+					 }
+				}
+				if($hour=="5"){
+
+
+						$checkquery="SELECT * from attendance where sid=".$rows['sid']." and cid=".$cid." and date='".$date."' and V!='0'";
+					
+					if ($res=mysqli_query($conn,$checkquery))
+					  {
+						$rc=mysqli_num_rows($res);
+						mysqli_free_result($res);
+						if($rc==0){
+							 
+								$sql5 = "UPDATE  `college`.`attendance` SET  `V`  =  '".$rows['status']."' WHERE  `attendance`.`sid` =".$rows['sid']." and `attendance`.`cid` =".$cid." and `attendance`.`date` ='".$date."' ";
+								if ($conn->query($sql5) === TRUE) {
+									$final_status=true;
+								}
+								
+							}else{
+									$final_status=false;
+							}
+					 }
+				}
+							if($hour=="6"){
+
+						$checkquery="SELECT * from attendance where sid=".$rows['sid']." and cid=".$cid." and date='".$date."' and VI!='0'";
+					
+					if ($res=mysqli_query($conn,$checkquery))
+					  {
+						$rc=mysqli_num_rows($res);
+						mysqli_free_result($res);
+						if($rc==0){
+							
+								$sql6 = "UPDATE  `college`.`attendance` SET  `VI`  =  '".$rows['status']."' WHERE  `attendance`.`sid` =".$rows['sid']." and `attendance`.`cid` =".$cid." and `attendance`.`date` ='".$date."' ";
+								if ($conn->query($sql6) === TRUE) {
+									$final_status=true;
+								}
+								
+							}else{
+									$final_status=false;
+							}
+					 }
+							
+			}
+	  }
+}
+
+}
+if($final_status==true){
+	echo 'Sucess';
+}else{
+	echo 'Already updated';
+}
+
+								
+  $conn->close();
+?> 
