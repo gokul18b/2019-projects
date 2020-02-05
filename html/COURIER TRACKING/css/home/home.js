@@ -1,5 +1,6 @@
 // Material Design example
 $(document).ready(function () {
+	
     update()
 });
 
@@ -12,15 +13,14 @@ function addCustomer() {
     var mobile = $("#mobile1").val();
     var address = $("#address1").val();
 
-
     $.ajax({
         type: 'POST',
-        url: '/api/addCustomer',
-        data: {
-            name: name,
-            mobile: mobile,
-            address: address
-        }
+        url: 'http://localhost:8080/api/addCustomer/'+name+'/'+mobile+'/'+address,
+        data:{
+            'name': name,
+            'mobile': mobile,
+            'address': address
+        },
     }).done(function (datas) {
         alert(datas);
         $("#name1").val("");
@@ -35,7 +35,7 @@ function showCustomerList() {
 
     $.ajax({
         type: 'GET',
-        url: '/api/viewCustomer',
+        url: 'http://localhost:8080/api/viewCustomer'
 
     }).done(function (datas) {
 
@@ -64,7 +64,7 @@ function addCourier() {
 
     $.ajax({
         type: 'POST',
-        url: '/api/addCourier',
+        url: 'http://localhost:8080/api/addCourier/'+name+'/'+mobile+'/'+sendlocation+'/'+address,
         data: {
             name: name,
             mobile: mobile,
@@ -86,7 +86,7 @@ function viewCourier() {
 
     $.ajax({
         type: 'GET',
-        url: '/api/viewCourier',
+        url: 'http://localhost:8080/api/viewCourier',
 
     }).done(function (datas) {
 
@@ -114,7 +114,7 @@ function updateCourier() {
 
     $.ajax({
         type: 'POST',
-        url: '/api/updateCourier',
+        url: 'http://localhost:8080/api/updateCourier/'+courierno+'/'+currentlocation,
         data: {
             courierno: courierno,
             currentlocation: currentlocation

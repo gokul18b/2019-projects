@@ -79,7 +79,7 @@ var courierno = $("#courierno").val()
 
     $.ajax({
         type: 'POST',
-        url: '/api/search',
+        url: 'http://localhost:8080/api/search/'+courierno,
         data: {
             courierno: courierno
         }
