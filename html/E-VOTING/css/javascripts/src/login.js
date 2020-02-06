@@ -7,7 +7,7 @@ function login(){
 	
 	$.ajax({
 			type:"POST",
-			url:"/api/login",
+			url:"http://localhost:8080/api/login/"+username+"/"+password,
 			data:{username:username,password:password},
 			success: function(datas) {
 				if(datas.length==0){
@@ -16,11 +16,11 @@ function login(){
 					var data = datas[0];
 					if(data.usertype==1){
 						var userid=data.userid;
-						window.location.href="/admin?id="+userid;
+						window.location.href="/e-vote/admin.html?id="+userid;
 						
 					}else if(data.usertype==0){
 						var userid=data.userid;
-						window.location.href="/voter?id="+userid;
+						window.location.href="/e-vote/voter.html?id="+userid;
 					}
 				}
 				

@@ -26,7 +26,7 @@ function setReport(){
 	var sportssec='';
 	$.ajax({
 			type:"GET",
-			url:"/api/votreport",
+			url:"http://localhost:8080/api/votreport",
 			success: function(datas) {
 				var ch=0,vc=0,cs=0,fs=0,ts=0,ss=0;
 				for(var i=0;i<datas.length;i++){
@@ -84,7 +84,7 @@ function setReport(){
 function setProfile(id){
 	$.ajax({
 			type:"POST",
-			url:"/api/getprofile",
+			url:"http://localhost:8080/api/getprofile/"+id,
 			data:{id:id},
 			success: function(datas) {
 				
@@ -127,7 +127,7 @@ function(isConfirm) {
 	}else{
 		$.ajax({
 			type:"POST",
-			url:"/api/addCandidate",
+			url:"http://localhost:8080/api/addCandidate/"+firstname+"/"+lastname+"/"+mobile+"/"+email+"/"+address+"/"+post,
 			data:{firstname:firstname,lastname:lastname,mobile:mobile,email:email,address:address,post:post},
 			success: function(datas) {
 				swal("Success!", "Your Record has been deleted.", "success");
@@ -156,7 +156,7 @@ function ViewCandidateList(){
 	
 		$.ajax({
 			type:"POST",
-			url:"/api/viewCandidates",
+			url:"http://localhost:8080/api/viewCandidates",
 			success: function(datas) {
 				var html='';
 				candidateList=datas;
@@ -221,7 +221,7 @@ function(isConfirm) {
 	  $.ajax({
 			type:"POST",
 			data:{id:candidateList[pos]['userid']},
-			url:"/api/deleteCandidates",
+			url:"http://localhost:8080/api/deleteCandidates/"+candidateList[pos]['userid'],
 			success: function(datas) {
 				swal("Deleted!", "Your imaginary file has been deleted.", "success");
 				ViewCandidateList();
@@ -267,7 +267,7 @@ function(isConfirm) {
 	}else{
 		$.ajax({
 			type:"POST",
-			url:"/api/addVoter",
+			url:"http://localhost:8080/api/addVoter/"+firstname+"/"+lastname+"/"+"/"+mobile+"/"+email+"/"+address,
 			data:{firstname:firstname,lastname:lastname,mobile:mobile,email:email,address:address},
 			success: function(datas) {
 				swal("Success!", "Your Record has been Register.", "success");
@@ -296,7 +296,7 @@ function ViewVoterList(){
 	
 		$.ajax({
 			type:"POST",
-			url:"/api/viewVoter",
+			url:"http://localhost:8080/api/viewVoter",
 			success: function(datas) {
 				var html='';
 				voterList=datas;
@@ -333,7 +333,7 @@ function(isConfirm) {
 	  $.ajax({
 			type:"POST",
 			data:{id:voterList[pos]['userid']},
-			url:"/api/deleteVoter",
+			url:"http://localhost:8080/api/deleteVoter/"+voterList[pos]['userid'],
 			success: function(datas) {
 				swal("Deleted!", "Your imaginary file has been deleted.", "success");
 				ViewVoterList();

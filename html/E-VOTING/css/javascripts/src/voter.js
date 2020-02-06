@@ -71,7 +71,7 @@ $( "#btn_sports" ).click(function() {
 function setVoting(){
 	$.ajax({
 			type:"POST",
-			url:"/api/validateVoting",
+			url:"http://localhost:8080/api/validateVoting/"+final_id,
 			data:{id:final_id},
 			success: function(datas) {
 				for(var i=0;i<datas.length;i++){
@@ -102,7 +102,7 @@ function setVoting(){
 function setProfile(id){
 	$.ajax({
 			type:"POST",
-			url:"/api/getprofile",
+			url:"http://localhost:8080/api/getprofile/"+id,
 			data:{id:id},
 			success: function(datas) {
 				
@@ -156,7 +156,7 @@ function setVotingDetails(){
 function pullVote(postid,canid,votid){
 	$.ajax({
 			type:"POST",
-			url:"/api/pullvote",
+			url:"http://localhost:8080/api/pullvote/"+canid+"/"+votid+"/"+postid,
 			data:{postid:postid,canid:canid,votid:votid},
 			success: function(datas) {
 				//refreshVoting();
@@ -174,7 +174,7 @@ function ViewCandidateList(){
 	
 		$.ajax({
 			type:"POST",
-			url:"/api/viewCandidates",
+			url:"http://localhost:8080/api/viewCandidates",
 			success: function(datas) {
 				var html='';
 				candidateList=datas;
@@ -298,7 +298,7 @@ function setReport(){
 	var sportssec='';
 	$.ajax({
 			type:"GET",
-			url:"/api/votreport",
+			url:"http://localhost:8080/api/votreport",
 			success: function(datas) {
 				var ch=0,vc=0,cs=0,fs=0,ts=0,ss=0;
 				for(var i=0;i<datas.length;i++){
