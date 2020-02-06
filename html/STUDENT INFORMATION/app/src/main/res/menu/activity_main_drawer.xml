@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_action_home"
+            android:title="@string/title_home" />
+        <item
+            android:id="@+id/nav_profile"
+            android:icon="@drawable/ic_action_profile"
+            android:title="@string/title_profile" />
+        <item
+            android:id="@+id/nav_attendance"
+            android:icon="@drawable/ic_action_attendance"
+            android:title="@string/title_attendance" />
+        <item
+
+            android:id="@+id/nav_announcement"
+            android:icon="@drawable/ic_action_announcement"
+            android:title="@string/title_announcement" />
+        <item
+            android:id="@+id/nav_fees"
+            android:icon="@drawable/ic_action_fees"
+            android:title="@string/title_fees" />
+
+        <item
+            android:id="@+id/nav_evalvation"
+            android:icon="@drawable/ic_action_evalution"
+            android:title="@string/title_evalvation" />
+        <item
+            android:id="@+id/nav_assignment"
+            android:icon="@drawable/ic_action_assignment"
+            android:title="@string/title_assignment" />
+        <item
+            android:id="@+id/nav_todayclass"
+            android:icon="@drawable/ic_action_todaysclass"
+            android:title="Today's Class" />
+        <item
+            android:id="@+id/nav_gallery"
+            android:icon="@drawable/ic_action_onlineexam"
+            android:title="Gallery" />
+
+        <item
+            android:id="@+id/nav_timetable"
+            android:icon="@drawable/ic_action_timetable"
+            android:title="Timetable" />
+        <item
+            android:id="@+id/nav_feedback"
+            android:icon="@drawable/ic_action_feedback"
+            android:title="Feedback" />
+        <item
+            android:id="@+id/nav_aboutus"
+            android:icon="@drawable/ic_action_about"
+            android:title="About Us" />
+        <item
+            android:id="@+id/nav_logout"
+            android:icon="@drawable/ic_action_logout"
+            android:title="Logout" />
+
+
+    </group>
+
+
+</menu>

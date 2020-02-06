@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Registration Form Template</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
+    <link rel="stylesheet" href="form-1/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="form-1/assets/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="form-1/assets/css/form-elements.css">
+    <link rel="stylesheet" href="form-1/assets/css/style.css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Favicon and touch icons -->
+    <link rel="shortcut icon" href="form-1/assets/ico/favicon.png">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144"
+          href="form-1/assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114"
+          href="form-1/assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="form-1/assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="form-1/assets/ico/apple-touch-icon-57-precomposed.png">
+
+    <!-- Java Script for async checking signup -->
+    <script>
+
+        function change_to_register() {
+            var button_register = document.getElementById("button_register");
+            var button_login = document.getElementById("button_login");
+            button_register.style.display = 'none';
+            button_login.style.display = 'block';
+        }
+
+        function ajax_get_json() {
+            var button_signup = document.getElementById("button_signup");
+            var hr = new XMLHttpRequest();
+            hr.open("POST", "signup.json", true);
+            hr.setRequestHeader("Content-type", "application/json", true);
+            hr.onreadystatechange = function () {
+                if (hr.readyState == 4 && hr.status == 200) {
+                    var data = JSON.parse(hr.responseText);
+                    if (data.result === "success") {
+                        button_signup.innerHTML = "Signed up...";
+                    }
+                }
+            }
+            hr.send(null);
+            button_signup.innerHTML = "Signing up....";
+        }
+
+
+    </script>
+    <!-- Java Script for async checking signup -->
+
+</head>
+
+<body>
+
+<!-- Top menu -->
+<nav class="navbar navbar-inverse navbar-no-bg" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#top-navbar-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html">MY School</a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="top-navbar-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <!-- Commented by sundar
+                    <span class="li-text">
+                        Put some text or
+                    </span>
+                    <a href="#"><strong>links</strong></a>
+                    <span class="li-text">
+                        here, or some icons:
+                    </span>
+                    <!-- Commented -->
+							<span class="li-social">
+								<a href="#"><i class="fa fa-facebook"></i></a>
+							</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Top content -->
+<div class="top-content">
+
+    <div class="inner-bg">
+        <div class="container" id="login_container">
+            <div class="row">
+                <div class="col-sm-7 text">
+                    <h1><strong>My School</strong> Connecting people.</h1>
+
+                    <div class="description">
+                        <p>
+                            School to parents communication made simple.
+                        </p>
+                    </div>
+                    <div class="top-big-link">
+                        <button class="btn btn-link-1" onclick="change_to_register()" id="button_register">
+                            <strong>Register...</strong></button>
+                    </div>
+                    <div>
+                        <button class="btn btn-link-2 hide_it" onclick="change_to_login()" id="button_login"><strong>Login...</strong>
+                        </button>
+                    </div>
+                </div>
+                <div class="col-sm-5 form-box">
+                    <div class="form-top">
+                        <div class="form-top-left">
+                            <h3><strong>Login...</strong>
+                                <small> View your school...</small>
+                            </h3>
+                        </div>
+                        <!-- Commented
+                        <div class="form-top-right">
+                            <i class="fa fa-pencil"></i>
+                        </div>
+                        <!-- Coomented -->
+                    </div>
+                    <div class="form-bottom">
+                        <form role="form" class="registration-form" onsubmit="ajax_get_json();">
+                            <div class="form-group">
+                                <label class="sr-only" for="form-email">Email</label>
+                                <input type="text" name="email" placeholder="Email..." class="form-email form-control"
+                                       id="form-email">
+                            </div>
+                            <div class="form-group">
+                                <label class="sr-only" for="form-first-name">Password</label>
+                                <input type="password" name="password" placeholder="Password..."
+                                       class="form-first-name form-control" id="form-passqord">
+                            </div>
+                            <button type="submit" class="btn" id="button_signup">Get me in...!</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<!-- Javascript -->
+<script src="form-1/assets/js/jquery-1.11.1.min.js"></script>
+<script src="form-1/assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="form-1/assets/js/jquery.backstretch.min.js"></script>
+<script src="form-1/assets/js/retina-1.1.0.min.js"></script>
+<script src="form-1/assets/js/scripts.js"></script>
+
+<!--[if lt IE 10]>
+<script src="assets/js/placeholder.js"></script>
+<![endif]-->
+
+</body>
+
+</html>
