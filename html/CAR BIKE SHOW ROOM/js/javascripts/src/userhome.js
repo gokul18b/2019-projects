@@ -19,7 +19,7 @@ function getProfile(id){
 	
 	$.ajax({
 			type:"POST",
-			url:"/api/getProfile",
+			url:"http://localhost:8080/api/getProfile/"+id,
 			data:{id:id},
 			success: function(data) {
 				setProfile(data[0]);
@@ -46,7 +46,7 @@ function ViewBranchList(){
 	
 			$.ajax({
 				type:"GET",
-				url:"/api/viewBranch",
+				url:"http://localhost:8080/api/viewBranch",
 				success: function(datas) {
 						var html='';
 						var serselect='';
@@ -84,7 +84,7 @@ function ViewBranchList(){
 function getUserDetails(){
 	$.ajax({
 				type:"POST",
-				url:"/api/userdetails",
+				url:"http://localhost:8080/api/userdetails/"+final_id,
 				data:{id:final_id},
 				success: function(datas) {
 					 var data= datas[0];
@@ -123,7 +123,7 @@ function addService(id){
 	}else{
 		$.ajax({
 				type:"POST",
-				url:"/api/addService",
+				url:"http://localhost:8080/api/addService/"+mobile+"/"+name+"/"+branch+"/"+vehicle+"/"+serno+"/"+problem+"/"+address+"/"+id,
 				data:{uid:id,mobile:mobile,name:name,branch:branch,vehicle:vehicle,serno:serno,problem:problem,address:address},
 				success: function(datas) {
 					$("input[name=sermno]").val("");
@@ -144,7 +144,7 @@ function PendingService(){
 	var html='';
 	$.ajax({
 				type:"POST",
-				url:"/api/pendingService",
+				url:"http://localhost:8080/api/pendingService/"+final_id,
 				data:{id:final_id},
 				success: function(datas) {
 					for (var i=0;i<datas.length;i++){
@@ -170,7 +170,7 @@ function deleteService(id){
 	$.ajax({
 				type:"POST",
 				data:{id:id},
-				url:"/api/deleteService",
+				url:"http://localhost:8080/api/deleteService/"+id,
 				success: function(datas) {
 						PendingService();
 				}
@@ -181,7 +181,7 @@ function DeliveredService(){
 	var html='';
 	$.ajax({
 				type:"POST",
-				url:"/api/deliveredService",
+				url:"http://localhost:8080/api/deliveredService/"+final_id,
 				data:{id:final_id},
 				success: function(datas) {
 					for (var i=0;i<datas.length;i++){
@@ -211,7 +211,7 @@ var html ='<tr class="header"><th >Branch</th><th >Date</th><th >Problem</th><th
 	$.ajax({
 				type:"POST",
 				data:{branch:branch,uid:final_id},
-				url:"/api/userBill",
+				url:"http://localhost:8080/api/userBill/"+branch+"/"+final_id,
 				success: function(datas) {
 					
 					for(var i=0;i<datas.length;i++){
@@ -235,7 +235,7 @@ var html ='<tr class="header"><th >Branch</th><th >Date</th><th >Problem</th><th
 
 function logout(){
 	
-	window.location.href='/';
+	window.location.href='/car/index.html';
 }
 
 

@@ -3,6 +3,7 @@
 <link href="./css/bootstrap/bootstrap.css" rel="stylesheet" id="bootstrap-css">
 <script src="./js/bootstrap.js"></script>
 <script src="./js/jquery.js"></script>
+<script src="./js/src/home.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 
 <nav class="navbar navbar-expand-lg  border">
@@ -19,6 +20,7 @@
          <li> <a class="nav-link" href="#"><i class="fa fa-file-text" aria-hidden="true"></i> Department Allocate</a></li>
 		 <li> <a class="nav-link" href="#"><i class="fa fa-file-text" aria-hidden="true"></i> Student Approve</a></li>
 		 <li> <a class="nav-link" href="#"><i class="fa fa-file-text" aria-hidden="true"></i> Class wise student Details</a></li>
+		 <li> <a class="nav-link" href="#"><i class="fa fa-file-text" aria-hidden="true"></i> Logout</a></li>
 	</ul>
  </div>
  </div>
@@ -31,62 +33,81 @@
 		<div class="col-md-4">
 			<div class="form-group">
 				<label>First Name</label>
-				<input type="text" class="form-control" >
+				<input id="firstname" type="text" class="form-control" >
 			</div>
 			<div class="form-group">
 				<label>Last Name</label>
-				<input type="text" class="form-control" >
+				<input id="lastname" type="text" class="form-control" >
 			</div>
 			<div class="form-group">
 				<label>Mobile no</label>
-				<input type="text" class="form-control" >
+				<input id="mobile" type="text" class="form-control" >
 			</div>
 			<div class="form-group">
 				<label>Email</label>
-				<input type="text" class="form-control" >
+				<input id="email" type="text" class="form-control" >
 			</div>
 			<div class="form-group">
 				<label>Age</label>
-				<input type="text" class="form-control" >
+				<input id="age" type="text" class="form-control" >
 			</div>
 			<div class="form-group">
 				<label>Gender</label>
-				<input type="text" class="form-control" >
+				<select id="gender" class="form-control" id="sel1">
+					<option>Male</option>
+					<option>Female</option>
+					
+				  </select>
 			</div>
 			<div class="form-group">
 				<label>Address</label>
-				<input type="text" class="form-control" >
+				<input id="address" type="text" class="form-control" >
 			</div>
 			<div class="form-group">
 				<label>10'th Mark</label>
-				<input type="text" class="form-control" >
+				<input id="ten" type="text" class="form-control" >
 			</div>
 			<div class="form-group">
 				<label>12'th Mark</label>
-				<input type="text" class="form-control" >
+				<input id="twelve" 0type="text" class="form-control" >
 			</div>
 			<div class="form-group">
 				<label>School Name</label>
-				<input type="text" class="form-control" >
+				<input id="school" type="text" class="form-control" >
 			</div>
 			<div class="form-group">
 				<label>Father name</label>
-				<input type="text" class="form-control" >
+				<input id="father" type="text" class="form-control" >
 			</div>
 			<div class="form-group">
 				<label>Mother name</label>
-				<input type="text" class="form-control" >
+				<input id="mother" type="text" class="form-control" >
 			</div>
 			<div class="form-group">
 				<label>Department name</label>
-				<input type="text" class="form-control" >
+				<select id="department" class="form-control" id="sel1">
+					<option>BSC CS</option>
+					<option>BSC CT</option>
+					<option>BSC IT</option>
+					<option>BSC MATHS</option>
+					<option>BSC CHEMISTRY</option>
+					<option>BSC PHYSICS</option>
+					<option>BCOM</option>
+					<option>BCOM CA</option>
+					<option>BBA</option>
+					
+				  </select>
 			</div>
 			<div class="form-group">
 				<label>Class name</label>
-				<input type="text" class="form-control" >
+				<select id="class" class="form-control" id="sel1">
+					<option>A</option>
+					<option>B</option>
+					<option>C</option>
+				</select>
 			</div>
 			<div class="form-group">
-				<button type="button" class="btn btn-primary">Register</button>
+				<button type="button" class="btn btn-primary" onclick="studentregistration()">Register</button>
 			</div>
 		</div>
 	</div>

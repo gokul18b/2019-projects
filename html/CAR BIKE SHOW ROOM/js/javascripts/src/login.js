@@ -5,15 +5,16 @@ function login(){
 	var password=$("input[name=password]").val().trim();
 	$.ajax({
 				type:"POST",
-				url:"/api/login",
+				url:"http://localhost:8080/api/login/"+mobile+"/"+password,
 				data:{mobile:mobile,password:password},
 				success: function(datas) {
 					if(datas.length!=0){
 						var data = datas[0];
-						if(data['FLAG']==1){
-							window.location.href="/admin";
+						//alert(data['flag'])
+						if(data['flag']==1){
+							window.location.href="/car/adminhome.html";
 						}else{
-							window.location.href="/user?id="+data['id'];
+							window.location.href="/car/userhome.html?id="+data['id'];
 						}
 					}else{
 						swal("Required Fields!", "Invalid username or password", "warning");
@@ -30,14 +31,14 @@ function AddUser(){
 	var cnpass=$("input[name=usercnpass]").val().trim();
 	var address=$("textarea[name=useraddress]").val().trim();
 	
-	alert(name+mobile+password+cnpass+address);
+	//alert(name+mobile+password+cnpass+address);
 	if(name.length==0 || mobile.length==0 || password.length==0 || cnpass.length==0 || address.length==0){
 		swal("Required Fields!", "Should Enter All Required Fields", "warning");
 	}else{
 		if(password==cnpass){
 			$.ajax({
 				type:"POST",
-				url:"/api/addUser",
+				url:"http://localhost:8080/api/addUser/"+name+"/"+mobile+"/"+password+"/"+address,
 				data:{name:name,mobile:mobile,password:password,address:address},
 				success: function(datas) {
 					

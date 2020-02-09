@@ -3,6 +3,7 @@
 <link href="./css/bootstrap/bootstrap.css" rel="stylesheet" id="bootstrap-css">
 <script src="./js/bootstrap.js"></script>
 <script src="./js/jquery.js"></script>
+<script src="./js/src/home.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 
 <nav class="navbar navbar-expand-lg  border">
@@ -18,6 +19,7 @@
          <li> <a class="nav-link" href="#"><i class="fa fa-home" aria-hidden="true"></i> Student Registration</a></li>
          <li> <a class="nav-link" href="#"><i class="fa fa-file-text" aria-hidden="true"></i> Student Approve</a></li>
          <li> <a class="nav-link" href="#"><i class="fa fa-file-text" aria-hidden="true"></i> Class wise student Details</a></li>
+		 <li> <a class="nav-link" href="#"><i class="fa fa-file-text" aria-hidden="true"></i> Logout</a></li>
 	</ul>
  </div>
  </div>
@@ -34,16 +36,9 @@
 					<th>Class Name</th>
 					</tr>
 				</thead>
-				<tbody>
-				  <tr>
-					<td>BSC CS A</td>
-					</tr>
-				  <tr>
-					<td>BSC CS B</td>
-					</tr>
-				  <tr>
-					<td>BSC IT A</td>
-					</tr>
+				<tbody id="classDepartment">
+				  
+					
 				</tbody>
 			  </table>
 		</div>
@@ -58,28 +53,9 @@
 					<th>Reject</th>
 				  </tr>
 				</thead>
-				<tbody>
-				  <tr>
-					<td>John</td>
-					<td>425</td>
-					<td>852</td>
-					<td><button type="button" class="btn btn-success">Approve</button></td>
-					<td><button type="button" class="btn btn-danger">Reject</button></td>
-				  </tr>
-				  <tr>
-					<td>Mary</td>
-					<td>325</td>
-					<td>958</td>
-					<td><button type="button" class="btn btn-success">Approve</button></td>
-					<td><button type="button" class="btn btn-danger">Reject</button></td>
-				  </tr>
-				  <tr>
-					<td>July</td>
-					<td>248</td>
-					<td>712</td>
-					<td><button type="button" class="btn btn-success">Approve</button></td>
-					<td><button type="button" class="btn btn-danger">Reject</button></td>
-				  </tr>
+				<tbody id="studentdetails">
+				  
+				 
 				</tbody>
 			</table>
 		</div>
