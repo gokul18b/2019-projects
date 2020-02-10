@@ -29,23 +29,12 @@ public class ApiDao {
 		NativeQuery nq = session.createNativeQuery(sql);
 		return nq.list();
 	}
-	
-	
-	
-
-
-
-
-
 	public List<Object[]> viewBranch() {
 		Session session = sf.getCurrentSession();
 		String sql = "select id,name,landmark,pincode,address from branch order by id desc";
 		NativeQuery nq = session.createNativeQuery(sql);
 		return nq.list();
 	}
-
-
-
 
 	public void addBranch(String name, String landmark, String pincode, String address) {
 		Session session = sf.getCurrentSession();

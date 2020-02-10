@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import java.math.BigInteger;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,6 +19,7 @@ import com.example.demo.request.UpdateCourierRequest;
 import com.example.demo.response.LoginResponse;
 import com.example.demo.response.SearchResponse;
 import com.example.demo.response.ViewCustomerResponse;
+import com.example.demo.response.viewBillResponse;
 
 @Service
 @Transactional
@@ -32,9 +34,13 @@ public class ApiService {
 		for(int i=0;i<result.size();i++) {
 			Object[] obj = result.get(i);
 			ViewCustomerResponse row = new ViewCustomerResponse();
-			row.setName((String)obj[0]);
-			row.setMobile((String)obj[1]);
-			row.setAddress((String)obj[2]);
+			row.setFirstname((String)obj[0]);
+			row.setLastname((String)obj[1]);
+			row.setMobile((String)obj[2]);
+			row.setEmail((String)obj[3]);
+			row.setAge((Integer)obj[4]);
+			row.setGender((String)obj[5]);
+			row.setAddress((String)obj[6]);
 			response.add(row);
 		}
 		
@@ -102,6 +108,22 @@ public class ApiService {
 			row.setSendlocation((String)obj[3]);
 			row.setCurrentlocation((String)obj[4]);
 			row.setAddress((String)obj[5]);
+			response.add(row);
+		}
+		
+		return response;
+	}
+
+	public List<viewBillResponse> viewBill() {
+		List<Object[]> result = dao.viewBill();
+		List<viewBillResponse> response = new ArrayList<viewBillResponse>();
+		for(int i=0;i<result.size();i++) {
+			Object[] obj = result.get(i);
+			viewBillResponse row = new viewBillResponse();
+			row.setName((String) obj[0]);
+			row.setAmount((Integer)obj[1]);
+			row.setDate((Timestamp)obj[2]);
+			
 			response.add(row);
 		}
 		

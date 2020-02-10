@@ -24,6 +24,7 @@ import com.example.demo.request.UpdateCourierRequest;
 import com.example.demo.response.LoginResponse;
 import com.example.demo.response.SearchResponse;
 import com.example.demo.response.ViewCustomerResponse;
+import com.example.demo.response.viewBillResponse;
 import com.example.demo.service.ApiService;
 
 
@@ -49,23 +50,30 @@ public class ApiController {
 	
 	
 
-	@PostMapping("/addCustomer/{name}/{mobile}/{address}")
-	public ResponseEntity<String> addCustomer(@PathVariable("name") String name,@PathVariable("mobile") String mobile,@PathVariable("address") String address) {
+	@PostMapping("/addCustomer/{firstname}/{lastname}/{mobile}/{email}/{age}/{gender}/{address}")
+	public ResponseEntity<String> addCustomer(@PathVariable("firstname") String firstname,@PathVariable("lastname") String lastname,@PathVariable("mobile") String mobile,
+			@PathVariable("age") Integer age,@PathVariable("email") String email,@PathVariable("gender") String gender,
+			@PathVariable("address") String address) {
 		AddCustomerRequest body = new AddCustomerRequest();
-		body.setName(name);
+		body.setFirstname(firstname);
+		body.setLastname(lastname);
 		body.setMobile(mobile);
+		body.setEmail(email);
+		body.setAge(age);
+		body.setGender(gender);
 		body.setAddress(address);
 		
 		return ResponseEntity.ok().body(service.addCustomer(body));
 	}
 
-	@PostMapping("/addCourier/{name}/{mobile}/{sendlocation}/{fulladdress}")
-	public ResponseEntity<String> addCourier(@PathVariable("name") String name,@PathVariable("mobile") String mobile,@PathVariable("sendlocation") String sendlocation,@PathVariable("fulladdress") String fulladdress) {
+	@PostMapping("/addCourier/{name}/{mobile}/{sendlocation}/{fulladdress}/{amount}")
+	public ResponseEntity<String> addCourier(@PathVariable("name") String name,@PathVariable("mobile") String mobile,@PathVariable("sendlocation") String sendlocation,@PathVariable("fulladdress") String fulladdress,@PathVariable("amount") Integer amount) {
 		AddCourierRequest body = new AddCourierRequest();
 		body.setName(name);
 		body.setMobile(mobile);
 		body.setSendlocation(sendlocation);
 		body.setFulladdress(fulladdress);
+		body.setAmount(amount);
 		return ResponseEntity.ok().body(service.addCourier(body));
 	}
 	
@@ -74,6 +82,12 @@ public class ApiController {
 		return ResponseEntity.ok().body(service.viewCourier());
 	}
 
+	@GetMapping("/viewBill")
+	public ResponseEntity<List<viewBillResponse>> viewBill() {
+		return ResponseEntity.ok().body(service.viewBill());
+	}
+
+	
 	@PostMapping("/updateCourier/{courierno}/{currentlocation}")
 	public ResponseEntity<String> updateCourier(@PathVariable("courierno") String courierno,@PathVariable("currentlocation") String currentlocation) {
 		UpdateCourierRequest body = new UpdateCourierRequest();

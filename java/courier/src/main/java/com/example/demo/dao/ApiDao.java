@@ -22,7 +22,7 @@ public class ApiDao {
 
 	public List<Object[]> viewCustomer() {
 		Session session = sf.getCurrentSession();
-		String sql = "Select name,mobile,address from customer";
+		String sql = "Select firstname,lastname,mobile,email,age,gender,address from customer";
 		NativeQuery nq = session.createNativeQuery(sql);
 		return nq.list();
 	}
@@ -36,7 +36,7 @@ public class ApiDao {
 
 	public void addCustomer(AddCustomerRequest body) {
 		Session session = sf.getCurrentSession();
-		String sql = "INSERT INTO `customer` ( `name`, `mobile`, `address`) VALUES ( '" + body.getName() + "', '" + body.getMobile() + "', '" + body.getAddress() + "');";
+		String sql = "INSERT INTO `customer` (`id`, `firstname`, `lastname`, `mobile`, `email`, `age`, `gender`, `address`) VALUES (NULL, '"+body.getFirstname()+"', '"+body.getLastname()+"', '"+body.getMobile()+"', '"+body.getEmail()+"', '"+body.getAge()+"', '"+body.getGender()+"', '"+body.getAddress()+"');";
 		session.createSQLQuery(sql).executeUpdate();
 		
 		
@@ -47,6 +47,9 @@ public class ApiDao {
 		String sql = "INSERT INTO `courier` (`id`, `mobile`, `name`, `sendlocation`, `currentlocation`, `address`) VALUES (NULL, '"+body.getMobile()+"', '"+body.getName()+"', '"+body.getSendlocation()+"', '', '"+body.getFulladdress()+"');";
 		NativeQuery a = session.createSQLQuery(sql);
 		a.executeUpdate();	
+		
+		String s1 = "INSERT INTO `bill` (`id`, `customer_id`, `amount`) VALUES (NULL, '"+body.getName()+"', '"+body.getAmount()+"')";
+		session.createSQLQuery(s1).executeUpdate();
 	}
 
 	public void updateCourier(UpdateCourierRequest body) {
@@ -67,6 +70,13 @@ public class ApiDao {
 	public List<Object[]> viewCourier() {
 		Session session = sf.getCurrentSession();
 		String sql = "Select * from courier ";
+		NativeQuery nq = session.createNativeQuery(sql);
+		return nq.list();
+	}
+
+	public List<Object[]> viewBill() {
+		Session session = sf.getCurrentSession();
+		String sql = "Select customer_id,amount,bill_date from bill ";
 		NativeQuery nq = session.createNativeQuery(sql);
 		return nq.list();
 	}
