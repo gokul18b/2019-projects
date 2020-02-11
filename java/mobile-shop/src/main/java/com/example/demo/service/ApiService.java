@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,10 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.dao.ApiDao;
-import com.example.demo.response.GetClassResponse;
-import com.example.demo.response.GetDepartmentClassResponse;
-import com.example.demo.response.GetDepartmentResponse;
-import com.example.demo.response.GetStudentResponse;
+import com.example.demo.response.GetCustomerResponse;
+import com.example.demo.response.GetEmployeeResponse;
+import com.example.demo.response.GetProductResponse;
+import com.example.demo.response.GetStockResponse;
 
 @Service
 @Transactional
@@ -20,129 +21,121 @@ public class ApiService {
 
 	@Autowired
 	ApiDao dao;
-	
-	
-//	public List<VoteReportResponse>  votreport() {
-//		List<Object[]> result = dao.votreport();
-//		List<VoteReportResponse> response = new ArrayList<VoteReportResponse>();
-//		for(int i=0;i<result.size();i++) {
-//			Object[] row = result.get(i);
-//			VoteReportResponse obj = new VoteReportResponse();
-//			obj.setUserid((Integer)row[0]);
-//			obj.setFirstname((String)row[1]);
-//			obj.setCount((BigInteger)row[2]);
-//			obj.setPostid((Integer)row[3]);	
-//			
-//			response.add(obj);
-//			
-//		}
-//		return response;
-//	}
 
-	public void student_register(String firstname, String lastname, String mobile, String email, Integer age,
-			String gender, String address, Integer ten, Integer twelve, String schoolname, String father, String mother,
-			String department, String classname) {
-		
-		dao.student_register(firstname,lastname,mobile,email,age,gender,address,ten,twelve,schoolname,father,mother,department,classname);
+	public void add_employee(String name, String mobile, String address, String gender, Integer salary, Integer age) {
+		dao.add_employee(name,mobile,address,gender,salary,age);
 		
 	}
 
-
-	public void add_department(String department, String classname, Integer seat) {
-		dao.add_department(department,classname,seat);
-		
-	}
-
-
-	public List<GetDepartmentResponse> get_department() {
-		List<Object[]> result =dao.get_department();
-		
-		List<GetDepartmentResponse> response = new ArrayList<GetDepartmentResponse>();
-		for(int i=0;i<result.size();i++) {
-			Object[] row = result.get(i);
-			GetDepartmentResponse obj = new GetDepartmentResponse();
-			obj.setDepartment_id((Integer)row[0]);
-			obj.setDepartment_name((String)row[1]);
-			obj.setSeat((Integer)row[2]);	
-			
-			response.add(obj);
-			
-		}
-		return response;
-	
-	}
-
-
-	public List<GetClassResponse> get_class() {
-		List<Object[]> result =dao.get_class();
-		
-		List<GetClassResponse> response = new ArrayList<GetClassResponse>();
-		for(int i=0;i<result.size();i++) {
-			Object[] row = result.get(i);
-			GetClassResponse obj = new GetClassResponse();
-			obj.setId((Integer)row[0]);
-			obj.setDept_allocate_id((Integer)row[1]);
-			obj.setClass_name((String)row[2]);	
-			
-			response.add(obj);
-			
-		}
-		return response;
-	}
-	
-	public List<GetDepartmentClassResponse> get_department_class() {
-		List<Object[]> result =dao.get_department_class();
-		
-		List<GetDepartmentClassResponse> response = new ArrayList<GetDepartmentClassResponse>();
-		for(int i=0;i<result.size();i++) {
-			Object[] row = result.get(i);
-			GetDepartmentClassResponse obj = new GetDepartmentClassResponse();
-			obj.setDept_id((Integer)row[0]);
-			obj.setClass_id((Integer)row[1]);
-			
-			obj.setDepartmentname((String)row[2]);	
-			obj.setClassname((String)row[3]);	
-			
-			response.add(obj);
-			
-		}
-		return response;
-	}
-
-	public List<GetStudentResponse> show_pending_student(String department, String classname) {
-		List<Object[]> result =dao.show_pending_student(department,classname);
-		
-		List<GetStudentResponse> response = new ArrayList<GetStudentResponse>();
-		for(int i=0;i<result.size();i++) {
-			Object[] row = result.get(i);
-			GetStudentResponse obj = new GetStudentResponse();
-			obj.setId((Integer)row[0]);
-			obj.setFirstname((String)row[1]);
-			
-			obj.setTen((Integer)row[2]);	
-			obj.setTwelve((Integer)row[3]);	
-			obj.setDepartment((String)row[4]);	
-			obj.setClassname((String)row[5]);	
-			obj.setMobile((String)row[6]);
-			
-			response.add(obj);
-			
-		}
-		return response;
-	}
-
-
-	public String  approve(Integer id, String department, String classname) {
-		return dao.approve(id,department,classname);
-		
-	}
-
-
-	public void reject(Integer id) {
+	public void add_customer(String name, String mobile, String address, String gender, String email) {
 		// TODO Auto-generated method stub
-		dao.reject(id);
+		dao.add_customer(name,mobile,address,gender,email);
+		
 	}
 
-	
+	public List<GetEmployeeResponse> get_employee() {
+		// TODO Auto-generated method stub
+		List<Object[]> result =dao.get_employee();
+		
+		List<GetEmployeeResponse> response = new ArrayList<GetEmployeeResponse>();
+		for(int i=0;i<result.size();i++) {
+			Object[] row = result.get(i);
+			GetEmployeeResponse obj = new GetEmployeeResponse();
+			obj.setId((Integer)row[0]);
+			obj.setName((String)row[1]);
+			obj.setMobile((String)row[2]);
+			obj.setAddress((String)row[3]);
+			obj.setGender((String)row[4]);
+			obj.setSalary((Integer)row[5]);
+			obj.setAge((Integer)row[6]);
+			
+			response.add(obj);
+			
+		}
+		return response;
+		
+	}
+
+	public List<GetCustomerResponse> get_customer() {
+		// TODO Auto-generated method stub
+		List<Object[]> result =dao.get_customer();
+		
+		List<GetCustomerResponse> response = new ArrayList<GetCustomerResponse>();
+		for(int i=0;i<result.size();i++) {
+			Object[] row = result.get(i);
+			GetCustomerResponse obj = new GetCustomerResponse();
+			obj.setId((Integer)row[0]);
+			obj.setName((String)row[1]);
+			obj.setMobile((String)row[2]);
+			obj.setAddress((String)row[3]);
+			obj.setGender((String)row[4]);
+			obj.setEmail((String)row[5]);
+			
+			
+			response.add(obj);
+			
+		}
+		return response;
+		
+	}
+
+	public void add_product(String company, String model, Integer price) {
+		// TODO Auto-generated method stub
+		dao.add_product(company,model,price);
+	}
+
+	public List<GetProductResponse> get_product() {
+		// TODO Auto-generated method stub
+		
+		List<Object[]> result =dao.get_product();
+		
+		List<GetProductResponse> response = new ArrayList<GetProductResponse>();
+		for(int i=0;i<result.size();i++) {
+			Object[] row = result.get(i);
+			GetProductResponse obj = new GetProductResponse();
+			obj.setId((Integer)row[0]);
+			obj.setCompany((String)row[1]);
+			obj.setModel((String)row[2]);
+			obj.setPrice((Integer)row[3]);
+			
+			
+			
+			response.add(obj);
+			
+		}
+		return response;
+	}
+
+	public void add_purchase(Integer product_id, Integer quantity) {
+		// TODO Auto-generated method stub
+		dao.add_purchase(product_id,quantity);
+	}
+
+	public void add_sales(Integer customer_id, Integer product_id, Integer quantity) {
+		// TODO Auto-generated method stub
+		dao.add_sales(customer_id,product_id,quantity);
+	}
+
+	public List<GetStockResponse> get_stock() {
+		List<Object[]> result =dao.get_stock();
+		
+		List<GetStockResponse> response = new ArrayList<GetStockResponse>();
+		for(int i=0;i<result.size();i++) {
+			Object[] row = result.get(i);
+			GetStockResponse obj = new GetStockResponse();
+			obj.setCompany_name((String)row[0]+"-"+(String)row[1]);
+			obj.setQuantity((BigDecimal)row[2]);
+			
+			response.add(obj);
+			
+		}
+		return response;
+	}
+
+	public Integer get_mobile(String mobile) {
+		// TODO Auto-generated method stub
+		return dao.get_mobile(mobile);
+	}
+
 	
 }
