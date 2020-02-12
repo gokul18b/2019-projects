@@ -14,119 +14,110 @@ public class ApiDao {
 	@Autowired
 	SessionFactory sf;
 
-	public void student_register(String firstname, String lastname, String mobile, String email, Integer age,
-			String gender, String address, Integer ten, Integer twelve, String schoolname, String father, String mother,
-			String department, String classname) {
+	public void add_employee(String name, String mobile, String address, String gender, Integer salary, Integer age) {
 		Session session = sf.getCurrentSession();
-		String sql = "INSERT INTO `student` (`id`, `firstname`, `lastname`, `mobile`, `email`, `age`, `gender`, `address`, `department`, `classname`, `10th`, `12th`, `schoolname`, `fathername`, `mothername`) "
-				+ "VALUES (NULL, '" + firstname + "', '" + lastname + "', '" + mobile + "', '" + email + "', '" + age
-				+ "', '" + gender + "', '" + address + "', '" + department + "', '" + classname + "', '" + ten + "', '"
-				+ twelve + "', '" + schoolname + "', '" + father + "', '" + mother + "');";
-		NativeQuery a = session.createSQLQuery(sql);
-		a.executeUpdate();
-
+		String sql = "INSERT INTO `employee` (`id`, `name`, `mobile`, `address`, `gender`, `salary`, `age`) VALUES (NULL, '"
+				+ name + "', '" + mobile + "', '" + address + "', '" + gender + "', '" + salary + "', '" + age + "');";
+		session.createSQLQuery(sql).executeUpdate();
 	}
 
-	public void add_department(String department, String classname, Integer seat) {
-
-		Session session = sf.getCurrentSession();
-		String sql = "Select id from department where department_name='" + department + "'";
-		NativeQuery nq = session.createNativeQuery(sql);
-		List<Object[]> row = nq.list();
-
-		if (row.size() == 0) {
-			String sql1 = "INSERT INTO `department` (`department_name`, `seat_count`, `id`) VALUES ('" + department
-					+ "', '" + seat + "', NULL);";
-			session.createSQLQuery(sql1).executeUpdate();
-			 
-			List<Object[]> b = session.createNativeQuery(sql).list();
-			System.out.println("Department "+b.get(0));
-			
-			String sql2 = "INSERT INTO `class_allocate` (`id`, `dept_allocate_id`, `class_name`) VALUES (NULL, '"
-					+ b.get(0) + "', '" + classname + "');";
-			NativeQuery ab = session.createSQLQuery(sql2);
-			ab.executeUpdate();
-		} else {
-			// System.out.println(row.get(index));
-			// dept_id = (Integer)row.get(0);
-
-			String sql2 = "INSERT INTO `class_allocate` (`id`, `dept_allocate_id`, `class_name`) VALUES (NULL, '"
-					+ row.get(0) + "', '" + classname + "');";
-			NativeQuery ab = session.createSQLQuery(sql2);
-			ab.executeUpdate();
-		}
-
-	}
-
-	public List<Object[]> get_department() {
-		Session session = sf.getCurrentSession();
-		String sql = "Select id,department_name,seat_count from department";
-		NativeQuery nq = session.createNativeQuery(sql);
-		return nq.list();
-	}
-
-	public List<Object[]> get_class() {
-		Session session = sf.getCurrentSession();
-		String sql = "Select id,dept_allocate_id,class_name from class_allocate";
-		NativeQuery nq = session.createNativeQuery(sql);
-		return nq.list();
-	}
-
-	public List<Object[]> get_department_class() {
-		Session session = sf.getCurrentSession();
-		String sql = "select dept.id as deptid,cls.id as classid,dept.department_name,cls.class_name,concat(dept.department_name,' ',cls.class_name) as classname from department dept JOIN class_allocate cls ON(cls.dept_allocate_id=dept.id) GROUP BY concat(dept.department_name,' ',cls.class_name)";
-		NativeQuery nq = session.createNativeQuery(sql);
-		return nq.list();
-	}
-
-	public List<Object[]> show_pending_student(String department, String classname) {
-		Session session = sf.getCurrentSession();
-		String sql = "SELECT `id`, `firstname`, `10th`, `12th`,`department`,`classname`,`mobile` FROM `student` where confirmation=0 and department='"
-				+ department + "' and classname='" + classname + "'";
-		NativeQuery nq = session.createNativeQuery(sql);
-		return nq.list();
-	}
-
-	public String approve(Integer id, String department, String classname) {
-		Session session = sf.getCurrentSession();
-
-		String sql = "SELECT `id`, `firstname`, `10th`, `12th`,`department`,`classname` FROM `student` where confirmation=0 and department='"
-				+ department + "' and classname='" + classname + "'";
-		NativeQuery nq = session.createNativeQuery(sql);
-		nq.list();
-
-		String sql1 = "select seat_count,id from department where department_name='"+department+"'";
-		List<Object[]> rowList = session.createNativeQuery(sql1).list();
-		System.out.println(rowList.get(0)[0]);
-		//Integer seat_count = (Integer)rowList.get(0)[0];
-		
-		String sql4 = "select count(*),id from allocate where dept_allocate_id='"+department+"'";
-		List<Object[]> rowList1 = session.createNativeQuery(sql4).list();
-		System.out.println("test"+rowList1.get(0)[0]);
-		BigInteger allocate_count = (BigInteger)rowList1.get(0)[0];
-		
-		System.out.println((Integer) rowList.get(0)[0]+">="+allocate_count.intValue());
-		
-		if ((Integer) rowList.get(0)[0]> allocate_count.intValue()) {
-			String update = "Update `student` set confirmation=1 where id=" + id;
-			session.createSQLQuery(update).executeUpdate();
-
-			String sql2 = "INSERT INTO `allocate` (`id`, `dept_allocate_id`, `class_allocate_id`, `student_id`, `confirmation`) VALUES (NULL, '"
-					+ department + "', '" + classname + "', '" + id + "', '1');";
-			session.createSQLQuery(sql2).executeUpdate();
-			return "Student Has Allocated";
-		}else {
-			return "This department seat already completed";
-		}
-
-	}
-
-	public void reject(Integer id) {
+	public void add_customer(String name, String mobile, String address, String gender, String email) {
 		// TODO Auto-generated method stub
 		Session session = sf.getCurrentSession();
-		String sql = "delete from student where id=" + id;
-		NativeQuery a = session.createSQLQuery(sql);
-		a.executeUpdate();
+		String sql = "INSERT INTO `customer` (`id`, `name`, `mobile`, `address`, `gender`, `email`) VALUES (NULL, '"
+				+ name + "', '" + mobile + "', '" + address + "', '" + gender + "', '" + email + "');";
+		session.createSQLQuery(sql).executeUpdate();
+	}
+
+	public List<Object[]> get_employee() {
+		// TODO Auto-generated method stub
+		Session session = sf.getCurrentSession();
+		String sql = "Select * from employee";
+		NativeQuery nq = session.createNativeQuery(sql);
+		return nq.list();
+	}
+
+	public List<Object[]> get_customer() {
+		Session session = sf.getCurrentSession();
+		String sql = "Select * from customer";
+		NativeQuery nq = session.createNativeQuery(sql);
+		return nq.list();
+	}
+
+	public void add_product(String company, String model, Integer price) {
+		// TODO Auto-generated method stub
+		Session session = sf.getCurrentSession();
+		String sql = "INSERT INTO `product` (`id`, `company`, `model`, `price`) VALUES (NULL, '" + company + "', '"
+				+ model + "', '" + price + "');";
+		session.createSQLQuery(sql).executeUpdate();
+	}
+
+	public List<Object[]> get_product() {
+		// TODO Auto-generated method stub
+		Session session = sf.getCurrentSession();
+		String sql = "Select * from product";
+		NativeQuery nq = session.createNativeQuery(sql);
+		return nq.list();
+	}
+
+	public void add_purchase(Integer product_id, Integer quantity) {
+		// TODO Auto-generated method stub
+		Session session = sf.getCurrentSession();
+		String sql = "INSERT INTO `purchase` (`id`, `product_id`, `quantity`, `date`) VALUES (NULL, '" + product_id
+				+ "', '" + quantity + "', current_timestamp());";
+		session.createSQLQuery(sql).executeUpdate();
+	}
+
+	public void add_sales(Integer customer_id, Integer product_id, Integer quantity) {
+		// TODO Auto-generated method stub
+		Session session = sf.getCurrentSession();
+		String sql = "INSERT INTO `sales` (`id`, `customer_id`, `product_id`, `quantity`) VALUES (NULL, '" + customer_id
+				+ "', '" + product_id + "', '" + quantity + "');";
+		session.createSQLQuery(sql).executeUpdate();
+	}
+
+	public List<Object[]> get_stock() {
+		// TODO Auto-generated method stub
+		Session session = sf.getCurrentSession();
+		String sql = "select p.company,p.model,COALESCE(sum(pqty),0) - COALESCE(sum(sqty),0) qty from product p \r\n"
+				+ "LEFT JOIN (select product_id,COALESCE(SUM(quantity),0) pqty from purchase GROUP by product_id) as a on a.product_id = p.id\r\n"
+				+ "LEFT JOIN (select product_id,COALESCE(SUM(quantity),0) sqty from sales GROUP by product_id) as b on b.product_id = p.id\r\n"
+				+ "GROUP BY p.company,p.model";
+		NativeQuery nq = session.createNativeQuery(sql);
+		return nq.list();
+	}
+
+	public Integer get_mobile(String mobile) {
+		Session session = sf.getCurrentSession();
+		String sql = "Select id,name from customer where mobile='" + mobile + "'";
+		NativeQuery nq = session.createNativeQuery(sql);
+		List<Object[]> list = nq.getResultList();
+		if (list.size() != 0) {
+			return (Integer) list.get(0)[0];
+		} else {
+			return null;
+		}
+
+	}
+
+	public List<Object[]> get_billing() {
+		// TODO Auto-generated method stub
+		Session session = sf.getCurrentSession();
+		String sql = "select customer.name,customer.mobile,product.company,product.model,sales.quantity,product.price from sales LEFT JOIN customer on(customer.id=sales.customer_id) LEFT JOIN product on(product.id=sales.product_id) ";
+		NativeQuery nq = session.createNativeQuery(sql);
+		return nq.list();
+	}
+
+	public Boolean login(String username, String password) {
+		// TODO Auto-generated method stub
+		Session session = sf.getCurrentSession();
+		String sql = "select * from admin where username='"+username+"' and password='"+password+"'";;
+		NativeQuery nq = session.createNativeQuery(sql);
+		if (nq.list().size() != 0) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 }

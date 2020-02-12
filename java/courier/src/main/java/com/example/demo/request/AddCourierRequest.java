@@ -6,6 +6,7 @@ public class AddCourierRequest {
 	private String sendlocation;
 	private String currentlocation;
 	private String fulladdress;
+	private Integer amount;
 
 	public String getMobile() {
 		return mobile;
@@ -45,6 +46,14 @@ public class AddCourierRequest {
 
 	public void setFulladdress(String fulladdress) {
 		this.fulladdress = fulladdress;
+	}
+
+	public Integer getAmount() {
+		return amount;
+	}
+
+	public void setAmount(Integer amount) {
+		this.amount = amount;
 	}
 
 	
