@@ -2,6 +2,7 @@
 <link href="./css/bootstrap.css" rel="stylesheet" id="bootstrap-css">
 <script src="./js/bootstrap.js"></script>
 <script src="./js/jquery.js"></script>
+<script src="./js/src/home.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 <body>
 	<nav class="navbar navbar-icon-top navbar-expand-lg navbar-dark bg-dark">
@@ -12,52 +13,59 @@
 
 	  <div class="collapse navbar-collapse" id="navbarSupportedContent">
 		<ul class="navbar-nav mr-auto">
-		  <li class="nav-item">
-			<a class="nav-link" href="#">
+		  <li class="nav-item ">
+			<a class="nav-link" href="/mobile/customer-registration.html">
 			  <i class="fa fa-home"></i>
 			  Customer Registration
 			  <span class="sr-only">(current)</span>
 			  </a>
 		  </li>
-		  <li class="nav-item active">
-			<a class="nav-link" href="#">
+		  <li class="nav-item">
+			<a class="nav-link" href="/mobile/employee-registration.html">
 			  <i class="fa fa-home"></i>
 			  Employee Registration
 			  <span class="sr-only">(current)</span>
 			  </a>
 		  </li>
 		  <li class="nav-item">
-			<a class="nav-link" href="#">
+			<a class="nav-link" href="/mobile/product.html">
 			  <i class="fa fa-home"></i>
 			  Product
 			  <span class="sr-only">(current)</span>
 			  </a>
 		  </li>
-		   <li class="nav-item">
-			<a class="nav-link" href="#">
+		   <li class="nav-item active">
+			<a class="nav-link" href="/mobile/purchase.html">
 			  <i class="fa fa-home"></i>
 			  Purchase
 			  <span class="sr-only">(current)</span>
 			  </a>
 		  </li>
 			<li class="nav-item">
-			<a class="nav-link" href="#">
+			<a class="nav-link" href="/mobile/sales.html">
 			  <i class="fa fa-home"></i>
 			  Sales
 			  <span class="sr-only">(current)</span>
 			  </a>
 		  </li>
 		  <li class="nav-item">
-			<a class="nav-link" href="#">
+			<a class="nav-link" href="/mobile/stock.html">
 			  <i class="fa fa-home"></i>
 			  Stock
 			  <span class="sr-only">(current)</span>
 			  </a>
 		  </li>
 		  <li class="nav-item">
-			<a class="nav-link" href="#">
+			<a class="nav-link" href="/mobile/billing.html">
 			  <i class="fa fa-home"></i>
 			  Billing
+			  <span class="sr-only">(current)</span>
+			  </a>
+		  </li>
+		   <li class="nav-item">
+			<a class="nav-link" href="/mobile">
+			  <i class="fa fa-home"></i>
+			  Logout
 			  <span class="sr-only">(current)</span>
 			  </a>
 		  </li>
@@ -70,32 +78,20 @@
 		<div class="row">
 			<div class="col-md-4">
 			  <div class="form-group">
-				<label for="exampleFormControlSelect1">Company</label>
-				<select class="form-control" id="exampleFormControlSelect1">
-				  <option>SONY</option>
-				  <option>MOTO</option>
-				  <option>OPPO</option>
-				  <option>REDMI</option>
-				  <option>VIVO</option>
+				<label for="exampleFormControlSelect1">Company & Model</label>
+				<select class="form-control" id="purchase_product">
+				  
+				  
 				</select>
 			  </div>
-			  <div class="form-group">
-				<label for="exampleFormControlSelect1">Model</label>
-				<select class="form-control" id="exampleFormControlSelect1">
-				  <option>F11 PRO</option>
-				  <option>FX 10</option>
-				  <option>F12 PRO</option>
-				  <option>F10 PRO</option>
-				  <option>F9 PRO</option>
-				</select>
-			  </div>
+			 
 			  <div class="form-group">
 				<label>Quantity</label>
-				<input  class="form-control"  placeholder="Enter quantity">
+				<input id="quantity"  class="form-control"  placeholder="Enter quantity">
 			  </div>
 			  
 			  <div class="form-group">
-				<button type="button" class="btn btn-dark">Save</button>
+				<button onclick="addPurchase()" type="button" class="btn btn-dark">Save</button>
 			  </div>
 			</div>
 			

@@ -2,6 +2,7 @@
 <link href="./css/bootstrap.css" rel="stylesheet" id="bootstrap-css">
 <script src="./js/bootstrap.js"></script>
 <script src="./js/jquery.js"></script>
+<script src="./js/src/home.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 <body>
 	<nav class="navbar navbar-icon-top navbar-expand-lg navbar-dark bg-dark">
@@ -12,52 +13,59 @@
 
 	  <div class="collapse navbar-collapse" id="navbarSupportedContent">
 		<ul class="navbar-nav mr-auto">
-		  <li class="nav-item active">
-			<a class="nav-link" href="#">
+		  <li class="nav-item ">
+			<a class="nav-link" href="/mobile/customer-registration.html">
 			  <i class="fa fa-home"></i>
 			  Customer Registration
 			  <span class="sr-only">(current)</span>
 			  </a>
 		  </li>
-		  <li class="nav-item">
-			<a class="nav-link" href="#">
+		  <li class="nav-item ">
+			<a class="nav-link" href="/mobile/employee-registration.html">
 			  <i class="fa fa-home"></i>
 			  Employee Registration
 			  <span class="sr-only">(current)</span>
 			  </a>
 		  </li>
 		  <li class="nav-item">
-			<a class="nav-link" href="#">
+			<a class="nav-link" href="/mobile/product.html">
 			  <i class="fa fa-home"></i>
 			  Product
 			  <span class="sr-only">(current)</span>
 			  </a>
 		  </li>
 		   <li class="nav-item">
-			<a class="nav-link" href="#">
+			<a class="nav-link" href="/mobile/purchase.html">
 			  <i class="fa fa-home"></i>
 			  Purchase
 			  <span class="sr-only">(current)</span>
 			  </a>
 		  </li>
 			<li class="nav-item">
-			<a class="nav-link" href="#">
+			<a class="nav-link" href="/mobile/sales.html">
 			  <i class="fa fa-home"></i>
 			  Sales
 			  <span class="sr-only">(current)</span>
 			  </a>
 		  </li>
-		  <li class="nav-item">
-			<a class="nav-link" href="#">
+		  <li class="nav-item active">
+			<a class="nav-link" href="/mobile/stock.html">
 			  <i class="fa fa-home"></i>
 			  Stock
 			  <span class="sr-only">(current)</span>
 			  </a>
 		  </li>
 		  <li class="nav-item">
-			<a class="nav-link" href="#">
+			<a class="nav-link" href="/mobile/billing.html">
 			  <i class="fa fa-home"></i>
 			  Billing
+			  <span class="sr-only">(current)</span>
+			  </a>
+		  </li>
+		   <li class="nav-item">
+			<a class="nav-link" href="/mobile">
+			  <i class="fa fa-home"></i>
+			  Logout
 			  <span class="sr-only">(current)</span>
 			  </a>
 		  </li>
@@ -75,30 +83,11 @@
 					  <th scope="col">#</th>
 					  <th scope="col">Model</th>
 					  <th scope="col">Quantity</th>
-					  
 					</tr>
 				  </thead>
-				  <tbody>
-					<tr>
-					  <th scope="row">1</th>
-					  <td>OPPO F11 PRO</td>
-					  <td>12</td>
-					  
-					</tr>
-					<tr>
-					  <th scope="row">2</th>
-					  <td>VIVO S10</td>
-					  <td>3</td>
+				  <tbody id="stockbody">
 					
-					  
-					</tr>
-					<tr>
-					  <th scope="row">3</th>
-					  <td>IPHONE 7S</td>
-					  <td>5</td>
-					 
-					  
-					</tr>
+					
 				  </tbody>
 				</table>
 			</div>
