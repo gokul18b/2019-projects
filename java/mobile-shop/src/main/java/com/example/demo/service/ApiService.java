@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.dao.ApiDao;
+import com.example.demo.response.GetBillingResponse;
 import com.example.demo.response.GetCustomerResponse;
 import com.example.demo.response.GetEmployeeResponse;
 import com.example.demo.response.GetProductResponse;
@@ -137,5 +138,31 @@ public class ApiService {
 		return dao.get_mobile(mobile);
 	}
 
+	
+
+	public List<GetBillingResponse> get_billing() {
+		List<Object[]> result =dao.get_billing();
+		
+		List<GetBillingResponse> response = new ArrayList<GetBillingResponse>();
+		for(int i=0;i<result.size();i++) {
+			Object[] row = result.get(i);
+			GetBillingResponse obj = new GetBillingResponse();
+			obj.setCustomer_name((String)row[0]);
+			obj.setMobile((String)row[1]);
+			obj.setCompany((String)row[2]);
+			obj.setModel((String)row[3]);
+			obj.setQuantity((Integer)row[4]);
+			obj.setPrice((Integer)row[5]);
+			
+			response.add(obj);
+			
+		}
+		return response;
+	}
+
+	public Boolean login(String username, String password) {
+		
+		return dao.login(username,password);
+	}
 	
 }

@@ -22,6 +22,24 @@ function load(){
 	getEmployee();
 	getProduct();
 	getStock();
+	getBill();
+}
+
+function login(){
+	var username = $("#username").val();
+	var password = $("#password").val();
+	
+	$.ajax({
+			type:"GET",
+			url:"http://localhost:8080/api/login/"+username+"/"+password,
+			success: function(datas) {
+				if(datas){
+					 window.location="/mobile/customer-registration.html";
+				}else{
+				alert('Invalid username and password')	
+				}
+			},
+		});	
 }
 
 function addCustomer(){
@@ -221,6 +239,33 @@ function getStock(){
 					
 				}
 				$("#stockbody").html(html)
+				
+				
+			},
+		});	
+}
+
+function getBill(){
+	
+	$.ajax({
+			type:"GET",
+			url:"http://localhost:8080/api/get_billing",
+			success: function(datas) {
+				var html = ``;
+				for (var i in datas) {
+					var data = datas[i];
+					html+=`<tr>
+					  <th scope="row">`+(++i)+`</th>
+					  <td>`+data.customer_name+`</td>
+					  <td>`+data.mobile+`</td>
+					  <td>`+data.company+`</td>
+					  <td>`+data.model+`</td>
+					  <td>`+data.quantity+`</td>
+					  <td>`+(data.price*data.quantity)+`</td>
+					</tr>`;
+					
+				}
+				$("#billbody").html(html)
 				
 				
 			},

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.response.GetBillingResponse;
 import com.example.demo.response.GetCustomerResponse;
 import com.example.demo.response.GetEmployeeResponse;
 import com.example.demo.response.GetProductResponse;
@@ -24,7 +25,10 @@ public class ApiController {
 	@Autowired
 	ApiService service;
 
-
+	@GetMapping("/login/{username}/{password}")
+	public Boolean login(@PathVariable String username,@PathVariable String password) {
+		return service.login(username,password);
+	}
 	
 	
 	@PostMapping("/add_employee/{name}/{mobile}/{address}/{gender}/{salary}/{age}")
@@ -94,6 +98,9 @@ public class ApiController {
 	public ResponseEntity<List<GetStockResponse>> get_stock() {
 		return ResponseEntity.ok().body(service.get_stock());
 	}
-	
+	@GetMapping("/get_billing")
+	public ResponseEntity<List<GetBillingResponse>> get_billing() {
+		return ResponseEntity.ok().body(service.get_billing());
+	}
 	
 }
