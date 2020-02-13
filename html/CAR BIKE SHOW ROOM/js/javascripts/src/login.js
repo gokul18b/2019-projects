@@ -5,16 +5,15 @@ function login(){
 	var password=$("input[name=password]").val().trim();
 	$.ajax({
 				type:"POST",
-				url:"http://localhost:8080/api/login/"+mobile+"/"+password,
+				url:"/api/login",
 				data:{mobile:mobile,password:password},
 				success: function(datas) {
 					if(datas.length!=0){
 						var data = datas[0];
-						//alert(data['flag'])
-						if(data['flag']==1){
-							window.location.href="/car/adminhome.html";
+						if(data['FLAG']==1){
+							window.location.href="/admin";
 						}else{
-							window.location.href="/car/userhome.html?id="+data['id'];
+							window.location.href="/user?id="+data['id'];
 						}
 					}else{
 						swal("Required Fields!", "Invalid username or password", "warning");
@@ -25,29 +24,38 @@ function login(){
 }
 
 function AddUser(){
-	var name=$("input[name=username]").val().trim();	
-	var mobile=$("input[name=usermobile]").val().trim();
-	var password=$("input[name=userpass]").val().trim();
-	var cnpass=$("input[name=usercnpass]").val().trim();
-	var address=$("textarea[name=useraddress]").val().trim();
+	var firstname=$("input[name=firstname]").val().trim();	
+	var lastname=$("input[name=lastname]").val().trim();
+	var mobilenumber=$("input[name=mobilenumber]").val().trim();
+	var email=$("input[name=email]").val().trim();
+	var age=$("input[name=age]").val().trim();
+	var gender=$("input[name=gender]").val().trim();
+	var pass=$("input[name=pass]").val().trim();
 	
-	//alert(name+mobile+password+cnpass+address);
-	if(name.length==0 || mobile.length==0 || password.length==0 || cnpass.length==0 || address.length==0){
+	var confirmpassword=$("input[name=confirmpassword]").val().trim();
+	
+	var address=$("textarea[name=address]").val().trim();
+	
+	alert("/api/addUser/"+firstname+"/"+lastname+"/"+mobilenumber+"/"+email+"/"+age+"/"+gender+"/"+confirmpassword+"/"+address)
+	if(firstname.length==0 || mobilenumber.length==0 || confirmpassword.length==0 || confirmpassword.length==0 || address.length==0){
 		swal("Required Fields!", "Should Enter All Required Fields", "warning");
 	}else{
-		if(password==cnpass){
+		if(pass==confirmpassword){
 			$.ajax({
 				type:"POST",
-				url:"http://localhost:8080/api/addUser/"+name+"/"+mobile+"/"+password+"/"+address,
-				data:{name:name,mobile:mobile,password:password,address:address},
+				url:"http://localhost:8080/api/addUser/"+firstname+"/"+lastname+"/"+mobilenumber+"/"+email+"/"+age+"/"+gender+"/"+confirmpassword+"/"+address,
 				success: function(datas) {
 					
 					swal("Success!", "User has been Added.", "success");
-					$("input[name=username]").val("");
-					$("input[name=usermobile]").val("");
-					$("input[name=userpass]").val("");
-					$("input[name=usercnpass]").val("");
-					$("textarea[name=useraddress]").val("");
+					$("input[name=firstname]").val("");
+					$("input[name=lastname]").val("");
+					$("input[name=mobilenumber]").val("");
+					$("input[name=email]").val("");
+					$("input[name=age]").val("");
+					$("input[name=gender]").val("");
+					$("input[name=pass]").val("");
+					$("input[name=confirmpassword]").val("");
+					$("textarea[name=address]").val("");
 					
 					refresh();
 				},

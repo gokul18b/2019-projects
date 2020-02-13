@@ -7,6 +7,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import com.example.demo.dao.ApiDao;
 import com.example.demo.response.BillDetailsResponse;
@@ -81,9 +82,17 @@ public class ApiService {
 
 
 
-	public void addUser(String name, String mobile, String password, String address) {
+	public void addUser(String name,
+			 String lastname,
+			 String mobile,
+			 String email,
+			 String age,
+			 String gender,
+			 String password,
+			 String address) {
 		// TODO Auto-generated method stub
-		dao.addUser(name,mobile,password,address);
+		dao.addUser(name,lastname,mobile,email,age,gender,password,address);
+		
 	}
 
 

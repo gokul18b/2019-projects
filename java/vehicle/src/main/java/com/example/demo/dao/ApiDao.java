@@ -51,9 +51,16 @@ public class ApiDao {
 		NativeQuery a = session.createSQLQuery(sql);
 		a.executeUpdate();	
 	}
-	public void addUser(String name, String mobile, String password, String address) {
+	public void addUser(String name,
+			 String lastname,
+			 String mobile,
+			 String email,
+			 String age,
+			 String gender,
+			 String password,
+			 String address) {
 		Session session = sf.getCurrentSession();
-		String sql = "INSERT INTO `vehicleservice`.`user` (`id`, `name`, `mobile`, `password`, `address`,`FLAG`) VALUES (NULL, '"+name+"', '"+mobile+"', '"+password+"', '"+address+"',0);";
+		String sql = "INSERT INTO `user` (`id`, `name`, `lastname`, `mobile`, `email`, `age`, `gender`, `password`, `address`, `FLAG`) VALUES (NULL, '"+name+"', '"+lastname+"', '"+mobile+"', '"+email+"', '"+age+"', '"+gender+"', '"+password+"', '"+address+"', 0);";
 		NativeQuery a = session.createSQLQuery(sql);
 		a.executeUpdate();	
 		
