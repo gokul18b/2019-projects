@@ -53,9 +53,16 @@ public class ApiController {
 	}
 	
 	
-	@PostMapping("/addUser/{name}/{mobile}/{password}/{address}")
-	public String  addUser(@PathVariable String name,@PathVariable String mobile,@PathVariable String password,@PathVariable String address) {
-		service.addUser(name,mobile,password,address);
+	@PostMapping("/addUser/{name}/{lastname}/{mobile}/{email}/{age}/{gender}/{password}/{address}")
+	public String  addUser(@PathVariable String name,
+			@PathVariable String lastname,
+			@PathVariable String mobile,
+			@PathVariable String email,
+			@PathVariable String age,
+			@PathVariable String gender,
+			@PathVariable String password,
+			@PathVariable String address) {
+		service.addUser(name,lastname,mobile,email,age,gender,password,address);
 		return "User sucessfully Created";
 	}
 	
