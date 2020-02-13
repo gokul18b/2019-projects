@@ -3,6 +3,7 @@
 <link href="./css/bootstrap.css" rel="stylesheet" id="bootstrap-css">
 <script src="./js/bootstrap.js"></script>
 <script src="./js/jquery.js"></script>
+<script src="./js/src/home.js"></script>
 </head>
 <nav class="navbar navbar-expand-sm bg-secondary navbar-dark">
  <a class="navbar-brand" href="#">Hospital Management</a>
@@ -26,30 +27,31 @@
 	<h1>Appointment</h1>
 	<div class="form-group">
 	  <label for="usr">Mobile:</label>
-	  <input type="text" class="form-control">
+	  <input id="searchmobile" type="text" class="form-control">
 	</div>
 	<div class="form-group">
 	  <label >First Name:</label>
-	  <input type="text" class="form-control">
+	  <input id="firstname" type="text" class="form-control">
 	</div>
 	<div class="form-group">
 	  <label>Last Name:</label>
-	  <input type="text" class="form-control">
+	  <input id="lastname" type="text" class="form-control">
 	</div>
 	<label for="sel1">Select Doctor:</label>
-      <select class="form-control" id="sel1">
-        <option>RAJA K</option>
-        <option>RAJA</option>
-        <option>ANBU MANI</option>
-        <option>JEEVITHA</option>
+      <select id="doctornameList" class="form-control" id="sel1">
+        
       </select>
       <br>
+	<div class="form-group">
+	  <label>Amount:</label>
+	  <input id="amount" type="text" class="form-control">
+	</div>
 	
 	<div class="form-group">
-	  <label for="usr">Appointment Date:</label>
-	  <input type="text" class="form-control">
+	  <label for="usr">Appointment Date:(dd-mm-yyyy)</label>
+	  <input id="appointment_date" type="text" class="form-control">
 	</div>
-	<button type="button" class="btn btn-info">Book Appointment</button>
+	<button onclick="bookappointment()" type="button" class="btn btn-info">Book Appointment</button>
 </div>
 </body>
 </html>
