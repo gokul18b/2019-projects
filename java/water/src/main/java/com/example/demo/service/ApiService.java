@@ -7,6 +7,7 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.dao.ApiDao;
@@ -23,10 +24,7 @@ public class ApiService {
 	@Autowired
 	ApiDao dao;
 
-	public void add_employee(String name, String mobile, String address, String gender, Integer salary, Integer age) {
-		dao.add_employee(name,mobile,address,gender,salary,age);
-		
-	}
+	
 
 	public void add_customer(String name, String mobile, String address, String gender, String email) {
 		// TODO Auto-generated method stub
@@ -34,87 +32,25 @@ public class ApiService {
 		
 	}
 
-	public List<GetEmployeeResponse> get_employee() {
-		// TODO Auto-generated method stub
-		List<Object[]> result =dao.get_employee();
+	public Boolean login(String username, String password) {
 		
-		List<GetEmployeeResponse> response = new ArrayList<GetEmployeeResponse>();
-		for(int i=0;i<result.size();i++) {
-			Object[] row = result.get(i);
-			GetEmployeeResponse obj = new GetEmployeeResponse();
-			obj.setId((Integer)row[0]);
-			obj.setName((String)row[1]);
-			obj.setMobile((String)row[2]);
-			obj.setAddress((String)row[3]);
-			obj.setGender((String)row[4]);
-			obj.setSalary((Integer)row[5]);
-			obj.setAge((Integer)row[6]);
-			
-			response.add(obj);
-			
-		}
-		return response;
-		
+		return dao.login(username,password);
 	}
 
-	public List<GetCustomerResponse> get_customer() {
-		// TODO Auto-generated method stub
-		List<Object[]> result =dao.get_customer();
-		
-		List<GetCustomerResponse> response = new ArrayList<GetCustomerResponse>();
-		for(int i=0;i<result.size();i++) {
-			Object[] row = result.get(i);
-			GetCustomerResponse obj = new GetCustomerResponse();
-			obj.setId((Integer)row[0]);
-			obj.setName((String)row[1]);
-			obj.setMobile((String)row[2]);
-			obj.setAddress((String)row[3]);
-			obj.setGender((String)row[4]);
-			obj.setEmail((String)row[5]);
-			
-			
-			response.add(obj);
-			
-		}
-		return response;
+	public void add_water_types(String company, String type, Integer liter, Integer price) {
+		dao.add_water_types(company,type,liter,price);
 		
 	}
-
-	public void add_product(String company, String model, Integer price) {
+	
+	
+	public void add_purchase(Integer product_id, Integer quantity, Integer price) {
 		// TODO Auto-generated method stub
-		dao.add_product(company,model,price);
+		dao.add_purchase(product_id,quantity,price);
 	}
 
-	public List<GetProductResponse> get_product() {
+	public void add_sales(Integer customer_id, Integer product_id, Integer quantity, Integer price) {
 		// TODO Auto-generated method stub
-		
-		List<Object[]> result =dao.get_product();
-		
-		List<GetProductResponse> response = new ArrayList<GetProductResponse>();
-		for(int i=0;i<result.size();i++) {
-			Object[] row = result.get(i);
-			GetProductResponse obj = new GetProductResponse();
-			obj.setId((Integer)row[0]);
-			obj.setCompany((String)row[1]);
-			obj.setModel((String)row[2]);
-			obj.setPrice((Integer)row[3]);
-			
-			
-			
-			response.add(obj);
-			
-		}
-		return response;
-	}
-
-	public void add_purchase(Integer product_id, Integer quantity) {
-		// TODO Auto-generated method stub
-		dao.add_purchase(product_id,quantity);
-	}
-
-	public void add_sales(Integer customer_id, Integer product_id, Integer quantity) {
-		// TODO Auto-generated method stub
-		dao.add_sales(customer_id,product_id,quantity);
+		dao.add_sales(customer_id,product_id,quantity,price);
 	}
 
 	public List<GetStockResponse> get_stock() {
@@ -124,8 +60,10 @@ public class ApiService {
 		for(int i=0;i<result.size();i++) {
 			Object[] row = result.get(i);
 			GetStockResponse obj = new GetStockResponse();
-			obj.setCompany_name((String)row[0]+"-"+(String)row[1]);
-			obj.setQuantity((BigDecimal)row[2]);
+			obj.setCompany_name((String)row[0]);
+			obj.setWatertype((String)row[1]);
+			obj.setLiter((Integer)row[2]);
+			obj.setQuantity((BigDecimal)row[3]);
 			
 			response.add(obj);
 			
@@ -133,9 +71,13 @@ public class ApiService {
 		return response;
 	}
 
-	public Integer get_mobile(String mobile) {
+	public List<Object[]> get_mobile(String mobile) {
 		// TODO Auto-generated method stub
-		return dao.get_mobile(mobile);
+		 List<Object[]> result = dao.get_mobile(mobile);
+		GetCustomerResponse response = new GetCustomerResponse();
+		
+			return result;
+		
 	}
 
 	
@@ -150,7 +92,7 @@ public class ApiService {
 			obj.setCustomer_name((String)row[0]);
 			obj.setMobile((String)row[1]);
 			obj.setCompany((String)row[2]);
-			obj.setModel((String)row[3]);
+			obj.setWatertype((String)row[3]);
 			obj.setQuantity((Integer)row[4]);
 			obj.setPrice((Integer)row[5]);
 			
@@ -160,9 +102,26 @@ public class ApiService {
 		return response;
 	}
 
-	public Boolean login(String username, String password) {
+	public List<GetProductResponse> get_water() {
+		// TODO Auto-generated method stub
+		List<Object[]> result =dao.get_water();
 		
-		return dao.login(username,password);
+		List<GetProductResponse> response = new ArrayList<GetProductResponse>();
+		for(int i=0;i<result.size();i++) {
+			Object[] row = result.get(i);
+			GetProductResponse obj = new GetProductResponse();
+			obj.setId((Integer)row[0]);
+			obj.setCompany((String)row[1]);
+			obj.setWatertype((String)row[2]);
+			obj.setLiter((Integer)row[3]);
+			obj.setPrice((Integer)row[4]);
+			
+			response.add(obj);
+			
+		}
+		return response;
 	}
+
+	
 	
 }

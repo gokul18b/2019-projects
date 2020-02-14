@@ -3,35 +3,36 @@
 <link href="./nav.css" rel="stylesheet" id="bootstrap-css">
 <script src="./js/bootstrap.js"></script>
 <script src="./js/jquery.js"></script>
+<script src="./js/src/home.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 
 <body class="hm-gradient">
     <main>
         <div class="containers mt-4hjbhjk">
 	        <nav class="mb-4 navbar navbar-expand-lg navbar-light pink lighten-4">
-                <a class="navbar-brand" href="#">Granite Business</a>
+                <a class="navbar-brand" href="#">Water</a>
 				<div class="collapse navbar-collapse" id="navbarSupportedContent-3">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Customer registration <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="/water/customer-registration.html">Customer registration <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Water Types</a>
+                            <a class="nav-link" href="/water/water-type.html">Water Types</a>
                         </li>
 						<li class="nav-item">
-                            <a class="nav-link" href="#">Purchase</a>
+                            <a class="nav-link" href="/water/purchase.html">Purchase</a>
                         </li>
 						<li class="nav-item">
-                            <a class="nav-link" href="#">Sales</a>
+                            <a class="nav-link" href="/water/sales.html">Sales</a>
                         </li>
 						<li class="nav-item">
-                            <a class="nav-link" href="#">Stock</a>
+                            <a class="nav-link" href="/water/stock.html">Stock</a>
                         </li>
 						<li class="nav-item">
-                            <a class="nav-link" href="#">Billing</a>
+                            <a class="nav-link" href="/water/billing.html">Billing</a>
                         </li>
 						<li class="nav-item">
-                            <a class="nav-link" href="#">Logout</a>
+                            <a class="nav-link" href="/water">Logout</a>
                         </li>
 
                     </ul>
@@ -42,31 +43,29 @@
 			<div class="col-md-4">
 				<div class="form-group">
 				  <label for="usr">Mobile No</label>
-				  <input type="text" class="form-control" id="usr">
+				  <input id="searchmobile" type="text" class="form-control" id="usr">
 				</div>
 				<div class="form-group">
 				  <label for="usr">Customer Name</label>
-				  <input type="text" class="form-control" id="usr">
+				  <input id="name" type="text" class="form-control" id="usr">
 				</div>
 				<div class="form-group">
 				  <label for="usr">Product Name</label>
-					<select class="form-control" id="sel1">
-						<option>60 Lit Can</option>
-						<option>30 Lit Can</option>
-						<option>10 Lit Can</option>
+					<select id="saleswater" class="form-control" id="sel1">
+						
 					</select>
 				</div>
 				<div class="form-group">
 				  <label for="usr">Quantity</label>
-				  <input type="text" class="form-control" id="usr">
+				  <input id="quantity" type="text" class="form-control" id="usr">
 				</div>
 				<div class="form-group">
 				  <label for="usr">Price</label>
-				  <input type="text" class="form-control" id="usr">
+				  <input id="price" type="text" class="form-control" id="usr">
 				</div>
 				
 				<div class="form-group">
-					<button type="button" class="btn btn-danger">Register</button>
+					<button onclick="addSales()" type="button" class="btn btn-danger">Register</button>
 				</div>
 			</div>
 		</div>

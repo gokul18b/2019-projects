@@ -3,35 +3,36 @@
 <link href="./nav.css" rel="stylesheet" id="bootstrap-css">
 <script src="./js/bootstrap.js"></script>
 <script src="./js/jquery.js"></script>
+<script src="./js/src/home.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 
 <body class="hm-gradient">
     <main>
         <div class="casdontainer mt-4sd">
 	        <nav class="mb-4 navbar navbar-expand-lg navbar-light pink lighten-4">
-                <a class="navbar-brand" href="#">Granite Business</a>
+                <a class="navbar-brand" href="#">Water</a>
 				<div class="collapse navbar-collapse" id="navbarSupportedContent-3">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Customer registration <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="/water/customer-registration.html">Customer registration <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Water Types</a>
+                            <a class="nav-link" href="/water/water-type.html">Water Types</a>
                         </li>
 						<li class="nav-item">
-                            <a class="nav-link" href="#">Purchase</a>
+                            <a class="nav-link" href="/water/purchase.html">Purchase</a>
                         </li>
 						<li class="nav-item">
-                            <a class="nav-link" href="#">Sales</a>
+                            <a class="nav-link" href="/water/sales.html">Sales</a>
                         </li>
 						<li class="nav-item">
-                            <a class="nav-link" href="#">Stock</a>
+                            <a class="nav-link" href="/water/stock.html">Stock</a>
                         </li>
 						<li class="nav-item">
-                            <a class="nav-link" href="#">Billing</a>
+                            <a class="nav-link" href="/water/billing.html">Billing</a>
                         </li>
 						<li class="nav-item">
-                            <a class="nav-link" href="#">Logout</a>
+                            <a class="nav-link" href="/water">Logout</a>
                         </li>
 
                     </ul>
@@ -45,31 +46,15 @@
 					<table class="table table-bordered">
 							<thead>
 							  <tr>
-								<th>Can Type</th>
+								<th>Company</th>
+								<th>Water Type</th>
 								<th>Liter</th>
-								<th>Price</th>
 								<th>Quantity</th>
 							  </tr>
 							</thead>
-							<tbody>
-							  <tr>
-								<td>XXXXXXXXXXXX</td>
-								<td>10</td>
-								<td>3500</td>						
-								<td>41</td>						
-							  </tr>		  
-							  <tr>
-								<td>YYYYYYYYYYY</td>
-								<td>20</td>
-								<td>35000</td>						
-								<td>23</td>						
-							  </tr>
-							  <tr>
-								<td>ZZZZZZZZZZZ</td>
-								<td>50</td>
-								<td>7500</td>						
-								<td>32</td>						
-							  </tr>
+							<tbody id="stockbody">
+							    
+							 
 							</tbody>
 					  </table>
 				</div>
