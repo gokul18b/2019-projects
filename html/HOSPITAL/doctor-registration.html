@@ -3,6 +3,7 @@
 <link href="./css/bootstrap.css" rel="stylesheet" id="bootstrap-css">
 <script src="./js/bootstrap.js"></script>
 <script src="./js/jquery.js"></script>
+<script src="./js/src/home.js"></script>
 </head>
 <nav class="navbar navbar-expand-sm bg-secondary navbar-dark">
  <a class="navbar-brand" href="#">Hospital Management</a>
@@ -26,25 +27,25 @@
 	<h1>Doctor Registration</h1>
 	<div class="form-group">
 	  <label for="usr">Doctor Name:</label>
-	  <input type="text" class="form-control">
+	  <input id="doctorname" type="text" class="form-control">
 	</div>
 	<div class="form-group">
 	  <label >Qualification:</label>
-	  <input type="text" class="form-control">
+	  <input id="qualification" type="text" class="form-control">
 	</div>
 	<div class="form-group">
 	  <label>Speciality:</label>
-	  <input type="text" class="form-control">
+	  <input id="speciality" type="text" class="form-control">
 	</div>
 	<div class="form-group">
 	  <label for="usr">Username:</label>
-	  <input type="text" class="form-control">
+	  <input id="username" type="text" class="form-control">
 	</div>
 	<div class="form-group">
 	  <label for="usr">Password:</label>
-	  <input type="password" class="form-control">
+	  <input id="password" type="password" class="form-control">
 	</div>
-	<button type="button" class="btn btn-info">Save Doctor</button>
+	<button onclick="adddoctor()" type="button" class="btn btn-info">Save Doctor</button>
 </div>
 </body>
 </html>
