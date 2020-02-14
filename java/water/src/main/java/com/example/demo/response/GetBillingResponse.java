@@ -4,7 +4,7 @@ public class GetBillingResponse {
 	private String customer_name;
 	private String mobile;
 	private String company;
-	private String model;
+	private String watertype;
 	private Integer quantity;
 	private Integer price;
 	public String getCustomer_name() {
@@ -25,11 +25,12 @@ public class GetBillingResponse {
 	public void setCompany(String company) {
 		this.company = company;
 	}
-	public String getModel() {
-		return model;
+	
+	public String getWatertype() {
+		return watertype;
 	}
-	public void setModel(String model) {
-		this.model = model;
+	public void setWatertype(String watertype) {
+		this.watertype = watertype;
 	}
 	public Integer getQuantity() {
 		return quantity;

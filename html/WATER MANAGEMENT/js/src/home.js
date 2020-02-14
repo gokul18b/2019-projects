@@ -1,16 +1,30 @@
 var customer_id;
 $(document).ready(function(){
-	load();
 	
-	
+	getProduct();
+	getStock();
+	getBill();
 	$("#sal_mobile").change(function(){
 		customer_id='';
 		$.ajax({
 			type:"GET",
 			url:"http://localhost:8080/api/get_customer/"+$("#sal_mobile").val(),
 			success: function(datas) {
-				alert(datas)
-				customer_id=datas;
+				
+				customer_id=datas[0][0];
+			},
+		});	
+	}); 
+	
+	$("#searchmobile").change(function(){
+		customer_id='';
+		$.ajax({
+			type:"GET",
+			url:"http://localhost:8080/api/get_customer/"+$("#searchmobile").val(),
+			success: function(datas) {
+				customer_id=datas[0][0];
+				
+				$("#name").val(datas[0][1])
 			},
 		});	
 	}); 
@@ -33,8 +47,9 @@ function login(){
 			type:"GET",
 			url:"http://localhost:8080/api/login/"+username+"/"+password,
 			success: function(datas) {
+				
 				if(datas){
-					 window.location="/mobile/customer-registration.html";
+					 window.location="/water/customer-registration.html";
 				}else{
 				alert('Invalid username and password')	
 				}
@@ -65,111 +80,42 @@ function addCustomer(){
 		});	
 }
 
-function getCustomer(){
-	$.ajax({
-			type:"GET",
-			url:"http://localhost:8080/api/get_customer",
-			success: function(datas) {
-				var html = ``;
-				for (var i in datas) {
-					var data = datas[i];
-
-					html += ` <tr>
-								<th scope="row">`+(++i)+`</th>
-									<td>`+data.name+`</td>
-									<td>`+data.mobile+`</td>
-									<td>`+data.address+`</td>
-									<td>`+data.gender+`</td>
-									<td>`+data.email+`</td>
-									`;
-				}
-				$("#table_body").html(html)
-			},
-		});	
-}
-
-function addEmployee(){
-	
-	var name = $("#name").val();
-	var mobile = $("#mobile").val();
-	var address = $("#address").val();
-	var gender = $("#gender").val();
-	var salary = $("#salary").val();
-	var age = $("#age").val();
-	
-	$.ajax({
-			type:"POST",
-			url:"http://localhost:8080/api/add_employee/"+name+"/"+mobile+"/"+address+"/"+gender+"/"+salary+"/"+age,
-			success: function(datas) {
-				alert(datas);
-				$("#name").val("");
-				$("#mobile").val("");
-				$("#address").val("");
-				$("#gender").val("");
-				$("#salary").val("");
-				$("#age").val("");
-				load();
-			},
-		});	
-}
-
-function getEmployee(){
-	$.ajax({
-			type:"GET",
-			url:"http://localhost:8080/api/get_employee",
-			success: function(datas) {
-				var html = ``;
-				for (var i in datas) {
-					var data = datas[i];
-
-					html += ` <tr>
-								<th scope="row">`+(++i)+`</th>
-									<td>`+data.name+`</td>
-									<td>`+data.mobile+`</td>
-									<td>`+data.gender+`</td>
-									<td>`+data.salary+`</td>
-									<td>`+data.age+`</td>
-									`;
-				}
-				$("#table_bodye").html(html)
-			},
-		});	
-}
-
-function addProduct(){
-	var company = $("#company").val();
-	var model = $("#model").val();
+function addWaterType(){
+	var companyname = $("#companyname").val();
+	var type = $("#type").val();
+	var liter = $("#liter").val();
 	var price = $("#price").val();
 	
 	
 	$.ajax({
 			type:"POST",
-			url:"http://localhost:8080/api/add_product/"+company+"/"+model+"/"+price,
+			url:"http://localhost:8080/api/add_water_types/"+companyname+"/"+type+"/"+liter+"/"+price,
 			success: function(datas) {
 				alert(datas);
-				$("#company").val("");
-				$("#model").val("");
+				$("#companyname").val("");
+				$("#type").val("");
+				$("#liter").val("");
 				$("#price").val("");
-				
-				load();
 			},
 		});	
 }
+
+
 
 function getProduct(){
 	
 	$.ajax({
 			type:"GET",
-			url:"http://localhost:8080/api/get_product",
+			url:"http://localhost:8080/api/get_water",
 			success: function(datas) {
 				var html = ``;
 				for (var i in datas) {
 					var data = datas[i];
-					html+=`<option id=`+data.id+`>`+data.company+` - `+data.model+`</option>`;
+					html+=`<option id=`+data.id+`>`+data.company+` - `+data.watertype+` - `+data.liter+`</option>`;
 					
 				}
-				$("#purchase_product").html(html)
-				$("#sales_product").html(html)
+				$("#watertype").html(html)
+				$("#saleswater").html(html)
 				
 			},
 		});	
@@ -177,42 +123,48 @@ function getProduct(){
 
 
 function addPurchase(){
-	var product_id = $("#purchase_product").find('option:selected').attr('id');
+	var product_id = $("#watertype").find('option:selected').attr('id');
 	var quantity = $("#quantity").val();
+	var price = $("#price").val();
 	
 	
 	
 	$.ajax({
 			type:"POST",
-			url:"http://localhost:8080/api/add_purchase/"+product_id+"/"+quantity,
+			url:"http://localhost:8080/api/add_purchase/"+product_id+"/"+quantity+"/"+price,
 			success: function(datas) {
 				alert(datas);
 				$("#quantity").val("");
-			
+				$("#price").val("");
 				
-				load();
+				
 			},
 		});	
 }
 
 
+
+
 function addSales(){
+	
 	if(customer_id!=''){
 	
-	var product_id = $("#sales_product").find('option:selected').attr('id');
+	var product_id = $("#saleswater").find('option:selected').attr('id');
 	var quantity = $("#quantity").val();
+	var price = $("#price").val();
 	
 	
 	
 	$.ajax({
 			type:"POST",
-			url:"http://localhost:8080/api/add_sales/"+customer_id+"/"+product_id+"/"+quantity,
+			url:"http://localhost:8080/api/add_sales/"+customer_id+"/"+product_id+"/"+quantity+"/"+price,
 			success: function(datas) {
 				alert(datas);
-				$("#quantity").val("");
-			
-				$("#sal_mobile").val("");
-				load();
+				$("#searchmobile").val("");
+				$("#name").val("");
+			$("#quantity").val("");
+				$("#price").val("");
+				
 			},
 		});	
 	}else{
@@ -228,14 +180,16 @@ function getStock(){
 			url:"http://localhost:8080/api/get_stock",
 			success: function(datas) {
 				var html = ``;
+				
 				for (var i in datas) {
+					
 					var data = datas[i];
 					html+=`<tr>
-							  <th scope="row">`+(++i)+`</th>
-							  <td>`+data.company_name+`</td>
-							  <td>`+data.quantity+`</td>
-							  
-							</tr>`;
+								<td>`+data.company_name+`</td>
+								<td>`+data.watertype+`</td>
+								<td>`+data.liter+`</td>						
+								<td>`+data.quantity+`</td>						
+							  </tr>		`;
 					
 				}
 				$("#stockbody").html(html)
@@ -254,18 +208,17 @@ function getBill(){
 				var html = ``;
 				for (var i in datas) {
 					var data = datas[i];
-					html+=`<tr>
-					  <th scope="row">`+(++i)+`</th>
-					  <td>`+data.customer_name+`</td>
-					  <td>`+data.mobile+`</td>
-					  <td>`+data.company+`</td>
-					  <td>`+data.model+`</td>
-					  <td>`+data.quantity+`</td>
-					  <td>`+(data.price*data.quantity)+`</td>
-					</tr>`;
+					html+=` <tr>
+								<td>`+data.customer_name+`</td>
+								<td>`+data.mobile+`</td>
+								<td>`+data.company+`</td>
+								<td>`+data.watertype+`</td>						
+								<td>`+data.quantity+`</td>						
+								<td>`+data.price+`</td>						
+							  </tr>	`;
 					
 				}
-				$("#billbody").html(html)
+				$("#bill_body").html(html)
 				
 				
 			},
