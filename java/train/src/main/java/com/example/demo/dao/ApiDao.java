@@ -33,6 +33,44 @@ public class ApiDao {
 		return nq.list();
 	}
 
+	public void add_train(Integer trainno, String trainname, String from, String to) {
+		// TODO Auto-generated method stub
+		Session session = sf.getCurrentSession();
+		String sql = "INSERT INTO `train` (`id`, `trainno`, `trainnname`, `fromlocation`, `tolocation`, `lastlocation`) VALUES (NULL, '"+trainno+"', '"+trainname+"', '"+from+"', '"+to+"', '');";
+		session.createSQLQuery(sql).executeUpdate();
+	}
+
+	public void location_update(Integer trainid, String location) {
+		// TODO Auto-generated method stub
+		Session session = sf.getCurrentSession();
+		String sql = "UPDATE `train` SET `lastlocation` = '"+location+"' WHERE `train`.`id` = "+trainid+";";
+		session.createSQLQuery(sql).executeUpdate();
+	}
+	
+	public List<Object[]> find_location(Integer trainno) {
+		// TODO Auto-generated method stub
+		Session session = sf.getCurrentSession();
+		String sql = "SELECT * FROM `train` WHERE `trainno`="+trainno;
+		NativeQuery nq = session.createNativeQuery(sql);
+		return nq.list();
+	}
+
+	public void add_pass(Integer passenger_id, String from, String to,String next, Integer amount) {
+		// TODO Auto-generated method stub
+		Session session = sf.getCurrentSession();
+		String sql = "INSERT INTO `ticket` (`id`, `passenger_id`, `fromlocation`, `tolocation`, `nextrenewal`, `amount`) "
+				+ "VALUES (NULL, '"+passenger_id+"', '"+from+"', '"+to+"', '"+next+"', '"+amount+"');";
+		session.createSQLQuery(sql).executeUpdate();
+	}
+
+	public void add_general(Integer passenger_id, String from, String to, Integer amount) {
+		// TODO Auto-generated method stub
+		Session session = sf.getCurrentSession();
+		String sql = "INSERT INTO `general` (`id`, `passenger_id`, `fromlocation`, `tolocation`, `amount`) VALUES "
+				+ "(NULL, '"+passenger_id+"', '"+from+"', '"+to+"', '"+amount+"');";
+		session.createSQLQuery(sql).executeUpdate();
+	}
+
 
 
 
