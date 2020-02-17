@@ -172,4 +172,15 @@ public class ApiDao {
 		return nq.list();
 	}
 
+	public List<Object[]> get_appointment_details_doctor(Integer id, String date) {
+		// TODO Auto-generated method stub
+		
+		Session session = sf.getCurrentSession();
+		String sql = "select p.firstname,p.lastname,p.mobile,a.appointment_date,a.token from patient p right join appointment a ON(p.id=a.patient_id)\r\n" + 
+				"		where a.doctor_id="+id+" and a.appointment_date='"+date+" ' order by a.token";
+		NativeQuery nq = session.createNativeQuery(sql);
+		return nq.list();
+		
+	}
+
 }

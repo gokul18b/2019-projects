@@ -213,17 +213,19 @@ public class ApiService {
 		return response;
 	}
 
-	public Object get_appointment_details_doctor() {
+	public List<GetAppointmentDetailsResponse> get_appointment_details_doctor(Integer id, String date) {
 		// TODO Auto-generated method stub
-			List<Object[]> result =dao.get_doctorlist();
+			List<Object[]> result =dao.get_appointment_details_doctor(id,date);
 		
 		List<GetAppointmentDetailsResponse> response = new ArrayList<GetAppointmentDetailsResponse>();
 		for(int i=0;i<result.size();i++) {
 			Object[] row = result.get(i);
 			GetAppointmentDetailsResponse obj = new GetAppointmentDetailsResponse();
-			obj.setId((Integer)row[0]);
-			obj.setName((String)row[1]);
-			obj.setSpeciality((String)row[2]);
+			obj.setFirstname((String)row[0]);
+			obj.setLastname((String)row[1]);
+			obj.setMobile((String)row[2]);
+			obj.setTokenno((Integer)row[4]);
+			obj.setAppointmentdate((String)row[3]);
 			
 			response.add(obj);
 			

@@ -32,7 +32,7 @@ public class ApiController {
 	public Integer login(@PathVariable String username,@PathVariable String password) {
 		List<Object[]> res = service.login(username,password);
 		if(res.size()==0) {
-		return 0;
+			return 0;
 		}else {
 			return (Integer)res.get(0)[0];
 		}
@@ -80,8 +80,8 @@ public class ApiController {
 		return ResponseEntity.ok().body(service.get_doctorlist());
 	}
 	
-	@GetMapping("/get_appointment_details_doctor/{date}")
-	public ResponseEntity<List<GetAppointmentDetailsResponse>> get_appointment_details_doctor(@PathVariable String date) {
-		return ResponseEntity.ok().body(service.get_appointment_details_doctor());
+	@GetMapping("/get_appointment_details_doctor/{id}/{date}")
+	public ResponseEntity<List<GetAppointmentDetailsResponse>> get_appointment_details_doctor(@PathVariable Integer id,@PathVariable String date) {
+		return ResponseEntity.ok().body(service.get_appointment_details_doctor(id,date));
 	}
 }
