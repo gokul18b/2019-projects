@@ -4,6 +4,10 @@
 <link rel="stylesheet" type="text/css" href="./css/bootstrap/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="./css/animate.css">
 <link rel="stylesheet" type="text/css" href="css/navbar.css">
+
+<script src="js/bootstrap.js"></script>
+<script src="js/jquery.js"></script>
+<script src="js/home.js"></script>
 </head>
 <header class="navbar navbar-inverse navbar-fixed-top bs-docs-nav" role="banner">
   <div class="container">
@@ -14,24 +18,27 @@
 		<span class="icon-bar"></span>
 		<span class="icon-bar"></span>
 	  </button>
-	  <a href="./" class="navbar-brand">Bootstrap Menu</a>
-	</div>
+	  <a href="./" class="navbar-brand">Accident Tracking</a>
+		</div>
 	<nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
 	  <ul class="nav navbar-nav navbar-right">
-		<li class="nav-item active">
-		  <a href="#">Police Registration</a>
+		<li >
+		  <a href="/accident/police-registration.html">Police Registration</a>
 		</li>
 		<li>
-		  <a href="#">Criminal Registration</a>
+		  <a href="/accident/criminals-registration.html">Criminal Registration</a>
 		</li>
 		<li>	
-		  <a href="#">Add case</a>
+		  <a href="/accident/add-case.html">Add case</a>
 		</li>
 		<li>
-		  <a href="#">Allocate Case</a>
+		  <a href="/accident/allocate-case.html">Allocate Case</a>
+		</li>
+		<li class="nav-item active">
+		  <a href="/accident/history.html">History</a>
 		</li>
 		<li>
-		  <a href="#">History</a>
+		  <a href="/accident">Logout</a>
 		</li>
 	  </ul>
 	</nav>
@@ -46,11 +53,11 @@
 		  <h2>History</h2>
 			<div class="form-group">
 			  <label >Aadhar No:</label>
-			  <input type="text" class="form-control" >
+			  <input id="aadharno" type="text" class="form-control" >
 			</div>
 			
 			<div class="form-group">
-				<button type="button" class="btn btn-success">Search</button>
+				<button onclick="searchHistory()" type="button" class="btn btn-success">Search</button>
 			</div>
 		</div>
 		<div class="col-md-6">
@@ -58,28 +65,16 @@
 			<table class="table table-bordered">
 			<thead>
 			  <tr>
-				<th>Firstname</th>
-				<th>Mobile no</th>
 				<th>Date</th>
+				<th>Person Name</th>
+				<th>Mobile</th>
+				<th>Vehicle No</th>
 				<th>Case details</th>
 				<th>Description</th>
 			  </tr>
 			</thead>
-			<tbody>
-			  <tr>
-				<td>John</td>
-				<td>866721589</td>
-				<td>12-12-2019</td>
-				<td>Accident</td>
-				<td>Speed drive</td>
-			  </tr>
-			  <tr>
-				<td>Mary</td>
-				<td>866721589</td>
-				<td>21-01-2020</td>
-				<td>Accident</td>
-				<td>Speed drive</td>
-			  </tr>
+			<tbody id="history_body">
+			  
 			  
 			</tbody>
 		  </table>

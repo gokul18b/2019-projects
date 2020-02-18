@@ -51,7 +51,6 @@ public class ApiController {
 
 	@GetMapping("/view_criminal")
 	public ResponseEntity<List<ViewCriminalResponse>> view_criminal() {
-
 		return ResponseEntity.ok().body(service.view_criminal());
 	}
 

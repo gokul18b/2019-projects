@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.response.FindLocationResponse;
 import com.example.demo.response.GetPassengerResponse;
+import com.example.demo.response.LoginResponse;
 import com.example.demo.service.ApiService;
 
 
@@ -22,10 +23,10 @@ public class ApiController {
 	@Autowired
 	ApiService service;
 
-//	@GetMapping("/login/{username}/{password}")
-//	public Boolean login(@PathVariable String username,@PathVariable String password) {
-//		return service.login(username,password);
-//	}
+	@GetMapping("/login/{username}/{password}")
+	public LoginResponse login(@PathVariable String username,@PathVariable String password) {
+		return service.login(username,password);
+	}
 	
 	
 	@PostMapping("/add_passenger/{firstname}/{lastname}/{mobile}/{email}"
@@ -84,7 +85,7 @@ public class ApiController {
 	}
 	
 	
-	@PostMapping("/find_location/{trainno}")
+	@GetMapping("/find_location/{trainno}")
 	public ResponseEntity<List<FindLocationResponse>> find_location(@PathVariable Integer trainno) {
 		
 		return ResponseEntity.ok().body(service.find_location(trainno));

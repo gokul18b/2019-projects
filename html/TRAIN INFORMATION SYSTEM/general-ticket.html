@@ -2,6 +2,7 @@
 <link href="./css/bootstrap.css" rel="stylesheet" id="bootstrap-css">
 <script src="./js/bootstrap.js"></script>
 <script src="./js/jquery.js" ></script>
+<script src="./js/home.js" ></script>
 <link href="./nav.css" rel="stylesheet" id="bootstrap-css"></link>
 <!------ Include the above in your HEAD tag ---------->
 
@@ -12,12 +13,10 @@
 		</div>
 		<div class="collapse navbar-collapse" id="navbar">
 			<ul class="nav navbar-nav navbar-right">				
-				<li class="active"><a href="#">Passenger Registration <span class="sr-only">(current)</span></a></li>
-				<li class="active"><a href="#">Pass Registration<span class="sr-only">(current)</span></a></li>
-				<li class="active"><a href="#">General Ticket<span class="sr-only">(current)</span></a></li>
-				<li class="active"><a href="#">Train Entry<span class="sr-only">(current)</span></a></li>
-				<li class="active"><a href="#">Update Train Location<span class="sr-only">(current)</span></a></li>
-				<li class="active"><a href="#">Logout<span class="sr-only">(current)</span></a></li>				
+				<li class="active"><a onclick="pass()">Pass Registration<span class="sr-only">(current)</span></a></li>
+				<li class="active"><a onclick="gen()">General Ticket<span class="sr-only">(current)</span></a></li>
+				<li class="active"><a onclick="track()">Track Train<span class="sr-only">(current)</span></a></li>
+				<li class="active"><a  href="/train">Logout<span class="sr-only">(current)</span></a></li>			
 			</ul>			
 		</div>
 	</div>
@@ -31,15 +30,15 @@
 	<div class="col-md-4">
 	  <div class="form-group">
 		<label>Mobile Number</label>
-		<input  class="form-control" >
+		<input id="mobile"  class="form-control" >
 	  </div>
 	  <div class="form-group">
 		<label>Passenger Name</label>
-		<input  class="form-control" >
+		<input id="firstname" class="form-control" >
 	  </div>
 	 <div class="form-group">
 		<label for="sel1">From:</label>
-		  <select class="form-control" id="sel1">
+		  <select id="from" class="form-control" id="sel1">
 			<option>Tirupur</option>
 			<option>Coimbatore</option>
 			<option>Erode</option>
@@ -49,7 +48,7 @@
 	  
 	  <div class="form-group">
 		<label for="sel1">To:</label>
-		  <select class="form-control" id="sel1">
+		  <select id="to" class="form-control" id="sel1">
 			<option>Tirupur</option>
 			<option>Coimbatore</option>
 			<option>Erode</option>
@@ -59,10 +58,10 @@
 	  
 	   <div class="form-group">
 		<label>Amount</label>
-		<input  class="form-control" >
+		<input id="amount"  class="form-control" >
 	  </div>
 	  <div class="form-group">
-		<button type="button" class="btn btn-dark">Book</button>
+		<button onclick="saveGeneral()" type="button" class="btn btn-dark">Book</button>
 	  </div>
   </div>
 </body>

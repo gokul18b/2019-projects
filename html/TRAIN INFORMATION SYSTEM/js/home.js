@@ -1,12 +1,54 @@
-
-
+var passenger_id;
+var url_id;
 $(document).ready(function(){
-		
+	var url_string = window.location.href;
+	var url = new URL(url_string);
+	url_id = url.searchParams.get("id");
+
+$("#mobile").change(function(){
+	$.ajax({
+			type:"GET",
+			url:"http://localhost:8080/api/get_passenger/"+$(this).val(),
+			success: function(datas) {
+					
+					if(datas.length==0){
+						alert("Invalid user")
+					}else{
+						passenger_id = datas[0].id;
+						
+						$("#firstname").val(datas[0].firstname)
+						$("#lastname").val(datas[0].lastname)
+					}
+			}
+			});
+})
 	//load();
 });
 
 function load(){
 	
+}
+
+function login(){
+	
+	var username = $("#username").val();
+	var password = $("#password").val();
+	//alert("http://localhost:8080/api/login/"+username+"/"+password)
+	
+	$.ajax({
+			type:"GET",
+			url:"http://localhost:8080/api/login/"+username+"/"+password,
+			success: function(data) {
+					
+					if(data.flag=='A'){
+						window.location.href="/train/passenger-registration.html";
+					}else if(data.flag=='P'){
+						window.location.href="/train/pass-registration.html?id="+data.id;
+					}else{
+						alert('Invalid username or password')
+					}
+			}
+			});
 }
 
 function addPassenger(){
@@ -37,223 +79,85 @@ function addPassenger(){
 			});
 }
 
-function getMembers(){
-	
-	$.ajax({
-			type:"GET",
-			url:"http://localhost:8080/api/get_members",
-			success: function(datas) {
-				var html =``;
-				for(var i=0;i<datas.length;i++){
-						
-						var data = datas[i];
-						html+=`<tr>
-							<td>`+data.name+`</td>
-							<td><button onclick="punch_in('`+data.id+`')"  type="button" class="btn btn-success">IN</button></td>
-							<td><button onclick="punch_out('`+data.id+`')" type="button" class="btn btn-danger">OUT</button></td>
-						  </tr>`;
-						
-					}
-					$("#punch_body").html(html);
-			}
-			});
-}
-
-function punch_in(id){
-	$.ajax({
-			type:"POST",
-			url:"http://localhost:8080/api/punch_in/"+id,
-			success: function(data) {
-				alert(data);
-			
-			}
-			});
-}
-
-function punch_out(id){
-$.ajax({
-			type:"POST",
-			url:"http://localhost:8080/api/punch_out/"+id,
-			success: function(data) {
-				alert(data);
-			
-			}
-			});
-}
-
-function addMaterial(){
-	var material_name = $("#material_name").val();
-	var quantity = $("#quantity").val();
+function savePass(){
+	var firstname = $("#firstname").val();
+	var lastname = $("#lastname").val();
+	var from = $("#from").val();
+	var to = $("#to").val();
+	var next = $("#next").val();
 	var amount = $("#amount").val();
 	
 	$.ajax({
 			type:"POST",
-			url:"http://localhost:8080/api/add_material/"+material_name+"/"+quantity+"/"+amount,
-			success: function(data) {
-				alert(data);
-				$("#material_name").val("");
-				$("#quantity").val("");
-				$("#amount").val("");
-				
-				load();
-			}
-			});
-}
-
-function getMaterialName(){
-	$.ajax({
-			type:"GET",
-			url:"http://localhost:8080/api/get_material",
-			success: function(datas) {
-				var html =``;
-				for(var i=0;i<datas.length;i++){
-						
-						var data = datas[i];
-						html+=`<option>`+data.material_name+`</option>`;
-						
-					}
-					$("#material_names").html(html);
-			}
-			});
-}
-
-function getMaterial(){
-
-		$.ajax({
-			type:"GET",
-			url:"http://localhost:8080/api/get_material",
-			success: function(datas) {
-				var html =``;
-				for(var i=0;i<datas.length;i++){
-						
-						var data = datas[i];
-						html+=`<tr>
-								<td>`+data.material_name+`</td>
-								<td>`+data.amount+`</td>
-								<td>`+data.quantity+`</td>						
-							  </tr>`;
-						
-					}
-					$("#material_body").html(html);
-					
-					
-			}
-			});
-}
-
-function memberregistration(){
-	var firstname = $("#firstname").val();
-	var lastname = $("#lastname").val();
-	var mobile = $("#mobile").val();
-	var email = $("#email").val();
-	var age = $("#age").val();
-	var gender = $("#gender").val();
-	var height = $("#height").val();
-	var weight = $("#weight").val();
-	var address = $("#address").val();
-	
-	
-	$.ajax({
-			type:"POST",
-			url:"http://localhost:8080/api/member_register/"+firstname+"/"+lastname+"/"+mobile+"/"+email+"/"+age+"/"+gender+"/"+height+"/"+weight+"/"+address,
+			url:"http://localhost:8080/api/add_pass/"+passenger_id+"/"+from+"/"+to+"/"+next+"/"+amount,
 			success: function(data) {
 				alert(data);
 				$("#firstname").val("");
 				$("#lastname").val("");
-				$("#mobile").val("");
-				$("#email").val("");
-				$("#age").val("");
-				$("#address").val("");
-				$("#height").val("");
-				$("#weight").val("");
-				
-				load();
-			}
-			});
-}
-
-function addService(){
-	var material_name = $("#material_names").val();
-	var service_name = $("#service_name").val();
-	var amount = $("#amount").val();
-	var issue = $("#issue").val();
-	
-	$.ajax({
-			type:"POST",
-			url:"http://localhost:8080/api/add_service/"+material_name+"/"+service_name+"/"+amount+"/"+issue,
-			success: function(data) {
-				alert(data);
-				//$("#material_name").val("");
-				$("#service_name").val("");
+				$("#next").val("");
 				$("#amount").val("");
-				$("#issue").val("");
 				
-				load();
-			}
-			});
-}
-function searPunch(){
-	var mobile = $("#sear_mobile").val();
-	$.ajax({
-			type:"GET",
-			url:"http://localhost:8080/api/get_punch_details/"+mobile,
-			success: function(datas) {
-				var html =``;
-				for(var i=0;i<datas.length;i++){
-						
-						var data = datas[i];
-						html+=`<tr>
-							<td>`+data.date+`</td>
-							<td>`+data.in+`</td>
-							<td>`+data.out+`</td>						
-							<td>`+data.total+`</td>						
-						  </tr>`;
-						
-					}
-					$("#punch_body1").html(html);
-			}
-			});
-}
-function getService(){
-
-		$.ajax({
-			type:"GET",
-			url:"http://localhost:8080/api/get_service",
-			success: function(datas) {
-				var html =``;
-				for(var i=0;i<datas.length;i++){
-						
-						var data = datas[i];
-						html+=`<tr>
-								<td>`+data.material_name+`</td>
-								<td>`+data.provider+`</td>
-								<td>`+data.amount+`</td>						
-								<td>`+data.issue+`</td>						
-							  </tr>`;
-						
-					}
-					$("#service_body").html(html);
+				
 			}
 			});
 }
 
-function addHealth(){
-	var title = $("#title").val();
-	var description = $("#description").val();
-
+function saveGeneral(){
+	var firstname = $("#firstname").val();
+	var lastname = $("#lastname").val();
+	var from = $("#from").val();
+	var to = $("#to").val();
+	var amount = $("#amount").val();
 	
 	$.ajax({
 			type:"POST",
-			url:"http://localhost:8080/api/add_health/"+title+"/"+description,
+			url:"http://localhost:8080/api/add_general/"+passenger_id+"/"+from+"/"+to+"/"+amount,
 			success: function(data) {
 				alert(data);
-				$("#title").val("");
-				$("#description").val("");
-				
-				load();
+				$("#firstname").val("");
+				$("#lastname").val("");
+				$("#amount").val("");
+			}
+	});
+}
+
+function addTrain(){
+	var trainname = $("#trainname").val();
+	var trainnumber = $("#trainnumber").val();
+	var from = $("#from").val();
+	var to = $("#to").val();
+	
+	
+	$.ajax({
+			type:"POST",
+			url:"http://localhost:8080/api/add_train/"+trainnumber+"/"+trainname+"/"+from+"/"+to,
+			success: function(data) {
+				alert(data);
+				$("#trainname").val("");
+				$("#trainnumber").val("");
 				
 			}
-			});
+	});
+}
+
+function locationUpdate(){
+	
+	var trainno = $("#trainno").val();
+	var trainname = $("#trainname").val();
+	var last = $("#last").val();
+	
+	
+	
+	$.ajax({
+			type:"POST",
+			url:"http://localhost:8080/api/location_update/"+trainno+"/"+last,
+			success: function(data) {
+				alert(data);
+				$("#trainno").val("");
+				$("#trainname").val("");
+				
+			}
+	});
 }
 
 function getHealth(){
@@ -277,11 +181,34 @@ function getHealth(){
 			}
 			});
 }
-function logout(){
+
+function searchtrain(){
+	var trainno = $("#trainno").val();
 	
-	window.location.href='/car/index.html';
+	$.ajax({
+			type:"GET",
+			url:"http://localhost:8080/api/find_location/"+trainno,
+			success: function(datas) {
+				
+				var html = `Train name : `+datas[0].trainname+` is located at : `+datas[0].lastlocation;
+				
+				$("#loc").html(html);
+				
+				
+			}
+			});
 }
 
 
+function gen(){
+	window.location.href="/train/general-ticket.html?id="+url_id;
+}
 
+function pass(){
+	window.location.href="/train/pass-registration.html?id="+url_id;
+}
+
+function track(){
+	window.location.href="/train/search-train.html?id="+url_id;
+}
 

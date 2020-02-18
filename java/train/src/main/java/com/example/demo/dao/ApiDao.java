@@ -11,6 +11,8 @@ import org.hibernate.query.NativeQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.example.demo.response.LoginResponse;
+
 @Repository
 public class ApiDao {
 	@Autowired
@@ -43,7 +45,7 @@ public class ApiDao {
 	public void location_update(Integer trainid, String location) {
 		// TODO Auto-generated method stub
 		Session session = sf.getCurrentSession();
-		String sql = "UPDATE `train` SET `lastlocation` = '"+location+"' WHERE `train`.`id` = "+trainid+";";
+		String sql = "UPDATE `train` SET `lastlocation` = '"+location+"' WHERE `train`.`trainno` = "+trainid+";";
 		session.createSQLQuery(sql).executeUpdate();
 	}
 	
@@ -69,6 +71,14 @@ public class ApiDao {
 		String sql = "INSERT INTO `general` (`id`, `passenger_id`, `fromlocation`, `tolocation`, `amount`) VALUES "
 				+ "(NULL, '"+passenger_id+"', '"+from+"', '"+to+"', '"+amount+"');";
 		session.createSQLQuery(sql).executeUpdate();
+	}
+
+	public List<Object[]> login(String username, String password) {
+		// TODO Auto-generated method stub
+		Session session = sf.getCurrentSession();
+		String sql = "SELECT id,flag FROM `passenger` WHERE `username`='"+username+"' and password='"+password+"'";
+		NativeQuery nq = session.createNativeQuery(sql);
+		return nq.list();
 	}
 
 

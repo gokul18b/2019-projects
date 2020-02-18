@@ -114,7 +114,7 @@ public class ApiDao {
 	public Boolean login(String username, String password) {
 		// TODO Auto-generated method stub
 		Session session = sf.getCurrentSession();
-		String sql = "Select * from admin where username='"+username+"' and password='"+password+"'";
+		String sql = "Select * from police where username='"+username+"' and password='"+password+"'";
 		NativeQuery nq = session.createNativeQuery(sql);
 		if(nq.list().size()==0) {
 			return false;
