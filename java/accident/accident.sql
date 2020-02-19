@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.1
+-- version 4.8.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 17, 2020 at 01:56 PM
--- Server version: 10.4.8-MariaDB
--- PHP Version: 7.3.11
+-- Generation Time: Feb 19, 2020 at 03:24 PM
+-- Server version: 10.1.37-MariaDB
+-- PHP Version: 7.3.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -56,7 +56,7 @@ CREATE TABLE `allocate` (
   `mobile` text NOT NULL,
   `address` text NOT NULL,
   `description` text NOT NULL,
-  `datee` timestamp NOT NULL DEFAULT current_timestamp()
+  `datee` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -64,7 +64,7 @@ CREATE TABLE `allocate` (
 --
 
 INSERT INTO `allocate` (`id`, `criminalid`, `caseid`, `personname`, `vehicleno`, `mobile`, `address`, `description`, `datee`) VALUES
-(1, 1, 1, 'sdfs', 'sdf', 'sdf', 'sdf', 'sdf', '2020-02-17 11:56:10');
+(2, 2, 3, 'Ramya', 'TN 39 BK 0516', '7418227833', 'XXXXXXXXXXXXXXXX', 'XXXXXXXXXXXXXXXXXXX', '2020-02-19 13:32:31');
 
 -- --------------------------------------------------------
 
@@ -83,7 +83,8 @@ CREATE TABLE `caset` (
 --
 
 INSERT INTO `caset` (`id`, `casename`, `description`) VALUES
-(1, 'sdf', 'sdf');
+(2, 'NO HELMET', 'Who not wearing helmet'),
+(3, 'OVER SPEED', 'over speed');
 
 -- --------------------------------------------------------
 
@@ -105,7 +106,7 @@ CREATE TABLE `criminal` (
 --
 
 INSERT INTO `criminal` (`id`, `firstname`, `lastname`, `mobile`, `aadhar`, `address`) VALUES
-(1, 'dsfgdf', 'dfgfdg', 'dsfgd', 'dfg', 'dfg');
+(2, 'Rajesh', 'M', '7418227833', '123456', 'XXXXXXXXXX');
 
 -- --------------------------------------------------------
 
@@ -122,14 +123,15 @@ CREATE TABLE `police` (
   `username` text NOT NULL,
   `password` text NOT NULL,
   `fulladdress` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `police`
 --
 
 INSERT INTO `police` (`id`, `firstname`, `lastname`, `department`, `profession`, `username`, `password`, `fulladdress`) VALUES
-(1, 'asd', 'asd', 'asd', 'asd', 'asad', 'asd', 'asd');
+(1, 'Thilagavathy', 'T', 'Sub Inspector', 'SI', 'admin', 'admin', 'XXXXXXXXXXXXXXXXXXXXX'),
+(2, 'Praveena', 'P', 'Tirupur', 'Inspector', 'praveena', 'praveena', 'XXXXXXXXXXX');
 
 --
 -- Indexes for dumped tables
@@ -179,25 +181,25 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `allocate`
 --
 ALTER TABLE `allocate`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `caset`
 --
 ALTER TABLE `caset`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `criminal`
 --
 ALTER TABLE `criminal`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `police`
 --
 ALTER TABLE `police`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

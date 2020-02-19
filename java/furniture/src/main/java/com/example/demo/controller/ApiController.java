@@ -62,12 +62,11 @@ public class ApiController {
 		return ResponseEntity.ok().body(service.get_customer());
 	}
 	
-	@PostMapping("/add_product/{company}/{product}/{weight}/{price}")
+	@PostMapping("/add_product/{company}/{model}/{price}")
 	public String add_product(@PathVariable String company,
-			@PathVariable String product,
-			@PathVariable String weight,
+			@PathVariable String model,
 			@PathVariable Integer  price) {
-		service.add_product(company,product,weight,price);
+		service.add_product(company,model,price);
 		return "Product Saved Sucessfully";
 	}
 	
@@ -76,24 +75,23 @@ public class ApiController {
 		return ResponseEntity.ok().body(service.get_product());
 	}
 	
-	@PostMapping("/add_purchase/{product_id}/{quantity}/{price}")
+	@PostMapping("/add_purchase/{product_id}/{quantity}")
 	public String add_purchase(@PathVariable Integer product_id,
-			@PathVariable Integer  quantity,@PathVariable Integer  price) {
-		service.add_purchase(product_id,quantity,price);
+			@PathVariable Integer  quantity) {
+		service.add_purchase(product_id,quantity);
 		return "Purchase Saved Sucessfully";
 	}
 	
-	@PostMapping("/add_sales/{customer_id}/{product_id}/{quantity}/{price}")
+	@PostMapping("/add_sales/{customer_id}/{product_id}/{quantity}")
 	public String add_sales(@PathVariable Integer customer_id,@PathVariable Integer product_id,
-			@PathVariable Integer  quantity
-			,@PathVariable Integer  price) {
-		service.add_sales(customer_id,product_id,quantity,price);
+			@PathVariable Integer  quantity) {
+		service.add_sales(customer_id,product_id,quantity);
 		return "Sales Saved Sucessfully";
 	}
 	
 	@GetMapping("/get_customer/{mobile}")
-	public ResponseEntity<GetCustomerResponse> get_mobile(@PathVariable String mobile) {
-		return ResponseEntity.ok().body(service.get_mobile(mobile));
+	public Integer get_mobile(@PathVariable String mobile) {
+		return service.get_mobile(mobile);
 	}
 	
 	@GetMapping("/get_stock")
