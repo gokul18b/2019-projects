@@ -4,6 +4,10 @@
 <link rel="stylesheet" type="text/css" href="./css/bootstrap/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="./css/animate.css">
 <link rel="stylesheet" type="text/css" href="css/navbar.css">
+
+<script src="js/bootstrap.js"></script>
+<script src="js/jquery.js"></script>
+<script src="js/home.js"></script>
 </head>
 <header class="navbar navbar-inverse navbar-fixed-top bs-docs-nav" role="banner">
   <div class="container">
@@ -14,24 +18,27 @@
 		<span class="icon-bar"></span>
 		<span class="icon-bar"></span>
 	  </button>
-	  <a href="./" class="navbar-brand">Bootstrap Menu</a>
-	</div>
+	  <a href="./" class="navbar-brand">Accident Tracking</a>
+		</div>
 	<nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
 	  <ul class="nav navbar-nav navbar-right">
-		<li class="nav-item active">
-		  <a href="#">Police Registration</a>
+		<li >
+		  <a href="/accident/police-registration.html">Police Registration</a>
 		</li>
 		<li>
-		  <a href="#">Criminal Registration</a>
+		  <a href="/accident/criminals-registration.html">Criminal Registration</a>
 		</li>
 		<li>	
-		  <a href="#">Add case</a>
+		  <a href="/accident/add-case.html">Add case</a>
+		</li>
+		<li class="nav-item active">
+		  <a href="/accident/allocate-case.html">Allocate Case</a>
 		</li>
 		<li>
-		  <a href="#">Allocate Case</a>
+		  <a href="/accident/history.html">History</a>
 		</li>
 		<li>
-		  <a href="#">History</a>
+		  <a href="/accident">Logout</a>
 		</li>
 	  </ul>
 	</nav>
@@ -46,47 +53,49 @@
 		  <h2>Allocate case</h2>
 		  <div class="form-group">
 			  <label>Aadhar no:</label>
-			  <input type="text" class="form-control" >
+			  <input id="aadhar" type="text" class="form-control" >
 			</div>
 			<div class="form-group">
 			  <label>First name:</label>
-			  <input type="text" class="form-control" >
+			  <input id="firstname" type="text" class="form-control" >
 			</div>
 			<div class="form-group">
 			  <label >Last name:</label>
-			  <input type="text" class="form-control" >
+			  <input id="lastname" type="text" class="form-control" >
 			</div>
 			<div class="form-group">
 			  <label>Mobile no:</label>
-			  <input type="text" class="form-control" >
+			  <input id="mobile" type="text" class="form-control" >
 			</div>
 			<div class="form-group">
 			  <label>Person Name:(who met an accident)</label>
-			  <input type="text" class="form-control" >
+			  <input id="pname" type="text" class="form-control" >
 			</div>
 			<div class="form-group">
 			  <label>Vehicle Number:(who met an accident)</label>
-			  <input type="text" class="form-control" >
+			  <input id="vno" type="text" class="form-control" >
 			</div>
 			<div class="form-group">
 			  <label>Mobile no:(who met an accident)</label>
-			  <input type="text" class="form-control" >
+			  <input id="pmno" type="text" class="form-control" >
 			</div>
 			<div class="form-group">
 			  <label >Address:</label>
-			  <input type="text" class="form-control" >
+			  <input id="address" type="text" class="form-control" >
 			</div>
-			<div class="form-group">
-			  <label >Case name:</label>
-			  <input type="text" class="form-control" >
-			</div>
+			 <div class="form-group">
+			  <label for="sel1">Case name:</label>
+			  <select id="casename" class="form-control" id="sel1">
+				
+			 </select>
+			</div> 
 			<div class="form-group">
 			  <label >Description:</label>
-			  <input type="text" class="form-control" >
+			  <input id="description" type="text" class="form-control" >
 			</div>
 			
 			<div class="form-group">
-				<button type="button" class="btn btn-success">Save</button>
+				<button onclick="saveAllocate()" type="button" class="btn btn-success">Save</button>
 			</div>
 		</div>
 			
