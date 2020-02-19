@@ -1,8 +1,11 @@
 <html>
 <link href="./css/bootstrap.css" rel="stylesheet" id="bootstrap-css">
+<link href="./css/mdb.min.css" rel="stylesheet" id="bootstrap-css">
+<link href="./css/font.min.css" rel="stylesheet" id="bootstrap-css">
 <link href="./nav.css" rel="stylesheet" id="bootstrap-css">
 <script src="./js/bootstrap.js"></script>
 <script src="./js/jquery.js"></script>
+<script src="js/home.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 
 <body class="hm-gradient">
@@ -13,25 +16,25 @@
 				<div class="collapse navbar-collapse" id="navbarSupportedContent-3">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Customer registration <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="/granite/customer-registration.html">Customer registration <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Product</a>
+                            <a class="nav-link" href="/granite/product.html">Product</a>
                         </li>
 						<li class="nav-item">
-                            <a class="nav-link" href="#">Purchase</a>
+                            <a class="nav-link" href="/granite/purchase.html">Purchase</a>
                         </li>
 						<li class="nav-item">
-                            <a class="nav-link" href="#">Sales</a>
+                            <a class="nav-link" href="/granite/sales.html">Sales</a>
                         </li>
 						<li class="nav-item">
-                            <a class="nav-link" href="#">Stock</a>
+                            <a class="nav-link" href="/granite/stock.html">Stock</a>
                         </li>
 						<li class="nav-item">
-                            <a class="nav-link" href="#">Billing</a>
+                            <a class="nav-link" href="/granite/billing.html">Billing</a>
                         </li>
 						<li class="nav-item">
-                            <a class="nav-link" href="#">Logout</a>
+                            <a class="nav-link" href="/granite">Logout</a>
                         </li>
 
                     </ul>
@@ -45,6 +48,7 @@
 					<table class="table table-bordered">
 							<thead>
 							  <tr>
+								<th>Date</th>
 								<th>Customer Name</th>
 								<th>Company Name</th>
 								<th>product Name</th>
@@ -52,28 +56,8 @@
 								<th>Quantity</th>
 							  </tr>
 							</thead>
-							<tbody>
-							  <tr>
-								<td>Shenbagapriya</td>
-								<td>BEGINS</td>
-								<td>PIPE</td>
-								<td>450</td>						
-								<td>2</td>						
-							  </tr>		  
-							  <tr>
-								<td>Bavadharani</td>
-								<td>RKG</td>
-								<td>TILES</td>
-								<td>35000</td>						
-								<td>1000 SQT</td>						
-							  </tr>
-							  <tr>
-								<td>Sarulatha</td>
-								<td>MLM</td>
-								<td>MARBELS</td>
-								<td>7500</td>						
-								<td>100 SQT</td>						
-							  </tr>
+							<tbody id="billbody">
+							  
 							</tbody>
 					  </table>
 				</div>
