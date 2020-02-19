@@ -1,6 +1,7 @@
 var final_id;
 
 $(document).ready(function(){
+	
 	getDepartment();
 	getClass();
 	getDepartmentClass();
@@ -46,6 +47,25 @@ function studentregistration(){
 			});
 
 }
+
+function login(){
+	var username = $("#username").val();
+	var password = $("#password").val();
+	
+	$.ajax({
+			type:"GET",
+			url:"http://localhost:8080/api/login/"+username+"/"+password,
+			success: function(data) {
+				
+				if(data){
+					window.location.href="/admission/student-registration.html"
+				}else{
+					alert('Invalid username or password')
+				}
+			}
+			});
+}
+
 
 function getDepartment(){
 	$.ajax({
