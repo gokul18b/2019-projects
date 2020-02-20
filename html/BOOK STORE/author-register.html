@@ -1,0 +1,49 @@
+<html>
+<head>
+<link href="./css/bootstrap.css" rel="stylesheet" id="bootstrap-css">
+<script src="./js/bootstrap.js"></script>
+<script src="./js/jquery.js"></script>
+<script src="js/home.js"></script>
+</head>
+<nav class="navbar navbar-expand-sm bg-danger navbar-dark">
+ <a class="nav-link" href="#">Book Store</a>
+  <ul class="navbar-nav">
+	<li class="nav-item active">
+      <a class="nav-link" href="/book/author-register.html">Author Registration</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/book/user-registration.html">User Registration</a>
+    </li>
+	
+    <li class="nav-item">
+      <a class="nav-link" href="/book/book-registration.html">Book Registration</a>
+    </li>
+	 <li class="nav-item">
+      <a class="nav-link" href="/book">Logout</a>
+    </li>
+	
+  </ul>
+</nav>
+<body>
+<div class="col-md-4">
+	<h1>Author Registration</h1>
+	<div class="form-group">
+	  <label for="usr">Author Name:</label>
+	  <input id="authorname" type="text" class="form-control">
+	</div>
+	<div class="form-group">
+	  <label for="usr">Author Details:</label>
+	  <input id="description" type="text" class="form-control">
+	</div>
+	
+	<div class="form-group">
+	  <label for="usr">Qualification:</label>
+	  <input id="qualification" type="text" class="form-control">
+	</div>
+	
+	</div><button onclick="addAuthor()" type="button" class="btn btn-info">Register</button>
+	
+</div>
+
+</body>
+</html>

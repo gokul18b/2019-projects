@@ -3,6 +3,7 @@
 <link href="./css/bootstrap.css" rel="stylesheet" id="bootstrap-css">
 <script src="./js/bootstrap.js"></script>
 <script src="./js/jquery.js"></script>
+<script src="js/home.js"></script>
 </head>
 <nav class="navbar navbar-expand-sm bg-danger navbar-dark">
  <a class="nav-link" href="#">Book Store</a>
@@ -21,19 +22,19 @@
 	<h1>Payment</h1>
 	<div class="form-group">
 	  <label for="usr">Author Name:</label>
-	  <input type="text" class="form-control">
+	  <input id="authorname" type="text" class="form-control">
 	</div>
 	<div class="form-group">
 	  <label for="usr">Book Name:</label>
-	  <input type="text" class="form-control">
+	  <input id="bookname" type="text" class="form-control">
 	</div>
 	
 	<div class="form-group">
 	  <label for="usr">Price:</label>
-	  <input type="text" class="form-control">
+	  <input id="price" type="text" class="form-control">
 	</div>
 	
-	</div><button type="button" class="btn btn-info">Buy & Download</button>
+	</div><button onclick="pay()" type="button" class="btn btn-info">Buy & Download</button>
 	
 </div>
 
