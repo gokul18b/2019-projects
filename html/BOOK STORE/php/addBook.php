@@ -15,9 +15,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
       $subject = mysqli_real_escape_string($db,$_GET['subject']); 
       $price = mysqli_real_escape_string($db,$_GET['price']); 
       
-	  
+	   $path = $_FILES['file']['name'];
+		$ext = pathinfo($path, PATHINFO_EXTENSION);
       
-      $sql = "INSERT INTO `book` (`id`, `authorid`, `bookname`, `publish`, `category`, `subject`, `price`) VALUES (NULL, '$authorid', '$bookname', '$publish', '$category', '$subject', '$price');";
+      $sql = "INSERT INTO `book` (`id`, `authorid`, `bookname`, `publish`, `category`, `subject`, `price`,`ext`) VALUES (NULL, '$authorid', '$bookname', '$publish', '$category', '$subject', '$price','$ext');";
       
 	  if ($db->query($sql) === TRUE) {
 

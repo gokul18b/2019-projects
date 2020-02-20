@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 20, 2020 at 12:22 PM
+-- Generation Time: Feb 20, 2020 at 12:40 PM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.11
 
@@ -75,16 +75,18 @@ CREATE TABLE `book` (
   `publish` int(11) NOT NULL,
   `category` text NOT NULL,
   `subject` text NOT NULL,
-  `price` int(11) NOT NULL
+  `price` int(11) NOT NULL,
+  `ext` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `book`
 --
 
-INSERT INTO `book` (`id`, `authorid`, `bookname`, `publish`, `category`, `subject`, `price`) VALUES
-(50, 10, 'Java', 2019, 'OOPS CONCEPT', 'JAVA', 560),
-(51, 11, 'C  ', 2017, 'CPP', 'CPP', 250);
+INSERT INTO `book` (`id`, `authorid`, `bookname`, `publish`, `category`, `subject`, `price`, `ext`) VALUES
+(50, 10, 'Java', 2019, 'OOPS CONCEPT', 'JAVA', 560, ''),
+(51, 11, 'C  ', 2017, 'CPP', 'CPP', 250, ''),
+(52, 10, '2', 34, '34', '34', 34, 'pptx');
 
 -- --------------------------------------------------------
 
@@ -104,7 +106,8 @@ CREATE TABLE `payment` (
 --
 
 INSERT INTO `payment` (`id`, `bookid`, `userid`, `purchasestatus`) VALUES
-(7, 51, 7, 1);
+(7, 51, 7, 1),
+(8, 52, 7, 1);
 
 -- --------------------------------------------------------
 
@@ -183,13 +186,13 @@ ALTER TABLE `author`
 -- AUTO_INCREMENT for table `book`
 --
 ALTER TABLE `book`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
 -- AUTO_INCREMENT for table `payment`
 --
 ALTER TABLE `payment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `user`

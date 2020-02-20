@@ -105,7 +105,7 @@ function addBook(){
 	var name = document.getElementById("file").files[0].name;
   var form_data = new FormData();
   var ext = name.split('.').pop().toLowerCase();
-  if(jQuery.inArray(ext, ['gif','png','jpg','jpeg']) == -1) 
+  if(jQuery.inArray(ext, ['gif','png','jpg','jpeg','pptx','pdf']) == -1) 
   {
    alert("Invalid Image File");
   }
@@ -113,7 +113,7 @@ function addBook(){
   oFReader.readAsDataURL(document.getElementById("file").files[0]);
   var f = document.getElementById("file").files[0];
   var fsize = f.size||f.fileSize;
-  if(fsize > 2000000)
+  if(fsize > 90000000)
   {
    alert("Image File Size is very big");
   }
@@ -173,7 +173,7 @@ function getBookList(){
 								<p class="card-text">Written By `+data.authorname+`</p>
 								<p class="card-text">Published On `+data.publish+`</p>
 								<p class="card-text">Category : `+data.category+`</p>
-								<button  onclick="download('`+data.id+`','`+data.bookname+`','`+data.authorname+`','`+data.price+`')"  class="btn btn-primary">`+data.isdownload+` - `+data.price+` RS</a>
+								<button  onclick="download('`+data.isdownload+`','`+data.id+`','`+data.bookname+`','`+data.authorname+`','`+data.price+`','`+data.ext+`')"  class="btn btn-primary">`+data.isdownload+` - `+data.price+` RS</a>
 								</div>
 							</div>`;
 				}
@@ -183,12 +183,17 @@ function getBookList(){
 }
 
 
-function download(id,bookname,authorname,price){
+function download(isdownload,id,bookname,authorname,price,ext){
+		
+		if(isdownload!='Download'){
 		var url_string = window.location.href;
 		var url = new URL(url_string);
 		var final_id = url.searchParams.get("id");
 		
 		window.location.href = '/book/payment.html?id='+final_id+"&bookname="+bookname+"&authorname="+authorname+"&price="+price+"&bookid="+id;
+		}else{
+			window.location.href ="/book/php/upload/gokul."+ext;
+		}
 }
 
 function getPayment(){

@@ -13,6 +13,7 @@ if($_SERVER["REQUEST_METHOD"] == "GET") {
 				book.category,
 				book.subject,
 				book.price,
+				book.ext,
 				case when payment.purchasestatus is null then 'Purchase' else 'Download' end as isdownload 
 				from book 
 				left join payment on(payment.bookid=book.id)
@@ -27,6 +28,7 @@ if($_SERVER["REQUEST_METHOD"] == "GET") {
 				book.category,
 				book.subject,
 				book.price,
+				book.ext,
 				case when payment.purchasestatus is null then 'Purchase' else 'Download' end as isdownload 
 				from book 
 				left join payment on(payment.bookid=book.id)
@@ -48,6 +50,7 @@ if($_SERVER["REQUEST_METHOD"] == "GET") {
 				$myObj->subject=$row["subject"];  
 				$myObj->price=$row["price"];  
 				$myObj->isdownload=$row["isdownload"];  
+				$myObj->ext=$row["ext"];  
 				$myJSON=json_encode($myObj);  
 				
 				$arr[]=$myObj;
