@@ -3,6 +3,7 @@
 <link href="./nav.css" rel="stylesheet" id="bootstrap-css">
 <script src="./js/bootstrap.js"></script>
 <script src="./js/jquery.js"></script>
+<script src="./js/home.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 
 <body class="hm-gradient">
@@ -40,18 +41,18 @@
 				<div class="col-md-4">
 					<div class="form-group">
 					  <label for="usr">Material Name:</label>
-					  <input type="text" class="form-control" id="usr">
+					  <input id="material_name" type="text" class="form-control" id="usr">
 					</div>
 					<div class="form-group">
 					  <label for="usr">Quantity:</label>
-					  <input type="text" class="form-control" id="usr">
+					  <input id="quantity" type="text" class="form-control" id="usr">
 					</div>
 					<div class="form-group">
 					  <label for="usr">Amount:</label>
-					  <input type="text" class="form-control" id="usr">
+					  <input id="amount" type="text" class="form-control" id="usr">
 					</div>
 					<div class="form-group">
-						<button type="button" class="btn btn-danger">Register</button>
+						<button onclick="addMaterial()" type="button" class="btn btn-danger">Register</button>
 					</div>
 				</div>
 				<div class="col-md-4">
@@ -63,22 +64,8 @@
 								<th>Amount</th>
 							  </tr>
 							</thead>
-							<tbody>
-							  <tr>
-								<td>Thumbils</td>
-								<td>10</td>
-								<td>3500</td>						
-							  </tr>		  
-							  <tr>
-								<td>Tread mill</td>
-								<td>1</td>
-								<td>35000</td>						
-							  </tr>
-							  <tr>
-								<td>Leg Massager</td>
-								<td>2</td>
-								<td>7500</td>						
-							  </tr>
+							<tbody id="material_body">
+							  
 							</tbody>
 					  </table>
 				</div>

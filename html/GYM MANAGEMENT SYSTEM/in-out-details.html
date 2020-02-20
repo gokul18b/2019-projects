@@ -3,6 +3,7 @@
 <link href="./nav.css" rel="stylesheet" id="bootstrap-css">
 <script src="./js/bootstrap.js"></script>
 <script src="./js/jquery.js"></script>
+<script src="./js/home.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 
 <body class="hm-gradient">
@@ -46,22 +47,8 @@
 							<th>OUT</th>
 						  </tr>
 						</thead>
-						<tbody>
-						  <tr>
-							<td>Subasri</td>
-							<td><button  type="button" class="btn btn-success">IN</button></td>
-							<td><button  type="button" class="btn btn-danger">OUT</button></td>
-						  </tr>
-						  <tr>
-							<td>Sandhiya</td>
-							<td><button  type="button" class="btn btn-success">IN</button></td>
-							<td><button  type="button" class="btn btn-danger">OUT</button></td>
-						  </tr>
-						  <tr>
-							<td>Praveena</td>
-							<td><button  type="button" class="btn btn-success">IN</button></td>
-							<td><button  type="button" class="btn btn-danger">OUT</button></td>
-						  </tr>
+						<tbody id="punch_body">
+						 
 						  
 						</tbody>
 					  </table>
@@ -69,7 +56,10 @@
 				<div class="col-md-4">
 					<div class="form-group">
 					  <label for="usr">Mobile:</label>
-					  <input type="text" class="form-control" id="usr">
+					  <input id="sear_mobile"type="text" class="form-control" id="usr">
+					</div>
+					<div class="form-group">
+						<button onclick="searPunch()" type="button" class="btn btn-danger">Search</button>
 					</div>
 					<table class="table table-bordered">
 						<thead>
@@ -80,25 +70,8 @@
 							<th>Total</th>
 						  </tr>
 						</thead>
-						<tbody>
-						  <tr>
-							<td>07-01-2020</td>
-							<td>06:25 AM</td>
-							<td>07:40 AM</td>						
-							<td>01:15</td>						
-						  </tr>
-						  <tr>
-							<td>08-01-2020</td>						
-							<td>06:00 AM</td>						
-							<td>07:30 AM</td>						
-							<td>01:30</td>						
-						  </tr>
-						  <tr>
-							<td>09-01-2020</td>						
-							<td>05:30 AM</td>						
-							<td>07:20 AM</td>						
-							<td>01:50</td>						
-						  </tr>
+						<tbody id="punch_body1">
+						  
 						  
 						</tbody>
 					  </table>

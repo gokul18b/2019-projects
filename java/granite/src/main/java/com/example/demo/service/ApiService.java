@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import java.math.BigDecimal;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -80,9 +81,9 @@ public class ApiService {
 		
 	}
 
-	public void add_product(String company, String model, Integer price) {
+	public void add_product(String company, String product, String weight, Integer price) {
 		// TODO Auto-generated method stub
-		dao.add_product(company,model,price);
+		dao.add_product(company,product,weight,price);
 	}
 
 	public List<GetProductResponse> get_product() {
@@ -97,7 +98,7 @@ public class ApiService {
 			obj.setId((Integer)row[0]);
 			obj.setCompany((String)row[1]);
 			obj.setModel((String)row[2]);
-			obj.setPrice((Integer)row[3]);
+			obj.setPrice((Integer)row[4]);
 			
 			
 			
@@ -107,14 +108,14 @@ public class ApiService {
 		return response;
 	}
 
-	public void add_purchase(Integer product_id, Integer quantity) {
+	public void add_purchase(Integer product_id, Integer quantity, Integer price) {
 		// TODO Auto-generated method stub
-		dao.add_purchase(product_id,quantity);
+		dao.add_purchase(product_id,quantity,price);
 	}
 
-	public void add_sales(Integer customer_id, Integer product_id, Integer quantity) {
+	public void add_sales(Integer customer_id, Integer product_id, Integer quantity, Integer price) {
 		// TODO Auto-generated method stub
-		dao.add_sales(customer_id,product_id,quantity);
+		dao.add_sales(customer_id,product_id,quantity,price);
 	}
 
 	public List<GetStockResponse> get_stock() {
@@ -124,8 +125,10 @@ public class ApiService {
 		for(int i=0;i<result.size();i++) {
 			Object[] row = result.get(i);
 			GetStockResponse obj = new GetStockResponse();
-			obj.setCompany_name((String)row[0]+"-"+(String)row[1]);
+			obj.setCompany_name((String)row[0]);
+			obj.setProduct((String)row[1]);
 			obj.setQuantity((BigDecimal)row[2]);
+			obj.setPrice((Integer)row[3]);
 			
 			response.add(obj);
 			
@@ -133,9 +136,17 @@ public class ApiService {
 		return response;
 	}
 
-	public Integer get_mobile(String mobile) {
+	public GetCustomerResponse get_mobile(String mobile) {
 		// TODO Auto-generated method stub
-		return dao.get_mobile(mobile);
+		
+		List<Object[]> result =dao.get_mobile(mobile);
+		Object[] row = result.get(0);
+		
+		GetCustomerResponse obj = new GetCustomerResponse();
+		obj.setId((Integer)row[0]);
+		obj.setName((String)row[1]);
+		
+		return obj;
 	}
 
 	
@@ -153,7 +164,7 @@ public class ApiService {
 			obj.setModel((String)row[3]);
 			obj.setQuantity((Integer)row[4]);
 			obj.setPrice((Integer)row[5]);
-			
+			obj.setDate((Timestamp)row[6]);
 			response.add(obj);
 			
 		}

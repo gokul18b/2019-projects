@@ -1,5 +1,9 @@
 package com.example.demo.response;
 
+import java.sql.Timestamp;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class GetBillingResponse {
 	private String customer_name;
 	private String mobile;
@@ -7,6 +11,8 @@ public class GetBillingResponse {
 	private String model;
 	private Integer quantity;
 	private Integer price;
+	@JsonFormat(pattern = "dd-MM-yyyy hh:mm a")
+	private Timestamp date;
 	public String getCustomer_name() {
 		return customer_name;
 	}
@@ -43,6 +49,13 @@ public class GetBillingResponse {
 	public void setPrice(Integer price) {
 		this.price = price;
 	}
+	public Timestamp getDate() {
+		return date;
+	}
+	public void setDate(Timestamp date) {
+		this.date = date;
+	}
+	
 	
 	
 	

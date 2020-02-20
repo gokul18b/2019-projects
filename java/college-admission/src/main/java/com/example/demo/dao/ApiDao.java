@@ -129,4 +129,16 @@ public class ApiDao {
 		a.executeUpdate();
 	}
 
+	public Boolean login(String username, String password) {
+		// TODO Auto-generated method stub
+		Session session = sf.getCurrentSession();
+		String sql = "select * from admin where username='"+username+"' and password='"+password+"'";;
+		NativeQuery nq = session.createNativeQuery(sql);
+		if (nq.list().size() != 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
 }

@@ -49,7 +49,7 @@ public class ApiDao {
 
 
 
-	public List<ViewCriminalResponse> view_criminal() {
+	public List<Object[]> view_criminal() {
 		// TODO Auto-generated method stub
 		Session session = sf.getCurrentSession();
 		String sql = "Select * from criminal";

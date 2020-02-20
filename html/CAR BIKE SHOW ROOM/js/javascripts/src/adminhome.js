@@ -52,6 +52,7 @@ ViewUser();
 //Branch Menu
 
 function AddBranch(){
+
 	var name=$("input[name=branchname]").val().trim();
 	var landmark=$("input[name=branchlandmark]").val().trim();
 	var pincode=$("input[name=branchpincode]").val().trim();
@@ -59,10 +60,10 @@ function AddBranch(){
 	if(name.length==0 || landmark.length==0 || pincode.length==0 || address.length ==0 ){
 		swal("Required Fields!", "Should Enter All Required Fields", "warning");
 	}else{
-	
+	alert("http://localhost:8080/api/addBranch/"+name+"/"+landmark+"/"+pincode+"/"+address)
             $.ajax({
 				type:"POST",
-				url:"/api/addBranch",
+				url:"http://localhost:8080/api/addBranch/"+name+"/"+landmark+"/"+pincode+"/"+address,
 				data:{name:name,landmark:landmark,pincode:pincode,address:address},
 				success: function(datas) {
 					
@@ -85,7 +86,7 @@ function ViewBranchList(){
 	
 			$.ajax({
 				type:"GET",
-				url:"/api/viewBranch",
+				url:"http://localhost:8080/api/viewBranch",
 				success: function(datas) {
 						var html='';
 						var serselect='';
@@ -138,7 +139,7 @@ function deleteBranch(id){
 	
 	$.ajax({
 				type:"POST",
-				url:"/api/deleteBranch",
+				url:"http://localhost:8080/api/deleteBranch/"+id,
 				data:{id:id},
 				success: function(datas) {
 					
@@ -165,7 +166,7 @@ function AddUser(){
 		if(password==cnpass){
 			$.ajax({
 				type:"POST",
-				url:"/api/addUser",
+				url:"http://localhost:8080/api/addUser/"+name+"/"+mobile+"/"+password+"/"+address,
 				data:{name:name,mobile:mobile,password:password,address:address},
 				success: function(datas) {
 					
@@ -188,7 +189,7 @@ function AddUser(){
 function ViewUser(){
 	$.ajax({
 				type:"GET",
-				url:"/api/viewUser",
+				url:"http://localhost:8080/api/viewUser",
 				success: function(datas) {
 						var html='';
 						for(var i=0;i<datas.length;i++){
@@ -220,7 +221,7 @@ function deleteUser(id){
 	
 	$.ajax({
 				type:"POST",
-				url:"/api/deleteUser",
+				url:"http://localhost:8080/api/deleteUser/"+id,
 				data:{id:id},
 				success: function(datas) {
 					
@@ -242,7 +243,7 @@ function searchService(){
 	}else{
 		$.ajax({
 				type:"POST",
-				url:"/api/searchService",
+				url:"http://localhost:8080/api/searchService/"+mobilenumber,
 				data:{mobilenumber:mobilenumber},
 				success: function(datas) {
 					 var data= datas[0];
@@ -280,7 +281,7 @@ function addService(id){
 	}else{
 		$.ajax({
 				type:"POST",
-				url:"/api/addService",
+				url:"http://localhost:8080/api/addService/"+mobile+"/"+name+"/"+branch+"/"+vehicle+"/"+serno+"/"+problem+"/"+address+"/"+id,
 				data:{uid:id,mobile:mobile,name:name,branch:branch,vehicle:vehicle,serno:serno,problem:problem,address:address},
 				success: function(datas) {
 					$("input[name=sermno]").val("");
@@ -298,14 +299,15 @@ function addService(id){
 }
 
 function ViewService(){
+
 	var branch=$('#serchbranch').val().trim();
 	$.ajax({
 				type:"POST",
 				data:{branch:branch},
-				url:"/api/viewService",
+				url:"http://localhost:8080/api/viewService/"+branch,
 				success: function(datas) {
 						var html='';
-						
+						//alert(JSON.stringify(datas))
 						for(var i=0;i<datas.length;i++){
 							var data = datas[i];
 							html=html+'<div class="card">'+
@@ -334,7 +336,7 @@ function deleteService(id){
 	$.ajax({
 				type:"POST",
 				data:{id:id},
-				url:"/api/deleteService",
+				url:"http://localhost:8080/api/deleteService/"+id,
 				success: function(datas) {
 						ViewService();
 				}
@@ -352,7 +354,7 @@ function Billingdetails(id){
 	$.ajax({
 				type:"POST",
 				data:{id:id},
-				url:"/api/billDetails",
+				url:"http://localhost:8080/api/billDetails/"+id,
 				success: function(datas) {
 					
 						var data= datas[0];
@@ -381,7 +383,7 @@ function AddBill(branchid){
 		$.ajax({
 				type:"POST",
 				data:{sid:sid,amount:amount,branchid:branchid},
-				url:"/api/addBill",
+				url:"http://localhost:8080/api/addBill/"+sid+"/"+amount+"/"+branchid,
 				success: function(datas) {
 					ViewBill();
 					$("input[name=billbranch]").val("");
@@ -410,7 +412,7 @@ function ViewBill(){
 	$.ajax({
 				type:"POST",
 				data:{branch:branch,date:date},
-				url:"/api/viewBill",
+				url:"http://localhost:8080/api/viewBill/"+branch+"/"+date,
 				success: function(datas) {
 					
 					for(var i=0;i<datas.length;i++){
@@ -434,5 +436,5 @@ function ViewBill(){
 
 function logout(){
 	
-	window.location.href='/';
+	window.location.href='/car/index.html';
 }

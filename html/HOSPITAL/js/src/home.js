@@ -1,5 +1,11 @@
 var patient_id;
+var final_id;
 $(document).ready(function(){
+	var url_string = window.location.href;
+	var url = new URL(url_string);
+	final_id = url.searchParams.get("id");
+	
+	
 	$("#searchmobile").change(function(){
 		patient_id='';
 		$.ajax({
@@ -34,7 +40,29 @@ $(document).ready(function(){
 	
 	
 });
+function search(){
+	var date = $("#add_date").val();
+	$.ajax({
+			type:"GET",
+			url:"http://localhost:8080/api/get_appointment_details_doctor/"+final_id+"/"+date,
+			success: function(datas) {
+				var html = ``;
+				for (var i in datas) {
+					var data = datas[i];
 
+					html += ` <tr>
+								<th scope="row">`+(++i)+`</th>
+									<td>`+data.firstname+`</td>
+									<td>`+data.lastname+`</td>
+									<td>`+data.mobile+`</td>
+									<td>`+data.appointmentdate+`</td>
+									<td>`+data.tokenno+`</td>
+									`;
+				}
+				$("#app_body").html(html)
+			},
+		});	
+}
 function patientregister(){
 	var firstname = $("#firstname").val();
 	var lastname = $("#lastname").val();

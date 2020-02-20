@@ -3,6 +3,7 @@
 <link href="./nav.css" rel="stylesheet" id="bootstrap-css">
 <script src="./js/bootstrap.js"></script>
 <script src="./js/jquery.js"></script>
+<script src="./js/home.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 
 <body class="hm-gradient">
@@ -40,25 +41,25 @@
 				<div class="col-md-4">
 					<div class="form-group">
 					  <label for="usr">Material Name:</label>
-					   <select class="form-control" id="sel1">
-						<option>Thumbils</option>
-						<option>Treadmill</option>
+					   <select id="material_names" class="form-control" id="sel1">
+						
+						
 					</select>
 					</div>
 					<div class="form-group">
 					  <label for="usr">Service Provider name:</label>
-					  <input type="text" class="form-control" id="usr">
+					  <input id="service_name" type="text" class="form-control" id="usr">
 					</div>
 					<div class="form-group">
 					  <label for="usr">Service Amount:</label>
-					  <input type="text" class="form-control" id="usr">
+					  <input id="amount" type="text" class="form-control" id="usr">
 					</div>
 					<div class="form-group">
 					  <label for="usr">Issue:</label>
-					  <input type="text" class="form-control" id="usr">
+					  <input id="issue" type="text" class="form-control" id="usr">
 					</div>
 					<div class="form-group">
-						<button type="button" class="btn btn-danger">Register</button>
+						<button onclick="addService()" type="button" class="btn btn-danger">Register</button>
 					</div>
 				</div>
 				<div class="col-md-4">
@@ -66,26 +67,13 @@
 							<thead>
 							  <tr>
 								<th>Material Name</th>
+								<th>Provider Name</th>
 								<th>Issue</th>
 								<th>Service Amount</th>
 							  </tr>
 							</thead>
-							<tbody>
-							  <tr>
-								<td>Thumbils</td>
-								<td>Damaged</td>
-								<td>3500</td>						
-							  </tr>		  
-							  <tr>
-								<td>Tread mill</td>
-								<td>Rubber damaged</td>
-								<td>35000</td>						
-							  </tr>
-							  <tr>
-								<td>Leg Massager</td>
-								<td>Not working</td>
-								<td>7500</td>						
-							  </tr>
+							<tbody id="service_body">
+							 
 							</tbody>
 					  </table>
 				</div>

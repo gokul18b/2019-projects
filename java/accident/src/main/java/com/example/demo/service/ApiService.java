@@ -58,7 +58,7 @@ public class ApiService {
 
 	public List<ViewCriminalResponse> view_criminal() {
 		// TODO Auto-generated method stub
-		List<Object[]> result =dao.view_police();
+		List<Object[]> result =dao.view_criminal();
 		
 		List<ViewCriminalResponse> response = new ArrayList<ViewCriminalResponse>();
 		for(int i=0;i<result.size();i++) {

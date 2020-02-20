@@ -143,6 +143,12 @@ public class ApiService {
 		dao.reject(id);
 	}
 
+
+	public Boolean login(String username, String password) {
+		// TODO Auto-generated method stub
+		return dao.login(username,password);
+	}
+
 	
 	
 }
