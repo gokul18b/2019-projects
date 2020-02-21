@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 14, 2020 at 05:59 AM
+-- Generation Time: Feb 21, 2020 at 12:50 PM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.11
 
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `mobile`
+-- Database: `furniture`
 --
 
 -- --------------------------------------------------------
@@ -51,44 +51,10 @@ CREATE TABLE `customer` (
   `id` int(11) NOT NULL,
   `name` text NOT NULL,
   `mobile` text NOT NULL,
+  `alternate` text NOT NULL,
   `address` text NOT NULL,
-  `gender` text NOT NULL,
-  `email` text NOT NULL
+  `gender` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `customer`
---
-
-INSERT INTO `customer` (`id`, `name`, `mobile`, `address`, `gender`, `email`) VALUES
-(1, 'name', 'mobile', 'address', 'gender', 'email'),
-(2, 'kjh', 'jk', 'hkj', 'Male', 'kjhk'),
-(3, 'kjh', 'jk', 'hkj', 'Male', 'kjhk');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `employee`
---
-
-CREATE TABLE `employee` (
-  `id` int(11) NOT NULL,
-  `name` text NOT NULL,
-  `mobile` text NOT NULL,
-  `address` text NOT NULL,
-  `gender` text NOT NULL,
-  `salary` int(11) NOT NULL,
-  `age` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `employee`
---
-
-INSERT INTO `employee` (`id`, `name`, `mobile`, `address`, `gender`, `salary`, `age`) VALUES
-(1, 'name', 'mobile', 'address', 'gender', 1, 1),
-(2, '8', '89', '89', 'Male', 89, 89),
-(3, 'sd', 'sdf', '23', 'Male', 23, 3);
 
 -- --------------------------------------------------------
 
@@ -103,14 +69,6 @@ CREATE TABLE `product` (
   `price` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `product`
---
-
-INSERT INTO `product` (`id`, `company`, `model`, `price`) VALUES
-(3, 'MOTO', 'G3', 12000),
-(4, 'OPPO', 'F11 PRO', 14000);
-
 -- --------------------------------------------------------
 
 --
@@ -121,18 +79,9 @@ CREATE TABLE `purchase` (
   `id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
   `quantity` int(11) NOT NULL,
+  `details` text NOT NULL,
   `date` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `purchase`
---
-
-INSERT INTO `purchase` (`id`, `product_id`, `quantity`, `date`) VALUES
-(5, 3, 5, '2020-02-11 11:33:33'),
-(6, 3, 2, '2020-02-11 11:33:37'),
-(7, 4, 5, '2020-02-11 11:49:29'),
-(8, 4, 2, '2020-02-11 12:07:37');
 
 -- --------------------------------------------------------
 
@@ -148,15 +97,6 @@ CREATE TABLE `sales` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `sales`
---
-
-INSERT INTO `sales` (`id`, `customer_id`, `product_id`, `quantity`) VALUES
-(4, 2, '3', 1),
-(5, 2, '3', 1),
-(6, 1, '4', 1);
-
---
 -- Indexes for dumped tables
 --
 
@@ -170,12 +110,6 @@ ALTER TABLE `admin`
 -- Indexes for table `customer`
 --
 ALTER TABLE `customer`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `employee`
---
-ALTER TABLE `employee`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -210,31 +144,25 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT for table `employee`
---
-ALTER TABLE `employee`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `purchase`
 --
 ALTER TABLE `purchase`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `sales`
 --
 ALTER TABLE `sales`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
