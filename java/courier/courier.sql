@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.1
+-- version 4.8.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 05, 2020 at 12:47 PM
--- Server version: 10.4.8-MariaDB
--- PHP Version: 7.3.11
+-- Generation Time: Feb 21, 2020 at 04:31 PM
+-- Server version: 10.1.37-MariaDB
+-- PHP Version: 7.3.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -44,6 +44,19 @@ INSERT INTO `admin` (`id`, `username`, `password`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `bill`
+--
+
+CREATE TABLE `bill` (
+  `id` int(11) NOT NULL,
+  `customer_id` text NOT NULL,
+  `amount` int(11) NOT NULL,
+  `bill_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `courier`
 --
 
@@ -56,17 +69,6 @@ CREATE TABLE `courier` (
   `address` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `courier`
---
-
-INSERT INTO `courier` (`id`, `mobile`, `name`, `sendlocation`, `currentlocation`, `address`) VALUES
-(3, '7418227833', 'Sandhiya', 'send location', 'tppp', 'fulladdress'),
-(5, '74182s27833', 'Sandhsiya', 'send location', '', 'test'),
-(6, 'asd', 'asd', 'asd', '', 'asd'),
-(7, 'sdf', 'sadf', 'assad', 'test', 'sdfsdfsdfdfs'),
-(8, '74182s27833', '74182s27833', 'asd', 'chennai', 'asdfdsfsdf');
-
 -- --------------------------------------------------------
 
 --
@@ -75,26 +77,14 @@ INSERT INTO `courier` (`id`, `mobile`, `name`, `sendlocation`, `currentlocation`
 
 CREATE TABLE `customer` (
   `id` int(11) NOT NULL,
-  `name` text NOT NULL,
+  `firstname` text NOT NULL,
   `mobile` text NOT NULL,
-  `address` text NOT NULL
+  `address` text NOT NULL,
+  `lastname` text NOT NULL,
+  `email` text NOT NULL,
+  `age` int(11) NOT NULL,
+  `gender` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `customer`
---
-
-INSERT INTO `customer` (`id`, `name`, `mobile`, `address`) VALUES
-(2, 'Sandhiya', '7418227833', 'Palladam'),
-(3, 'undefined', 'undefined', 'undefined'),
-(4, 'asd', 'asd', 'asd'),
-(5, 'undefined', 'undefined', 'undefined'),
-(6, 'Sandhiya', '7418227833', 'Palladam'),
-(7, 'ads', 'asd', 'ad'),
-(8, 'ads', 'asd', 'ad'),
-(9, 'ads', 'asd', 'ad'),
-(10, 'ads', 'asd', 'ad'),
-(11, 'asd', 'asd', 'asd');
 
 -- --------------------------------------------------------
 
@@ -136,6 +126,12 @@ ALTER TABLE `admin`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `bill`
+--
+ALTER TABLE `bill`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `courier`
 --
 ALTER TABLE `courier`
@@ -164,16 +160,22 @@ ALTER TABLE `admin`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `bill`
+--
+ALTER TABLE `bill`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `courier`
 --
 ALTER TABLE `courier`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
