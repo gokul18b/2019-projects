@@ -2,6 +2,7 @@
 <link href="./css/bootstrap.css" rel="stylesheet" id="bootstrap-css">
 <script src="./js/bootstrap.js"></script>
 <script src="./js/jquery.js"></script>
+<script src="./js/home.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 <body>
 	<nav class="navbar navbar-icon-top navbar-expand-lg navbar-dark bg-warning">
@@ -12,8 +13,8 @@
 
 	  <div class="collapse navbar-collapse" id="navbarSupportedContent">
 		<ul class="navbar-nav mr-auto">
-		  <li class="nav-item active">
-			<a class="nav-link" href="#">
+		  <li class="nav-item ">
+			<a class="nav-link" href="/furniture/customer-registration.html">
 			  <i class="fa fa-home"></i>
 			  Customer Registration
 			  <span class="sr-only">(current)</span>
@@ -21,37 +22,44 @@
 		  </li>
 		 
 		  <li class="nav-item">
-			<a class="nav-link" href="#">
+			<a class="nav-link" href="/furniture/product.html">
 			  <i class="fa fa-home"></i>
 			  Product
 			  <span class="sr-only">(current)</span>
 			  </a>
 		  </li>
 		   <li class="nav-item">
-			<a class="nav-link" href="#">
+			<a class="nav-link" href="/furniture/purchase.html">
 			  <i class="fa fa-home"></i>
 			  Purchase
 			  <span class="sr-only">(current)</span>
 			  </a>
 		  </li>
 			<li class="nav-item">
-			<a class="nav-link" href="#">
+			<a class="nav-link" href="/furniture/sales.html">
 			  <i class="fa fa-home"></i>
 			  Sales
 			  <span class="sr-only">(current)</span>
 			  </a>
 		  </li>
 		  <li class="nav-item">
-			<a class="nav-link" href="#">
+			<a class="nav-link" href="/furniture/stock-details.html">
 			  <i class="fa fa-home"></i>
 			  Stock
 			  <span class="sr-only">(current)</span>
 			  </a>
 		  </li>
-		  <li class="nav-item">
-			<a class="nav-link" href="#">
+		  <li class="nav-item active">
+			<a class="nav-link" href="/furniture/bill.html">
 			  <i class="fa fa-home"></i>
 			  Billing
+			  <span class="sr-only">(current)</span>
+			  </a>
+		  </li>
+		  <li class="nav-item">
+			<a class="nav-link" href="/furniture">
+			  <i class="fa fa-home"></i>
+			  Logout
 			  <span class="sr-only">(current)</span>
 			  </a>
 		  </li>
@@ -69,34 +77,15 @@
 					  <th scope="col">#</th>
 					  <th scope="col">Customer Name</th>
 					  <th scope="col">Mobile number</th>
+					  <th scope="col">Brand</th>
 					  <th scope="col">Model</th>
-					  <th scope="col">price</th>
+					  <th scope="col">Quantity</th>
+					  <th scope="col">Price</th>
 					  
 					</tr>
 				  </thead>
-				  <tbody>
-					<tr>
-					  <th scope="row">1</th>
-					  <td>Bhavadharani</td>
-					  <td>896585245</td>
-					  <td>Table Chair</td>
-					  <td>1250</td>
-					  
-					</tr>
-					<tr>
-					  <th scope="row">2</th>
-					  <td>Suganthi</td>
-					  <td>7854125878</td>
-					  <td>Sofa</td>
-					  <td>12000</td>
-					</tr>
-					<tr>
-					  <th scope="row">3</th>
-					  <td>Jeevith</td>
-					  <td>8685474586</td>
-					  <td>Bed</td>
-					  <td>5000</td>
-					</tr>
+				  <tbody id="billbody">
+					
 				  </tbody>
 				</table>
 			</div>

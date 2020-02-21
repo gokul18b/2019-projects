@@ -5,6 +5,7 @@ import java.math.BigDecimal;
 public class GetStockResponse {
 	private String company_name;
 	private BigDecimal quantity;
+	private String details;
 	public String getCompany_name() {
 		return company_name;
 	}
@@ -17,5 +18,12 @@ public class GetStockResponse {
 	public void setQuantity(BigDecimal quantity) {
 		this.quantity = quantity;
 	}
+	public String getDetails() {
+		return details;
+	}
+	public void setDetails(String details) {
+		this.details = details;
+	}
+	
 	
 }

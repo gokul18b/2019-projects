@@ -2,6 +2,7 @@
 <link href="./css/bootstrap.css" rel="stylesheet" id="bootstrap-css">
 <script src="./js/bootstrap.js"></script>
 <script src="./js/jquery.js"></script>
+<script src="./js/home.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 <body>
 	<nav class="navbar navbar-icon-top navbar-expand-lg navbar-dark bg-warning">
@@ -13,7 +14,7 @@
 	  <div class="collapse navbar-collapse" id="navbarSupportedContent">
 		<ul class="navbar-nav mr-auto">
 		  <li class="nav-item active">
-			<a class="nav-link" href="#">
+			<a class="nav-link" href="/furniture/customer-registration.html">
 			  <i class="fa fa-home"></i>
 			  Customer Registration
 			  <span class="sr-only">(current)</span>
@@ -21,37 +22,44 @@
 		  </li>
 		 
 		  <li class="nav-item">
-			<a class="nav-link" href="#">
+			<a class="nav-link" href="/furniture/product.html">
 			  <i class="fa fa-home"></i>
 			  Product
 			  <span class="sr-only">(current)</span>
 			  </a>
 		  </li>
 		   <li class="nav-item">
-			<a class="nav-link" href="#">
+			<a class="nav-link" href="/furniture/purchase.html">
 			  <i class="fa fa-home"></i>
 			  Purchase
 			  <span class="sr-only">(current)</span>
 			  </a>
 		  </li>
 			<li class="nav-item">
-			<a class="nav-link" href="#">
+			<a class="nav-link" href="/furniture/sales.html">
 			  <i class="fa fa-home"></i>
 			  Sales
 			  <span class="sr-only">(current)</span>
 			  </a>
 		  </li>
 		  <li class="nav-item">
-			<a class="nav-link" href="#">
+			<a class="nav-link" href="/furniture/stock-details.html">
 			  <i class="fa fa-home"></i>
 			  Stock
 			  <span class="sr-only">(current)</span>
 			  </a>
 		  </li>
 		  <li class="nav-item">
-			<a class="nav-link" href="#">
+			<a class="nav-link" href="/furniture/bill.html">
 			  <i class="fa fa-home"></i>
 			  Billing
+			  <span class="sr-only">(current)</span>
+			  </a>
+		  </li>
+		  <li class="nav-item">
+			<a class="nav-link" href="/furniture">
+			  <i class="fa fa-home"></i>
+			  Logout
 			  <span class="sr-only">(current)</span>
 			  </a>
 		  </li>
@@ -64,26 +72,30 @@
 				<div class="col-md-4">
 				  <div class="form-group">
 					<label>Name</label>
-					<input  class="form-control"  placeholder="Enter name">
+					<input id="name"  class="form-control"  placeholder="Enter name">
 				  </div>
 				  <div class="form-group">
-					<label>Contact no</label>
-					<input  class="form-control"  placeholder="Enter contact no">
+					<label>Mobile number</label>
+					<input id="mobile"  class="form-control"  placeholder="Enter mobile number">
+				  </div>
+				  <div class="form-group">
+					<label>Alternate Mobile number</label>
+					<input id="alternate"  class="form-control"  placeholder="Enter mobile number">
 				  </div>
 				  <div class="form-group">
 					<label>Address</label>
-					<input  class="form-control"  placeholder="Enter address">
+					<textarea id="address"  class="form-control"  placeholder="Enter address"></textarea>
 				  </div>
 				  <div class="form-group">
 					<label >Gender</label>
-					<select class="form-control" >
+					<select id="gender" class="form-control" >
 					  <option>Male</option>
 					  <option>Female</option>
 					</select>
 				  </div>
 				  
 				  <div class="form-group">
-					<button type="button" class="btn btn-dark">Save</button>
+					<button onclick="addCustomer()" type="button" class="btn btn-dark">Register Customer</button>
 				  </div>
 				</div>
 				<div class="col-md-8">
@@ -92,35 +104,14 @@
 					<tr>
 					  <th scope="col">#</th>
 					  <th scope="col">Name</th>
-					  <th scope="col">Contact No</th>
+					  <th scope="col">Mobile No</th>
+					  <th scope="col">Alternate No</th>
+					  <th scope="col">Address</th>
 					  <th scope="col">Gender</th>
-					  <th scope="col">Email</th>
 					</tr>
 				  </thead>
-				  <tbody>
-					<tr>
-					  <th scope="row">1</th>
-					  <td>Bhavadharani</td>
-					  <td>95236985478</td>
-					  <td>Female</td>
-					  <td>bhava@gmail.com</td>
-					</tr>
-					<tr>
-					  <th scope="row">2</th>
-					  <td>Sandhiya</td>
-					  <td>9874125874</td>
-					  <td>Female</td>
-					  <td>sandhya@gmail.com</td>
-					  
-					</tr>
-					<tr>
-					  <th scope="row">3</th>
-					  <td>Ramya</td>
-					  <td>8596986589</td>
-					  <td>Female</td>
-					  <td>ramya@gmail.com</td>
-					  
-					</tr>
+				  <tbody id="table_body">
+					
 				  </tbody>
 				</table>
 			</div>

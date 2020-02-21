@@ -14,29 +14,17 @@ public class ApiDao {
 	@Autowired
 	SessionFactory sf;
 
-	public void add_employee(String name, String mobile, String address, String gender, Integer salary, Integer age) {
+	
+
+	public void add_customer(String name, String mobile, String alternate,String address, String gender) {
+		// TODO Auto-generated method stub
 		Session session = sf.getCurrentSession();
-		String sql = "INSERT INTO `employee` (`id`, `name`, `mobile`, `address`, `gender`, `salary`, `age`) VALUES (NULL, '"
-				+ name + "', '" + mobile + "', '" + address + "', '" + gender + "', '" + salary + "', '" + age + "');";
+		String sql = "INSERT INTO `customer` (`id`, `name`, `mobile`,`alternate`, `address`, `gender`) VALUES (NULL, '"
+				+ name + "', '" + mobile + "', '" + alternate + "', '" + address + "', '" + gender + "');";
 		session.createSQLQuery(sql).executeUpdate();
 	}
 
-	public void add_customer(String name, String mobile, String address, String gender, String email) {
-		// TODO Auto-generated method stub
-		Session session = sf.getCurrentSession();
-		String sql = "INSERT INTO `customer` (`id`, `name`, `mobile`, `address`, `gender`, `email`) VALUES (NULL, '"
-				+ name + "', '" + mobile + "', '" + address + "', '" + gender + "', '" + email + "');";
-		session.createSQLQuery(sql).executeUpdate();
-	}
-
-	public List<Object[]> get_employee() {
-		// TODO Auto-generated method stub
-		Session session = sf.getCurrentSession();
-		String sql = "Select * from employee";
-		NativeQuery nq = session.createNativeQuery(sql);
-		return nq.list();
-	}
-
+	
 	public List<Object[]> get_customer() {
 		Session session = sf.getCurrentSession();
 		String sql = "Select * from customer";
@@ -60,11 +48,11 @@ public class ApiDao {
 		return nq.list();
 	}
 
-	public void add_purchase(Integer product_id, Integer quantity) {
+	public void add_purchase(Integer product_id, Integer quantity, String details) {
 		// TODO Auto-generated method stub
 		Session session = sf.getCurrentSession();
-		String sql = "INSERT INTO `purchase` (`id`, `product_id`, `quantity`, `date`) VALUES (NULL, '" + product_id
-				+ "', '" + quantity + "', current_timestamp());";
+		String sql = "INSERT INTO `purchase` (`id`, `product_id`, `quantity`, `details`, `date`) VALUES (NULL, '" + product_id
+				+ "', '" + quantity + "', '" + details + "', current_timestamp());";
 		session.createSQLQuery(sql).executeUpdate();
 	}
 
@@ -83,6 +71,7 @@ public class ApiDao {
 				+ "LEFT JOIN (select product_id,COALESCE(SUM(quantity),0) pqty from purchase GROUP by product_id) as a on a.product_id = p.id\r\n"
 				+ "LEFT JOIN (select product_id,COALESCE(SUM(quantity),0) sqty from sales GROUP by product_id) as b on b.product_id = p.id\r\n"
 				+ "GROUP BY p.company,p.model";
+		System.out.println(sql);
 		NativeQuery nq = session.createNativeQuery(sql);
 		return nq.list();
 	}
