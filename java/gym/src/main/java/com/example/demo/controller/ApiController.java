@@ -25,10 +25,10 @@ public class ApiController {
 	@Autowired
 	ApiService service;
 
-//	@GetMapping("/login/{username}/{password}")
-//	public Boolean login(@PathVariable String username,@PathVariable String password) {
-//		return service.login(username,password);
-//	}
+	@GetMapping("/login/{username}/{password}")
+	public Boolean login(@PathVariable String username,@PathVariable String password) {
+		return service.login(username,password);
+	}
 	
 	
 	@PostMapping("/member_register/{firstname}/{lastname}/{mobile}/{email}/{age}/{gender}/{height}/{weight}/{address}")
