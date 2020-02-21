@@ -204,6 +204,13 @@ List<Object[]> result =dao.get_service();
 				return response;
 	}
 
+
+
+	public Boolean login(String username, String password) {
+		// TODO Auto-generated method stub
+		return dao.login(username,password);
+	}
+
 	
 	
 }

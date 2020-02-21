@@ -2,6 +2,7 @@
 <link href="./css/bootstrap.css" rel="stylesheet" id="bootstrap-css">
 <script src="./js/bootstrap.js"></script>
 <script src="./js/jquery.js"></script>
+<script src="./js/home.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 <body>
 	<nav class="navbar navbar-icon-top navbar-expand-lg navbar-dark bg-warning">
@@ -12,8 +13,8 @@
 
 	  <div class="collapse navbar-collapse" id="navbarSupportedContent">
 		<ul class="navbar-nav mr-auto">
-		  <li class="nav-item active">
-			<a class="nav-link" href="#">
+		  <li class="nav-item ">
+			<a class="nav-link" href="/furniture/customer-registration.html">
 			  <i class="fa fa-home"></i>
 			  Customer Registration
 			  <span class="sr-only">(current)</span>
@@ -21,37 +22,44 @@
 		  </li>
 		 
 		  <li class="nav-item">
-			<a class="nav-link" href="#">
+			<a class="nav-link" href="/furniture/product.html">
 			  <i class="fa fa-home"></i>
 			  Product
 			  <span class="sr-only">(current)</span>
 			  </a>
 		  </li>
 		   <li class="nav-item">
-			<a class="nav-link" href="#">
+			<a class="nav-link" href="/furniture/purchase.html">
 			  <i class="fa fa-home"></i>
 			  Purchase
 			  <span class="sr-only">(current)</span>
 			  </a>
 		  </li>
 			<li class="nav-item">
-			<a class="nav-link" href="#">
+			<a class="nav-link" href="/furniture/sales.html">
 			  <i class="fa fa-home"></i>
 			  Sales
 			  <span class="sr-only">(current)</span>
 			  </a>
 		  </li>
-		  <li class="nav-item">
-			<a class="nav-link" href="#">
+		  <li class="nav-item active">
+			<a class="nav-link" href="/furniture/stock-details.html">
 			  <i class="fa fa-home"></i>
 			  Stock
 			  <span class="sr-only">(current)</span>
 			  </a>
 		  </li>
 		  <li class="nav-item">
-			<a class="nav-link" href="#">
+			<a class="nav-link" href="/furniture/bill.html">
 			  <i class="fa fa-home"></i>
 			  Billing
+			  <span class="sr-only">(current)</span>
+			  </a>
+		  </li>
+		  <li class="nav-item">
+			<a class="nav-link" href="/furniture">
+			  <i class="fa fa-home"></i>
+			  Logout
 			  <span class="sr-only">(current)</span>
 			  </a>
 		  </li>
@@ -61,8 +69,7 @@
 	</nav>
 	<div class="col-md-12" style="padding:10px">
 		<div class="row">
-				
-				<div class="col-md-6">
+			<div class="col-md-6">
 				<table class="table table-striped table">
 				  <thead>
 					<tr>
@@ -73,27 +80,8 @@
 					  
 					</tr>
 				  </thead>
-				  <tbody>
-					<tr>
-					  <th scope="row">1</th>
-					  <td>KURNYA</td>
-					  <td>Dyning Table</td>
-					  <td>2</td>
-					  
-					</tr>
-					<tr>
-					  <th scope="row">2</th>
-					  <td>MAGARAJA</td>
-					  <td>Dressing Table</td>
-					  <td>5</td>
+				  <tbody id="stockbody">
 					
-					  
-					</tr>
-					<tr>
-					  <th scope="row">3</th>
-					  <td>VEERA</td>
-					  <td>Chair</td>
-					  <td>45</td>
 					 
 					  
 					</tr>

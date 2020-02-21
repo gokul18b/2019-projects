@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.response.GetBillingResponse;
 import com.example.demo.response.GetCustomerResponse;
-import com.example.demo.response.GetEmployeeResponse;
 import com.example.demo.response.GetProductResponse;
 import com.example.demo.response.GetStockResponse;
 import com.example.demo.service.ApiService;
@@ -31,29 +30,15 @@ public class ApiController {
 	}
 	
 	
-	@PostMapping("/add_employee/{name}/{mobile}/{address}/{gender}/{salary}/{age}")
-	public String add_employee(@PathVariable String name,
-			@PathVariable String mobile,
-			@PathVariable String  address,
-			@PathVariable String gender,
-			@PathVariable Integer salary,
-			@PathVariable Integer age) {
-		service.add_employee(name,mobile,address,gender,salary,age);
-		return "Employee Saved Sucessfully";
-	}
 	
-	@GetMapping("/get_employee")
-	public ResponseEntity<List<GetEmployeeResponse>> get_employee() {
-		return ResponseEntity.ok().body(service.get_employee());
-	}
 	
-	@PostMapping("/add_customer/{name}/{mobile}/{address}/{gender}/{email}")
+	@PostMapping("/add_customer/{name}/{mobile}/{alternate}/{address}/{gender}")
 	public String add_customer(@PathVariable String name,
 			@PathVariable String mobile,
+			@PathVariable String alternate,
 			@PathVariable String  address,
-			@PathVariable String gender,
-			@PathVariable String email) {
-		service.add_customer(name,mobile,address,gender,email);
+			@PathVariable String gender) {
+		service.add_customer(name,mobile,alternate,address,gender);
 		return "Customer Saved Sucessfully";
 	}
 	
@@ -75,10 +60,10 @@ public class ApiController {
 		return ResponseEntity.ok().body(service.get_product());
 	}
 	
-	@PostMapping("/add_purchase/{product_id}/{quantity}")
+	@PostMapping("/add_purchase/{product_id}/{quantity}/{details}")
 	public String add_purchase(@PathVariable Integer product_id,
-			@PathVariable Integer  quantity) {
-		service.add_purchase(product_id,quantity);
+			@PathVariable Integer  quantity,@PathVariable String  details) {
+		service.add_purchase(product_id,quantity,details);
 		return "Purchase Saved Sucessfully";
 	}
 	

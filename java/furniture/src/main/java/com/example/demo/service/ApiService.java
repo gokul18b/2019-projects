@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 import com.example.demo.dao.ApiDao;
 import com.example.demo.response.GetBillingResponse;
 import com.example.demo.response.GetCustomerResponse;
-import com.example.demo.response.GetEmployeeResponse;
 import com.example.demo.response.GetProductResponse;
 import com.example.demo.response.GetStockResponse;
 
@@ -23,39 +22,15 @@ public class ApiService {
 	@Autowired
 	ApiDao dao;
 
-	public void add_employee(String name, String mobile, String address, String gender, Integer salary, Integer age) {
-		dao.add_employee(name,mobile,address,gender,salary,age);
+	
+
+	public void add_customer(String name, String mobile,String alternate, String address, String gender ) {
+		// TODO Auto-generated method stub
+		dao.add_customer(name,mobile,alternate,address,gender);
 		
 	}
 
-	public void add_customer(String name, String mobile, String address, String gender, String email) {
-		// TODO Auto-generated method stub
-		dao.add_customer(name,mobile,address,gender,email);
-		
-	}
-
-	public List<GetEmployeeResponse> get_employee() {
-		// TODO Auto-generated method stub
-		List<Object[]> result =dao.get_employee();
-		
-		List<GetEmployeeResponse> response = new ArrayList<GetEmployeeResponse>();
-		for(int i=0;i<result.size();i++) {
-			Object[] row = result.get(i);
-			GetEmployeeResponse obj = new GetEmployeeResponse();
-			obj.setId((Integer)row[0]);
-			obj.setName((String)row[1]);
-			obj.setMobile((String)row[2]);
-			obj.setAddress((String)row[3]);
-			obj.setGender((String)row[4]);
-			obj.setSalary((Integer)row[5]);
-			obj.setAge((Integer)row[6]);
-			
-			response.add(obj);
-			
-		}
-		return response;
-		
-	}
+	
 
 	public List<GetCustomerResponse> get_customer() {
 		// TODO Auto-generated method stub
@@ -68,9 +43,9 @@ public class ApiService {
 			obj.setId((Integer)row[0]);
 			obj.setName((String)row[1]);
 			obj.setMobile((String)row[2]);
-			obj.setAddress((String)row[3]);
-			obj.setGender((String)row[4]);
-			obj.setEmail((String)row[5]);
+			obj.setAddress((String)row[4]);
+			obj.setGender((String)row[5]);
+			obj.setAlternate((String)row[3]);
 			
 			
 			response.add(obj);
@@ -107,9 +82,9 @@ public class ApiService {
 		return response;
 	}
 
-	public void add_purchase(Integer product_id, Integer quantity) {
+	public void add_purchase(Integer product_id, Integer quantity, String details) {
 		// TODO Auto-generated method stub
-		dao.add_purchase(product_id,quantity);
+		dao.add_purchase(product_id,quantity,details);
 	}
 
 	public void add_sales(Integer customer_id, Integer product_id, Integer quantity) {
@@ -124,8 +99,9 @@ public class ApiService {
 		for(int i=0;i<result.size();i++) {
 			Object[] row = result.get(i);
 			GetStockResponse obj = new GetStockResponse();
-			obj.setCompany_name((String)row[0]+"-"+(String)row[1]);
+			obj.setCompany_name((String)row[0]);
 			obj.setQuantity((BigDecimal)row[2]);
+			obj.setDetails((String)row[1]);
 			
 			response.add(obj);
 			

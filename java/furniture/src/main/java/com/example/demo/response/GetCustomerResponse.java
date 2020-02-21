@@ -6,7 +6,7 @@ public class GetCustomerResponse {
 	private String mobile;
 	private String address;
 	private String gender;
-	private String email;
+	private String alternate;
 	public Integer getId() {
 		return id;
 	}
@@ -37,11 +37,11 @@ public class GetCustomerResponse {
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
-	public String getEmail() {
-		return email;
+	public String getAlternate() {
+		return alternate;
 	}
-	public void setEmail(String email) {
-		this.email = email;
+	public void setAlternate(String alternate) {
+		this.alternate = alternate;
 	}
 	
 	

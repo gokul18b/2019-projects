@@ -13,6 +13,25 @@ function load(){
 	getMembers();
 }
 
+
+function login(){
+	
+	var username = $("#username").val();
+	var password = $("#password").val();
+	
+	$.ajax({
+			type:"GET",
+			url:"http://localhost:8080/api/login/"+username+"/"+password,
+			success: function(datas) {
+				if(datas){
+					 window.location="/gym/member-registration.html";
+				}else{
+				alert('Invalid username and password')	
+				}
+			},
+		});	
+}
+
 function getMembers(){
 	
 	$.ajax({
