@@ -76,8 +76,12 @@ public class ApiController {
 	
 	@GetMapping("/show_pending_student/{department}/{classname}")
 	public ResponseEntity<List<GetStudentResponse>> show_pending_student(@PathVariable String department,@PathVariable String classname) {
-		
 		return ResponseEntity.ok().body(service.show_pending_student(department,classname));
+	}
+	
+	@GetMapping("/show_accepted_student/{department}/{classname}")
+	public ResponseEntity<List<GetStudentResponse>> show_accepted_student(@PathVariable String department,@PathVariable String classname) {
+		return ResponseEntity.ok().body(service.show_accepted_student(department,classname));
 	}
 	
 	@GetMapping("/approve/{id}/{department}/{classname}")

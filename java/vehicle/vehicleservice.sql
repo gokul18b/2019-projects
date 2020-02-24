@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 16, 2020 at 03:33 PM
+-- Generation Time: Feb 24, 2020 at 07:22 AM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.1
 
@@ -49,7 +49,8 @@ INSERT INTO `bill` (`id`, `branchid`, `servideid`, `amount`, `date`) VALUES
 (27, 2, 22, 11110, '06-02-2020'),
 (28, 2, 30, 4546, '07-02-2020'),
 (29, 6, 32, 1111, '08-02-2020'),
-(30, 2, 24, 2345, '09-02-2020');
+(30, 2, 24, 2345, '09-02-2020'),
+(31, 8, 34, 956, '22-02-2020');
 
 -- --------------------------------------------------------
 
@@ -72,7 +73,8 @@ CREATE TABLE `branch` (
 INSERT INTO `branch` (`id`, `name`, `landmark`, `pincode`, `address`) VALUES
 (1, 'RAJA HONDA SHOW ROOM', 'NEAR SIVAN THEATRE', 641987, 'Anna street,Avinashi Road , Tirupur'),
 (2, 'RABA HONDA SHOW ROOM', 'NEAR OLD BUS STAND', 645667, 'Palladam Road, Tirupur'),
-(6, 'PALLADAM', 'PALLADAM', 645254, 'PALLADAM');
+(6, 'PALLADAM', 'PALLADAM', 645254, 'PALLADAM'),
+(8, 'AVINASHI', 'near by busstand', 642658, 'xxxxxxxxxxxxxxxxxxxxxxxxxxx');
 
 -- --------------------------------------------------------
 
@@ -106,6 +108,7 @@ INSERT INTO `service` (`id`, `mobile`, `name`, `branch`, `vehicle`, `serno`, `pr
 (12, '7418227833', 'Gokul', '2', 'BIKE', 'TN 39 BK 0516', 'normal service', '70 Anna street kumaranandhapuram', 1, 9, '07-01-2018'),
 (25, '7418227833', 'ramya', '2', 'CAR', '7687', 'water service', 'full address', 1, 11, '23-02-2019'),
 (26, '7418227833', 'ramya', '6', 'CAR', '46552', 'light', 'address', 1, 11, '23-02-2019'),
+(34, '7418227833', 'ramya', '8', 'BIKE', 'TN 36 BJ 0987', 'normal service and water service', 'xxxxxxxxxxxxxxxxxxxxxxx', 1, 11, '22-02-2020'),
 (30, '789', 'testttt', 'ad', 'asd', 'asd', 'asd', 'asd', 1, 1, '07-02-2020'),
 (32, '9952316067', 'Madhan', '6', 'CAR', '23', 'asd', 'asd', 1, 10, '08-02-2020');
 
@@ -118,6 +121,10 @@ INSERT INTO `service` (`id`, `mobile`, `name`, `branch`, `vehicle`, `serno`, `pr
 CREATE TABLE `user` (
   `id` int(11) NOT NULL,
   `name` varchar(30) NOT NULL,
+  `lastname` text NOT NULL,
+  `email` text NOT NULL,
+  `age` text NOT NULL,
+  `gender` text NOT NULL,
   `mobile` varchar(10) NOT NULL,
   `password` varchar(30) NOT NULL,
   `address` text NOT NULL,
@@ -128,11 +135,11 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `name`, `mobile`, `password`, `address`, `FLAG`) VALUES
-(9, 'Praveena', '9658965475', 'gokul@94', '70 Anna street kumaranandhapuram Tirupur 641602', 0),
-(8, 'Admin', 'admin', 'admin', '70 Anna street ,  Kumaranandhapuram , Tirupur 641602', 1),
-(10, 'Madhan', '9952316067', 'madhan@95', '34 Raja street Annur post, coimbatore dist , 641234', 0),
-(11, 'ramya', '7418227833', 'ramya', 'coimbatore', 0);
+INSERT INTO `user` (`id`, `name`, `lastname`, `email`, `age`, `gender`, `mobile`, `password`, `address`, `FLAG`) VALUES
+(9, 'Praveena', '', '', '', '', '9658965475', 'gokul@94', '70 Anna street kumaranandhapuram Tirupur 641602', 0),
+(8, 'Admin', '', '', '', '', 'admin', 'admin', '70 Anna street ,  Kumaranandhapuram , Tirupur 641602', 1),
+(10, 'Madhan', '', '', '', '', '9952316067', 'madhan@95', '34 Raja street Annur post, coimbatore dist , 641234', 0),
+(11, 'ramya', '', '', '', '', '7418227833', 'ramya', 'coimbatore', 0);
 
 --
 -- Indexes for dumped tables
@@ -170,25 +177,25 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `bill`
 --
 ALTER TABLE `bill`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `branch`
 --
 ALTER TABLE `branch`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `service`
 --
 ALTER TABLE `service`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

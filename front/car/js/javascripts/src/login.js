@@ -26,7 +26,11 @@ function login(){
 
 function AddUser(){
 	var name=$("input[name=username]").val().trim();	
+	var lastname=$("input[name=lastname]").val().trim();	
 	var mobile=$("input[name=usermobile]").val().trim();
+	var email=$("input[name=email]").val().trim();
+	var age=$("input[name=age]").val().trim();
+	var gender=$("input[name=gender]").val().trim();
 	var password=$("input[name=userpass]").val().trim();
 	var cnpass=$("input[name=usercnpass]").val().trim();
 	var address=$("textarea[name=useraddress]").val().trim();
@@ -38,12 +42,16 @@ function AddUser(){
 		if(password==cnpass){
 			$.ajax({
 				type:"POST",
-				url:"http://localhost:8080/api/addUser/"+name+"/"+mobile+"/"+password+"/"+address,
+				url:"http://localhost:8080/api/addUser/"+name+"/"+lastname+"/"+mobile+"/"+email+"/"+age+"/"+gender+"/"+password+"/"+address,
 				data:{name:name,mobile:mobile,password:password,address:address},
 				success: function(datas) {
 					
 					swal("Success!", "User has been Added.", "success");
 					$("input[name=username]").val("");
+					$("input[name=lastname]").val("");
+					$("input[name=email]").val("");
+					$("input[name=age]").val("");
+					$("input[name=gender]").val("");
 					$("input[name=usermobile]").val("");
 					$("input[name=userpass]").val("");
 					$("input[name=usercnpass]").val("");
