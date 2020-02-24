@@ -67,7 +67,7 @@ public class ApiDao {
 
 	public List<Object[]> get_class() {
 		Session session = sf.getCurrentSession();
-		String sql = "Select id,dept_allocate_id,class_name from class_allocate";
+		String sql = "Select id,dept_allocate_id,class_name from class_allocate group by class_name";
 		NativeQuery nq = session.createNativeQuery(sql);
 		return nq.list();
 	}
@@ -82,6 +82,14 @@ public class ApiDao {
 	public List<Object[]> show_pending_student(String department, String classname) {
 		Session session = sf.getCurrentSession();
 		String sql = "SELECT `id`, `firstname`, `10th`, `12th`,`department`,`classname`,`mobile` FROM `student` where confirmation=0 and department='"
+				+ department + "' and classname='" + classname + "'";
+		NativeQuery nq = session.createNativeQuery(sql);
+		return nq.list();
+	}
+	
+	public List<Object[]> show_accepted_student(String department, String classname) {
+		Session session = sf.getCurrentSession();
+		String sql = "SELECT `id`, `firstname`, `10th`, `12th`,`department`,`classname`,`mobile` FROM `student` where confirmation=1 and department='"
 				+ department + "' and classname='" + classname + "'";
 		NativeQuery nq = session.createNativeQuery(sql);
 		return nq.list();

@@ -108,6 +108,29 @@ public class ApiService {
 		}
 		return response;
 	}
+	
+	
+	public List<GetStudentResponse> show_accepted_student(String department, String classname) {
+		List<Object[]> result =dao.show_accepted_student(department,classname);
+		
+		List<GetStudentResponse> response = new ArrayList<GetStudentResponse>();
+		for(int i=0;i<result.size();i++) {
+			Object[] row = result.get(i);
+			GetStudentResponse obj = new GetStudentResponse();
+			obj.setId((Integer)row[0]);
+			obj.setFirstname((String)row[1]);
+			
+			obj.setTen((Integer)row[2]);	
+			obj.setTwelve((Integer)row[3]);	
+			obj.setDepartment((String)row[4]);	
+			obj.setClassname((String)row[5]);	
+			obj.setMobile((String)row[6]);
+			
+			response.add(obj);
+			
+		}
+		return response;
+	}
 
 	public List<GetStudentResponse> show_pending_student(String department, String classname) {
 		List<Object[]> result =dao.show_pending_student(department,classname);
