@@ -22,13 +22,58 @@ $("#mobile").change(function(){
 			}
 			});
 })
-	//load();
+	load();
 });
 
 function load(){
-	
+	getPass();
+	getGeneral();
+}
+function getGeneral(){
+	$.ajax({
+			type:"GET",
+			url:"http://localhost:8080/api/get_general/"+url_id,
+			success: function(datas) {
+				var html =``;
+				for(var i=0;i<datas.length;i++){
+						
+						var data = datas[i];
+						html+=`<tr>
+								<td>`+data.fromLocation+`</td>
+								<td>`+data.toLocation+`</td>
+													
+								<td>`+data.amount+`</td>						
+												
+							  </tr>`;
+						
+					}
+					$("#genbody").html(html);
+			}
+			});
 }
 
+function getPass(){
+	$.ajax({
+			type:"GET",
+			url:"http://localhost:8080/api/get_pass/"+url_id,
+			success: function(datas) {
+				var html =``;
+				for(var i=0;i<datas.length;i++){
+						
+						var data = datas[i];
+						html+=`<tr>
+								<td>`+data.fromLocation+`</td>
+								<td>`+data.toLocation+`</td>
+								<td>`+data.nextRenewal+`</td>						
+								<td>`+data.amount+`</td>						
+												
+							  </tr>`;
+						
+					}
+					$("#passbody").html(html);
+			}
+			});
+}
 function login(){
 	
 	var username = $("#username").val();
@@ -75,6 +120,7 @@ function addPassenger(){
 				$("#idproof").val("");
 				$("#address").val("");
 				
+				load();
 			}
 			});
 }
@@ -117,6 +163,8 @@ function saveGeneral(){
 				$("#firstname").val("");
 				$("#lastname").val("");
 				$("#amount").val("");
+				
+				load();
 			}
 	});
 }
@@ -160,27 +208,6 @@ function locationUpdate(){
 	});
 }
 
-function getHealth(){
-	$.ajax({
-			type:"GET",
-			url:"http://localhost:8080/api/get_health",
-			success: function(datas) {
-				var html =``;
-				for(var i=0;i<datas.length;i++){
-						
-						var data = datas[i];
-						html+=`<tr>
-								<td>`+data.title+`</td>
-								<td>`+data.description+`</td>
-								<td>`+data.date+`</td>						
-												
-							  </tr>`;
-						
-					}
-					$("#health_body").html(html);
-			}
-			});
-}
 
 function searchtrain(){
 	var trainno = $("#trainno").val();

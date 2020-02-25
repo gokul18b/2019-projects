@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.dao.ApiDao;
 import com.example.demo.response.FindLocationResponse;
+import com.example.demo.response.GetGeneralResponse;
+import com.example.demo.response.GetPassResponse;
 import com.example.demo.response.GetPassengerResponse;
 import com.example.demo.response.LoginResponse;
 
@@ -105,6 +107,43 @@ public class ApiService {
 		}else {
 			return null;
 		}
+	}
+
+	public List<GetPassResponse> get_pass(Integer id) {
+		// TODO Auto-generated method stub
+		List<Object[]> result = dao.get_pass(id);
+
+		List<GetPassResponse> response = new ArrayList<GetPassResponse>();
+		for (int i = 0; i < result.size(); i++) {
+			Object[] row = result.get(i);
+			GetPassResponse obj = new GetPassResponse();
+
+			obj.setFromLocation((String) row[0]);
+			obj.setToLocation((String) row[1]);
+			obj.setNextRenewal((String) row[2]);
+			obj.setAmount((Integer) row[3]);
+
+			response.add(obj);
+		}
+		return response;
+	}
+
+	public List<GetGeneralResponse> get_general(Integer id) {
+		// TODO Auto-generated method stub
+		List<Object[]> result = dao.get_general(id);
+
+		List<GetGeneralResponse> response = new ArrayList<GetGeneralResponse>();
+		for (int i = 0; i < result.size(); i++) {
+			Object[] row = result.get(i);
+			GetGeneralResponse obj = new GetGeneralResponse();
+
+			obj.setFromLocation((String) row[0]);
+			obj.setToLocation((String) row[1]);
+			obj.setAmount((Integer) row[2]);
+
+			response.add(obj);
+		}
+		return response;
 	}
 
 }

@@ -81,6 +81,22 @@ public class ApiDao {
 		return nq.list();
 	}
 
+	public List<Object[]> get_pass(Integer id) {
+		// TODO Auto-generated method stub
+		Session session = sf.getCurrentSession();
+		String sql = "SELECT `fromlocation`,`tolocation`,`nextrenewal`,`amount` FROM `ticket` WHERE `passenger_id`="+id;
+		NativeQuery nq = session.createNativeQuery(sql);
+		return nq.list();
+	}
+
+	public List<Object[]> get_general(Integer id) {
+		// TODO Auto-generated method stub
+		Session session = sf.getCurrentSession();
+		String sql = "SELECT `fromlocation`,`tolocation`,`amount` FROM `general` WHERE `passenger_id`="+id;
+		NativeQuery nq = session.createNativeQuery(sql);
+		return nq.list();
+	}
+
 
 
 
