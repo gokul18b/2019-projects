@@ -68,8 +68,8 @@ public class ApiController {
 	@PostMapping("/add_sales/{customer_id}/{product_id}/{quantity}/{price}")
 	public String add_sales(@PathVariable Integer customer_id,@PathVariable Integer product_id,
 			@PathVariable Integer  quantity,@PathVariable Integer  price) {
-		service.add_sales(customer_id,product_id,quantity,price);
-		return "Sales Saved Sucessfully";
+		return service.add_sales(customer_id,product_id,quantity,price);
+		
 	}
 	
 	@GetMapping("/get_customer/{mobile}")

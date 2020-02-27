@@ -48,9 +48,9 @@ public class ApiService {
 		dao.add_purchase(product_id,quantity,price);
 	}
 
-	public void add_sales(Integer customer_id, Integer product_id, Integer quantity, Integer price) {
+	public String add_sales(Integer customer_id, Integer product_id, Integer quantity, Integer price) {
 		// TODO Auto-generated method stub
-		dao.add_sales(customer_id,product_id,quantity,price);
+		return dao.add_sales(customer_id,product_id,quantity,price);
 	}
 
 	public List<GetStockResponse> get_stock() {
