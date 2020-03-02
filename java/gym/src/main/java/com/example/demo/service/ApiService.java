@@ -134,6 +134,14 @@ List<Object[]> result =dao.get_service();
 			
 			obj.setId((Integer)row[0]);
 			obj.setName((String)row[1]);
+			obj.setLastname((String)row[2]);
+			obj.setMobile((String)row[3]);
+			obj.setEmail((String)row[4]);
+			obj.setAge((Integer)row[5]);
+			obj.setGender((String)row[6]);
+			obj.setHeight((String)row[7]);
+			obj.setWeight((String)row[8]);
+			obj.setAddress((String)row[9]);
 			
 			
 			

@@ -39,6 +39,7 @@ function getMembers(){
 			url:"http://localhost:8080/api/get_members",
 			success: function(datas) {
 				var html =``;
+				var html1 =``;
 				for(var i=0;i<datas.length;i++){
 						
 						var data = datas[i];
@@ -47,9 +48,23 @@ function getMembers(){
 							<td><button onclick="punch_in('`+data.id+`')"  type="button" class="btn btn-success">IN</button></td>
 							<td><button onclick="punch_out('`+data.id+`')" type="button" class="btn btn-danger">OUT</button></td>
 						  </tr>`;
+						  html1+=`<tr>`;
+						  html1+=`<td>`+data.name+`</td>`;
+						  html1+=`<td>`+data.lastname+`</td>`;
+						  html1+=`<td>`+data.mobile+`</td>`;
+						  html1+=`<td>`+data.email+`</td>`;
+						  html1+=`<td>`+data.age+`</td>`;
+						  html1+=`<td>`+data.gender+`</td>`;
+						  html1+=`<td>`+data.height+`</td>`;
+						  html1+=`<td>`+data.weight+`</td>`;
+						  html1+=`<td>`+data.address+`</td>`;
+						  html1+=`</tr>`;
+						  
 						
 					}
 					$("#punch_body").html(html);
+					$("#member_body").html(html1);
+					
 			}
 			});
 }
