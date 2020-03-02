@@ -162,7 +162,7 @@ function addSales(){
 				alert(datas);
 				$("#searchmobile").val("");
 				$("#name").val("");
-			$("#quantity").val("");
+				$("#quantity").val("");
 				$("#price").val("");
 				
 			},

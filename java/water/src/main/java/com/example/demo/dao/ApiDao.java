@@ -13,8 +13,6 @@ public class ApiDao {
 	@Autowired
 	SessionFactory sf;
 
-	
-
 	public void add_customer(String name, String mobile, String address, String gender, String email) {
 		// TODO Auto-generated method stub
 		Session session = sf.getCurrentSession();
@@ -23,33 +21,51 @@ public class ApiDao {
 		session.createSQLQuery(sql).executeUpdate();
 	}
 
-	
-
 	public void add_purchase(Integer product_id, Integer quantity, Integer price) {
 		// TODO Auto-generated method stub
 		Session session = sf.getCurrentSession();
-		String sql = "INSERT INTO `purchase` (`id`, `product_id`, `quantity`, `price`, `date`) VALUES (NULL, '"+product_id+"', '"+quantity+"', '"+price+"', current_timestamp());";
+		String sql = "INSERT INTO `purchase` (`id`, `product_id`, `quantity`, `price`, `date`) VALUES (NULL, '"
+				+ product_id + "', '" + quantity + "', '" + price + "', current_timestamp());";
 		session.createSQLQuery(sql).executeUpdate();
 	}
 
-	public void add_sales(Integer customer_id, Integer product_id, Integer quantity, Integer price) {
+	public String add_sales(Integer customer_id, Integer product_id, Integer quantity, Integer price) {
 		// TODO Auto-generated method stub
 		Session session = sf.getCurrentSession();
-		String sql = "INSERT INTO `sales` (`id`, `customer_id`, `product_id`, `quantity`, `price`) VALUES (NULL, '"+customer_id+"', '"+product_id+"', '"+quantity+"', '"+price+"');";
-		session.createSQLQuery(sql).executeUpdate();
+		String previous_sales = "select id,quantity from sales where product_id=" + product_id;
+		List<Object[]> previous_salesObj = session.createSQLQuery(previous_sales).list();
+		Integer salesed = 0;
+		for (int i = 0; i < previous_salesObj.size(); i++) {
+			salesed += (Integer) previous_salesObj.get(i)[1];
+		}
+		System.out.println("Salesed"+salesed);
+		String previous_purchase = "select id,quantity from purchase where product_id=" + product_id;
+		List<Object[]> previous_purchaseObj = session.createSQLQuery(previous_purchase).list();
+		Integer purchased = 0;
+		for (int i = 0; i < previous_purchaseObj.size(); i++) {
+			purchased += (Integer) previous_purchaseObj.get(i)[1];
+		}
+		System.out.println("Purchased"+purchased);
+		Integer final_quantity = salesed + quantity;
+		System.out.println("Final"+final_quantity);
+		if (purchased < final_quantity) {
+			return "Stock not available";
+		} else {
+			String sql = "INSERT INTO `sales` (`id`, `customer_id`, `product_id`, `quantity`, `price`) VALUES (NULL, '"
+					+ customer_id + "', '" + product_id + "', '" + quantity + "', '" + price + "');";
+			session.createSQLQuery(sql).executeUpdate();
+			return "Sales sucessfully saved";
+		}
 	}
 
 	public List<Object[]> get_stock() {
 		// TODO Auto-generated method stub
 		Session session = sf.getCurrentSession();
-		String sql = "select \r\n" + 
-				"p.companyname,\r\n" + 
-				"p.watertype,\r\n" + 
-				"p.liter,\r\n" + 
-				"COALESCE(sum(pqty),0) - COALESCE(sum(sqty),0) qty from watertype p \r\n" + 
-				"LEFT JOIN (select product_id,COALESCE(SUM(quantity),0) pqty from purchase GROUP by product_id) as a on a.product_id = p.id\r\n" + 
-				"LEFT JOIN (select product_id,COALESCE(SUM(quantity),0) sqty from sales GROUP by product_id) as b on b.product_id = p.id\r\n" + 
-				"GROUP BY p.companyname,p.watertype";
+		String sql = "select \r\n" + "p.companyname,\r\n" + "p.watertype,\r\n" + "p.liter,\r\n"
+				+ "COALESCE(sum(pqty),0) - COALESCE(sum(sqty),0) qty from watertype p \r\n"
+				+ "LEFT JOIN (select product_id,COALESCE(SUM(quantity),0) pqty from purchase GROUP by product_id) as a on a.product_id = p.id\r\n"
+				+ "LEFT JOIN (select product_id,COALESCE(SUM(quantity),0) sqty from sales GROUP by product_id) as b on b.product_id = p.id\r\n"
+				+ "GROUP BY p.companyname,p.watertype";
 		System.out.println(sql);
 		NativeQuery nq = session.createNativeQuery(sql);
 		return nq.list();
@@ -73,7 +89,8 @@ public class ApiDao {
 	public Boolean login(String username, String password) {
 		// TODO Auto-generated method stub
 		Session session = sf.getCurrentSession();
-		String sql = "select * from admin where username='"+username+"' and password='"+password+"'";;
+		String sql = "select * from admin where username='" + username + "' and password='" + password + "'";
+		;
 		NativeQuery nq = session.createNativeQuery(sql);
 		if (nq.list().size() != 0) {
 			return true;
@@ -85,7 +102,8 @@ public class ApiDao {
 	public void add_water_types(String company, String type, Integer liter, Integer price) {
 		// TODO Auto-generated method stub
 		Session session = sf.getCurrentSession();
-		String sql = "INSERT INTO `watertype` (`id`, `companyname`, `watertype`, `liter`, `price`) VALUES (NULL, '"+company+"', '"+type+"', '"+liter+"', '"+price+"');";
+		String sql = "INSERT INTO `watertype` (`id`, `companyname`, `watertype`, `liter`, `price`) VALUES (NULL, '"
+				+ company + "', '" + type + "', '" + liter + "', '" + price + "');";
 		session.createSQLQuery(sql).executeUpdate();
 	}
 

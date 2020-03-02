@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.response.FindLocationResponse;
+import com.example.demo.response.GetGeneralResponse;
+import com.example.demo.response.GetPassResponse;
 import com.example.demo.response.GetPassengerResponse;
 import com.example.demo.response.LoginResponse;
 import com.example.demo.service.ApiService;
@@ -87,8 +89,18 @@ public class ApiController {
 	
 	@GetMapping("/find_location/{trainno}")
 	public ResponseEntity<List<FindLocationResponse>> find_location(@PathVariable Integer trainno) {
-		
 		return ResponseEntity.ok().body(service.find_location(trainno));
+	}
+	
+	
+	@GetMapping("/get_pass/{id}")
+	public ResponseEntity<List<GetPassResponse>> get_pass(@PathVariable Integer id) {
+		return ResponseEntity.ok().body(service.get_pass(id));
+	}
+	
+	@GetMapping("/get_general/{id}")
+	public ResponseEntity<List<GetGeneralResponse>> get_general(@PathVariable Integer id) {
+		return ResponseEntity.ok().body(service.get_general(id));
 	}
 	
 }

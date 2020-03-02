@@ -81,6 +81,8 @@ function viewBill(){
                         <th scope="row">`+(++i)+`</th>
                             <td>`+data.name+`</td>
                             <td>`+data.amount+`</td>
+							<td>1.2 KG</td>
+							<td>15%</td>
                             <td>`+data.date+`</td>`;
         }
         $("#billbody").html(html)

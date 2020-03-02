@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.4
+-- version 4.9.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 21, 2020 at 05:00 PM
--- Server version: 10.1.37-MariaDB
--- PHP Version: 7.3.1
+-- Generation Time: Feb 25, 2020 at 12:42 PM
+-- Server version: 10.4.8-MariaDB
+-- PHP Version: 7.3.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -36,13 +36,6 @@ CREATE TABLE `general` (
   `amount` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `general`
---
-
-INSERT INTO `general` (`id`, `passenger_id`, `fromlocation`, `tolocation`, `amount`) VALUES
-(1, 2342, 'f', 'sadf', 234);
-
 -- --------------------------------------------------------
 
 --
@@ -59,17 +52,8 @@ CREATE TABLE `passenger` (
   `password` text NOT NULL,
   `idproof` text NOT NULL,
   `address` text NOT NULL,
-  `flag` varchar(10) NOT NULL DEFAULT 'P'
+  `flag` text NOT NULL DEFAULT 'P'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `passenger`
---
-
-INSERT INTO `passenger` (`id`, `firstname`, `lastname`, `mobile`, `email`, `username`, `password`, `idproof`, `address`, `flag`) VALUES
-(1, 'dsg', 'fdgdf', 'sdf', 'sdfg', 'sdfg', 'sdfg', 'sfdg', 'sdf', 'P'),
-(2, 'hjkhk', 'kjh', 'kh', 'khk', 'hkk', 'hkh', 'khk', 'jkhk', 'P'),
-(3, 'Admin', 'A', '12341234123', 'admin', 'admin', 'admin', '', '', 'P');
 
 -- --------------------------------------------------------
 
@@ -86,13 +70,6 @@ CREATE TABLE `ticket` (
   `amount` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `ticket`
---
-
-INSERT INTO `ticket` (`id`, `passenger_id`, `fromlocation`, `tolocation`, `nextrenewal`, `amount`) VALUES
-(1, 12, 'sdfsaf', 'ds', 'sdfg', 23423);
-
 -- --------------------------------------------------------
 
 --
@@ -107,14 +84,6 @@ CREATE TABLE `train` (
   `tolocation` text NOT NULL,
   `lastlocation` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `train`
---
-
-INSERT INTO `train` (`id`, `trainno`, `trainnname`, `fromlocation`, `tolocation`, `lastlocation`) VALUES
-(1, 231, 'ad', 'ads', 'asd', 'ads'),
-(2, 123, 'dfg', 'dgf', 'sdg', 'fdg');
 
 --
 -- Indexes for dumped tables
@@ -152,7 +121,7 @@ ALTER TABLE `train`
 -- AUTO_INCREMENT for table `general`
 --
 ALTER TABLE `general`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `passenger`
@@ -164,13 +133,13 @@ ALTER TABLE `passenger`
 -- AUTO_INCREMENT for table `ticket`
 --
 ALTER TABLE `ticket`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `train`
 --
 ALTER TABLE `train`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
