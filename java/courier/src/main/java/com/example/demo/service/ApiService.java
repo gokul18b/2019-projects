@@ -123,6 +123,9 @@ public class ApiService {
 			row.setName((String) obj[0]);
 			row.setAmount((Integer)obj[1]);
 			row.setDate((Timestamp)obj[2]);
+			row.setDiscount((String)obj[3]);
+			row.setWeight((String)obj[4]);
+			
 			
 			response.add(row);
 		}

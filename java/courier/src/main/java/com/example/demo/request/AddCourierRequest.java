@@ -7,6 +7,8 @@ public class AddCourierRequest {
 	private String currentlocation;
 	private String fulladdress;
 	private Integer amount;
+	private String weight;
+	private String discount;
 
 	public String getMobile() {
 		return mobile;
@@ -54,6 +56,22 @@ public class AddCourierRequest {
 
 	public void setAmount(Integer amount) {
 		this.amount = amount;
+	}
+
+	public String getWeight() {
+		return weight;
+	}
+
+	public void setWeight(String weight) {
+		this.weight = weight;
+	}
+
+	public String getDiscount() {
+		return discount;
+	}
+
+	public void setDiscount(String discount) {
+		this.discount = discount;
 	}
 
 	

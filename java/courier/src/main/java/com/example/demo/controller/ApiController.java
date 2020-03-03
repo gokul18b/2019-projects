@@ -29,6 +29,7 @@ import com.example.demo.service.ApiService;
 
 
 @RestController
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RequestMapping(value = { "/api" })
 public class ApiController {
 
@@ -66,14 +67,16 @@ public class ApiController {
 		return ResponseEntity.ok().body(service.addCustomer(body));
 	}
 
-	@PostMapping("/addCourier/{name}/{mobile}/{sendlocation}/{fulladdress}/{amount}")
-	public ResponseEntity<String> addCourier(@PathVariable("name") String name,@PathVariable("mobile") String mobile,@PathVariable("sendlocation") String sendlocation,@PathVariable("fulladdress") String fulladdress,@PathVariable("amount") Integer amount) {
+	@PostMapping("/addCourier/{name}/{mobile}/{sendlocation}/{fulladdress}/{amount}/{weight}/{discount}")
+	public ResponseEntity<String> addCourier(@PathVariable("name") String name,@PathVariable("mobile") String mobile,@PathVariable("sendlocation") String sendlocation,@PathVariable("fulladdress") String fulladdress,@PathVariable("amount") Integer amount,@PathVariable("weight") String weight,@PathVariable("discount") String discount) {
 		AddCourierRequest body = new AddCourierRequest();
 		body.setName(name);
 		body.setMobile(mobile);
 		body.setSendlocation(sendlocation);
 		body.setFulladdress(fulladdress);
 		body.setAmount(amount);
+		body.setWeight(weight);
+		body.setDiscount(discount);
 		return ResponseEntity.ok().body(service.addCourier(body));
 	}
 	
