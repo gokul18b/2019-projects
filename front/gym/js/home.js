@@ -139,8 +139,8 @@ function getMaterial(){
 						var data = datas[i];
 						html+=`<tr>
 								<td>`+data.material_name+`</td>
-								<td>`+data.amount+`</td>
-								<td>`+data.quantity+`</td>						
+								<td>`+data.quantity+`</td>
+								<td>`+data.amount+`</td>						
 							  </tr>`;
 						
 					}
