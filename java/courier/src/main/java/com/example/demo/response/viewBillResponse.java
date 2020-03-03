@@ -9,6 +9,9 @@ public class viewBillResponse {
 	private Integer amount;
 	@JsonFormat(pattern="dd-MM-yyyy HH:mm a")
 	private Timestamp date;
+	private String discount;
+	private String weight;
+	
 	public String getName() {
 		return name;
 	}
@@ -26,6 +29,18 @@ public class viewBillResponse {
 	}
 	public void setDate(Timestamp date) {
 		this.date = date;
+	}
+	public String getDiscount() {
+		return discount;
+	}
+	public void setDiscount(String discount) {
+		this.discount = discount;
+	}
+	public String getWeight() {
+		return weight;
+	}
+	public void setWeight(String weight) {
+		this.weight = weight;
 	}
 	
 	

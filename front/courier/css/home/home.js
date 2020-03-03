@@ -81,8 +81,8 @@ function viewBill(){
                         <th scope="row">`+(++i)+`</th>
                             <td>`+data.name+`</td>
                             <td>`+data.amount+`</td>
-							<td>1.2 KG</td>
-							<td>15%</td>
+							<td>`+data.weight+`</td>
+							<td>`+data.discount+`%</td>
                             <td>`+data.date+`</td>`;
         }
         $("#billbody").html(html)
@@ -95,12 +95,14 @@ function addCourier() {
     var address = $("#address3").val();
     var sendlocation = $("#send3").val();
 	var amount = $("#amount3").val();
+	var weight = $("#weight").val();
+	var discount = $("#discount").val();
 	
 
 
     $.ajax({
         type: 'POST',
-        url: 'http://localhost:8080/api/addCourier/'+name+'/'+mobile+'/'+sendlocation+'/'+address+'/'+amount,
+        url: 'http://localhost:8080/api/addCourier/'+name+'/'+mobile+'/'+sendlocation+'/'+address+'/'+amount+'/'+weight+'/'+discount,
         data: {
             name: name,
             mobile: mobile,
@@ -113,6 +115,8 @@ function addCourier() {
         $("#mobile3").val("");
         $("#address3").val("");
         $("#send3").val("");
+        $("#weight").val("");
+        $("#discount").val("");
 	$("#amount3").val("");	
         update();
     });

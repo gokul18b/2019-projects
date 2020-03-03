@@ -48,7 +48,7 @@ public class ApiDao {
 		NativeQuery a = session.createSQLQuery(sql);
 		a.executeUpdate();	
 		
-		String s1 = "INSERT INTO `bill` (`id`, `customer_id`, `amount`) VALUES (NULL, '"+body.getName()+"', '"+body.getAmount()+"')";
+		String s1 = "INSERT INTO `bill` (`id`, `customer_id`, `amount`,`weight`, `discount`) VALUES (NULL, '"+body.getName()+"', '"+body.getAmount()+"','"+body.getWeight()+"','"+body.getDiscount()+"')";
 		session.createSQLQuery(s1).executeUpdate();
 	}
 
@@ -76,7 +76,7 @@ public class ApiDao {
 
 	public List<Object[]> viewBill() {
 		Session session = sf.getCurrentSession();
-		String sql = "Select customer_id,amount,bill_date from bill ";
+		String sql = "Select customer_id,amount,bill_date,discount,weight from bill ";
 		NativeQuery nq = session.createNativeQuery(sql);
 		return nq.list();
 	}
