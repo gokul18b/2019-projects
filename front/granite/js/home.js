@@ -19,12 +19,38 @@ $(document).ready(function(){
 });
 
 function load(){
-	
+	getCustomer();
 	getProduct();
 	getStock();
 	getBill();
 }
 
+function getCustomer(){
+	var html =``;
+		
+		$.ajax({
+			type:"GET",
+			url:"http://localhost:8080/api/get_customer",
+			success: function(datas) {
+				var html = ``;
+				for (var i in datas) {
+					var data = datas[i];
+					html+=`<tr>
+							<td>`+data.name+`</td>
+							<td>`+data.mobile+`</td>
+							<td>`+data.email+`</td>
+							<td>`+data.gender+`</td>
+							<td>`+data.address+`</td>
+						  </tr>`;
+					
+				}
+				$("#customer_body").html(html);
+				
+			},
+		});	
+	
+	
+}
 function login(){
 	var username = $("#username").val();
 	var password = $("#password").val();

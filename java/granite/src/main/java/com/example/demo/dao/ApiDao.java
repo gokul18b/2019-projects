@@ -98,7 +98,7 @@ public class ApiDao {
 	public List<Object[]> get_billing() {
 		// TODO Auto-generated method stub
 		Session session = sf.getCurrentSession();
-		String sql = "select customer.name,customer.mobile,product.company,product.product,sales.quantity,product.price,sales.sdate from sales LEFT JOIN customer on(customer.id=sales.customer_id) LEFT JOIN product on(product.id=sales.product_id) ";
+		String sql = "select customer.name,customer.mobile,product.company,product.product,sales.quantity,sales.price,sales.sdate from sales LEFT JOIN customer on(customer.id=sales.customer_id) LEFT JOIN product on(product.id=sales.product_id) ";
 		NativeQuery nq = session.createNativeQuery(sql);
 		return nq.list();
 	}
