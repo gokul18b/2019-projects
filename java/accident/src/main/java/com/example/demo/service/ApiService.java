@@ -152,7 +152,7 @@ List<Object[]> result =dao.allocate_history(aadhar);
 	}
 
 
-	public Boolean login(String username, String password) {
+	public Integer login(String username, String password) {
 		// TODO Auto-generated method stub
 		return dao.login(username,password);
 	}

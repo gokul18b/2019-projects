@@ -71,10 +71,12 @@ function login(){
 			type:"GET",
 			url:"http://localhost:8080/api/login/"+username+"/"+password,
 			success: function(data) {
-				if(data){
+				if(data==-1){
 					window.location.href="/accident/police-registration.html";
-				}else{
+				}else if(data==-2){
 					alert("Invalid username or pasword")
+				}else{
+					window.location.href="/accident/criminals-registration.html";
 				}
 				
 			}

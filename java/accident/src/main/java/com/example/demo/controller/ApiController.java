@@ -24,7 +24,7 @@ public class ApiController {
 	ApiService service;
 
 	@GetMapping("/login/{username}/{password}")
-	public Boolean login(@PathVariable String username, @PathVariable String password) {
+	public Integer login(@PathVariable String username, @PathVariable String password) {
 		return service.login(username, password);
 	}
 
