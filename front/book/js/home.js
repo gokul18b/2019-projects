@@ -4,11 +4,38 @@ $(document).ready(function(){
 });
 
 function load(){
+	getUser();
 	getAuthors();
 	getBookList();
 	getPayment();
 }
 
+function getUser(){
+	$.ajax({
+			type:"GET",
+			url:"http://localhost/book/php/getuser.php",
+			success: function(datas) {
+				var res = JSON.parse(datas);
+				
+				var html =``;
+				
+				for (var i in res) {
+					var data = res[i];
+
+					html += `<tr>
+					  <th scope="row">`+(++i)+`</th>
+					  <td>`+data.firstname+`</td>
+					  <td>`+data.lastname+`</td>
+					  <td>`+data.mobile+`</td>
+					  <td>`+data.email+`</td>
+					</tr>`;
+				}
+				$("#userbody").html(html)
+				
+				
+			},
+		});	
+}
 
 function getAuthors(){
 	
